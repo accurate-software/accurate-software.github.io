@@ -1,0 +1,20 @@
+{
+  "name": "accurate-software.github.io",
+  "version": "1.0.0",
+  "description": "<img src=\"https://accurate.com.br/wp-content/uploads/2020/06/logo-accurate-300.svg\" alt=\"drawing\" width=\"200\"/>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsaacMaciel/accurate-software.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IsaacMaciel/accurate-software.github.io/issues"
+  },
+  "homepage": "https://github.com/IsaacMaciel/accurate-software.github.io#readme"
+}
