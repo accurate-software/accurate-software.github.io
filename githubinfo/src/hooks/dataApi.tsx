@@ -30,10 +30,11 @@ interface IContextApi {
   data: IData[] | undefined;
   setData: (data: IData[]) => void;
   getRepository(repository: string): void;
-  error: {
-    status: boolean;
-    message: string;
-  };
+  error: Error;
+}
+interface Error {
+  status: boolean;
+  message: string;
 }
 
 import api from '../services/api';
@@ -103,7 +104,7 @@ const DataApiProvider = ({ children }: IProps) => {
     } catch (error) {
       error.message.includes('code 404')
         ? setError({
-            message: 'Repository not found',
+            message: 'Repositório não encontrado',
             status: true,
           })
         : setError({ message: error.message, status: true });

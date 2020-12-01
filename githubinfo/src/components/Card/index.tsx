@@ -4,8 +4,6 @@ import { Container, Header, Body, Footer, Options } from './styles';
 
 import Swal from 'sweetalert2';
 
-import ModalDelete from '../ModalDelete';
-
 import trashIcon from '../../assets/trashIcon.svg';
 
 import LabelCard from '../LabelCard';
@@ -29,8 +27,8 @@ const Card: React.FC<Props> = ({
   avatar_url,
   deleteRepository,
 }) => {
-  const [modalDeleteIsOpen, setModalDeleteIsOpen] = useState(false);
-  const [cardDelete, setCardDelete] = useState(false);
+  // const [modalDeleteIsOpen, setModalDeleteIsOpen] = useState(false);
+  // const [cardDelete, setCardDelete] = useState(false);
 
   const confirmDelete = (id: string | number) => {
     Swal.fire({
@@ -53,17 +51,6 @@ const Card: React.FC<Props> = ({
       }
     });
   };
-  console.log(modalDeleteIsOpen);
-
-  //   useEffect(() => {
-  //     setCardDelete(false);
-  //   }, [displayModal]);
-
-  //   useEffect(() => {
-  //     if (cardDelete) {
-  //       deleteRepository(id);z
-  //     }
-  //   }, [cardDelete]);
 
   return (
     <>

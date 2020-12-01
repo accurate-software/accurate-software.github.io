@@ -33,8 +33,10 @@ export const Button = styled.button`
 
   margin-left: 10px;
 
+  opacity: ${(props) => (props.disabled ? 0.3 : 1)};
+
   &:hover {
-    opacity: 0.7;
+    opacity: ${(props) => (props.disabled ? 0.3 : 0.7)};
   }
 
   cursor: pointer;
@@ -48,4 +50,14 @@ export const Input = styled.input`
   font-size: 16px;
 
   border-radius: 5px;
+`;
+
+export const Error = styled.h5`
+  margin-top: 5px;
+
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #d63031;
 `;

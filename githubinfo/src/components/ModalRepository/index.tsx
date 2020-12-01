@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { Title, Button, Body, Footer, Input } from './styles';
+import { Title, Button, Body, Footer, Input, Error } from './styles';
 
 import { useGitHubRepository } from '../../hooks/githubRepository';
 import { useDataApi } from '../../hooks/dataApi';
@@ -8,10 +8,9 @@ import { useDataApi } from '../../hooks/dataApi';
 const ModalRepository: React.FC = () => {
   const [repository, setRepository] = useState('');
   const { modalIsOpen, setModalIsOpen } = useGitHubRepository();
-  const { getRepository, data } = useDataApi();
+  const { getRepository, error, data } = useDataApi();
 
   const closeModal = () => {
-    console.log('Close Modal foi chamado');
     setRepository('');
     setModalIsOpen(false);
   };
@@ -19,8 +18,14 @@ const ModalRepository: React.FC = () => {
 
   const sendRepository = (repository: string) => {
     getRepository(repository);
-    closeModal();
   };
+
+  useEffect(() => {
+    if (error.status) {
+      return;
+    }
+    closeModal();
+  }, [data, error]);
 
   Modal.setAppElement('#root');
   const styles = {
@@ -44,11 +49,16 @@ const ModalRepository: React.FC = () => {
           placeholder="Informe o repositório do github"
           type="text"
         />
+        <Error>{error.message}</Error>
         <Footer>
           <Button color={'#95a5a6'} onClick={closeModal}>
             Cancelar
           </Button>
-          <Button color={'#0984e3'} onClick={(e) => sendRepository(repository)}>
+          <Button
+            color={'#0984e3'}
+            disabled={repository == '' ? true : false}
+            onClick={(e) => sendRepository(repository)}
+          >
             Enviar
           </Button>
         </Footer>
