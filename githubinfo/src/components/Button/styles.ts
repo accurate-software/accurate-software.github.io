@@ -26,4 +26,8 @@ export const ButtonRepository = styled.button`
   }
 
   cursor: pointer;
+
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `;

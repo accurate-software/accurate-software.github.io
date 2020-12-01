@@ -15,8 +15,15 @@ export const Image = styled.img`
 `;
 
 export const Message = styled.h4`
+  display: flex;
+  flex-wrap: wrap;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
   width: 400px;
+
+  @media (max-width: 500px) {
+    font-size: 16px;
+    width: 350px;
+  }
 `;

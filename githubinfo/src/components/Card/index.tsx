@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { Container, Header, Body, Footer, Options } from './styles';
 
+import Swal from 'sweetalert2';
+
 import ModalDelete from '../ModalDelete';
 
 import trashIcon from '../../assets/trashIcon.svg';
@@ -27,8 +29,31 @@ const Card: React.FC<Props> = ({
   avatar_url,
   deleteRepository,
 }) => {
-  const [displayModal, setDisplayModal] = useState(false);
+  const [modalDeleteIsOpen, setModalDeleteIsOpen] = useState(false);
   const [cardDelete, setCardDelete] = useState(false);
+
+  const confirmDelete = (id: string | number) => {
+    Swal.fire({
+      title: 'Você tem certeza?',
+      text: `Desejas deletar o repositório: ${full_name} ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Sim, quero deletar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteRepository(id);
+        Swal.fire(
+          'Repositório Deletado!',
+          'O repositório foi deletado com sucesso.',
+          'success',
+        );
+      }
+    });
+  };
+  console.log(modalDeleteIsOpen);
 
   //   useEffect(() => {
   //     setCardDelete(false);
@@ -36,7 +61,7 @@ const Card: React.FC<Props> = ({
 
   //   useEffect(() => {
   //     if (cardDelete) {
-  //       deleteRepository(id);
+  //       deleteRepository(id);z
   //     }
   //   }, [cardDelete]);
 
@@ -64,10 +89,7 @@ const Card: React.FC<Props> = ({
               </span>
             </div>
             <Options>
-              <img
-                onClick={(e) => id && deleteRepository(id)}
-                src={trashIcon}
-              />
+              <img onClick={(e) => id && confirmDelete(id)} src={trashIcon} />
             </Options>
           </Header>
           <Body>
@@ -86,7 +108,6 @@ const Card: React.FC<Props> = ({
           </Body>
         </Container>
       </div>
-      <ModalDelete />
     </>
   );
 };

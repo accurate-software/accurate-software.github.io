@@ -41,7 +41,7 @@ import api from '../services/api';
 const DataApiContext = createContext<IContextApi>({} as IContextApi);
 
 const DataApiProvider = ({ children }: IProps) => {
-  const [data, setData] = useState<IData[]>();
+  const [data, setData] = useState<IData[]>([]);
   const [error, setError] = useState({
     status: false,
     message: '',
@@ -86,7 +86,7 @@ const DataApiProvider = ({ children }: IProps) => {
           owner,
         }) => {
           return {
-            id: data ? data.length + 1 : 1,
+            id: data.length + 1,
             full_name,
             stargazers_count,
             forks_count,
@@ -99,11 +99,7 @@ const DataApiProvider = ({ children }: IProps) => {
         },
       );
       setError({ message: '', status: false });
-      if (data) {
-        setData([resultFormatted[0], ...data]);
-      } else {
-        setData([resultFormatted[0]]);
-      }
+      setData([resultFormatted[0], ...data]);
     } catch (error) {
       error.message.includes('code 404')
         ? setError({
