@@ -5,13 +5,16 @@ import Index from './Pages';
 import GlobalStyles from './GlobalStyles';
 
 import { GitHubRepositoryProvider } from './hooks/githubRepository';
+import { DataApiProvider } from './hooks/dataApi';
 
 function App() {
   return (
-    <GitHubRepositoryProvider>
-      <Index />
-      <GlobalStyles />
-    </GitHubRepositoryProvider>
+    <DataApiProvider>
+      <GitHubRepositoryProvider>
+        <Index />
+        <GlobalStyles />
+      </GitHubRepositoryProvider>
+    </DataApiProvider>
   );
 }
 

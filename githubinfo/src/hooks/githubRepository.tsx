@@ -5,7 +5,7 @@ interface IGitRepository {
   setModalIsOpen: (isModal: boolean) => void;
 }
 
-interface IProps {
+export interface IProps {
   children: ReactNode;
 }
 
