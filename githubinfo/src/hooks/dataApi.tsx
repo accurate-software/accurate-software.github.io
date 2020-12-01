@@ -14,7 +14,7 @@ interface IApiGitHub {
   };
 }
 
-interface IData {
+export interface IData {
   id: number | undefined;
   full_name: string;
   stargazers_count: number;
@@ -28,6 +28,7 @@ interface IData {
 
 interface IContextApi {
   data: IData[] | undefined;
+  setData: (data: IData[]) => void;
   getRepository(repository: string): void;
   error: {
     status: boolean;
@@ -114,7 +115,7 @@ const DataApiProvider = ({ children }: IProps) => {
   };
 
   return (
-    <DataApiContext.Provider value={{ data, getRepository, error }}>
+    <DataApiContext.Provider value={{ data, getRepository, error, setData }}>
       {children}
     </DataApiContext.Provider>
   );

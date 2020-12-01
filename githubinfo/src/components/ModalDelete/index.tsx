@@ -5,21 +5,19 @@ import { Title, Button, Body, Footer, Input } from './styles';
 import { useGitHubRepository } from '../../hooks/githubRepository';
 import { useDataApi } from '../../hooks/dataApi';
 
-const ModalRepository: React.FC = () => {
+const ModalDelete: React.FC = () => {
   const [repository, setRepository] = useState('');
   const { modalIsOpen, setModalIsOpen } = useGitHubRepository();
   const { getRepository, data } = useDataApi();
 
   const closeModal = () => {
-    console.log('Close Modal foi chamado');
     setRepository('');
     setModalIsOpen(false);
   };
-  console.log(modalIsOpen);
 
   const sendRepository = (repository: string) => {
     getRepository(repository);
-    closeModal();
+    setRepository('');
   };
 
   Modal.setAppElement('#root');
@@ -48,7 +46,7 @@ const ModalRepository: React.FC = () => {
           <Button color={'#95a5a6'} onClick={closeModal}>
             Cancelar
           </Button>
-          <Button color={'#0984e3'} onClick={(e) => sendRepository(repository)}>
+          <Button color={'#0984e3'} onClick={(e) => getRepository(repository)}>
             Enviar
           </Button>
         </Footer>
@@ -57,4 +55,4 @@ const ModalRepository: React.FC = () => {
   );
 };
 
-export default ModalRepository;
+export default ModalDelete;

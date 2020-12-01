@@ -14,12 +14,12 @@ export const ButtonRepository = styled.button`
 
   color: #fff;
   padding: 10px;
-  background-color: #0984e3;
+  background-color: #3498db;
 
-  border-color: #0984e3;
+  border-color: #3498db;
   border: 1px solid transparent;
 
-  border-radius: 0.25rem;
+  border-radius: 0.75rem;
 
   &:hover {
     opacity: 0.7;
