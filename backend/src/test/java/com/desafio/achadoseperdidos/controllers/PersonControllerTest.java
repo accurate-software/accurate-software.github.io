@@ -8,6 +8,7 @@ import com.desafio.achadoseperdidos.services.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.BadRequestException;
 import exceptions.NotFoundException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,23 @@ class PersonControllerTest {
     @MockBean
     private PersonService personService;
 
+    private Person person;
+    private PersonDTO personDTO;
+    private Item lostItem;
+    private Item foundItem;
+    private ItemDTO itemDTO;
+
+    @BeforeEach
+    void setUp() {
+        this.person = new Person(1L, "validName", "valid@mail.com", "83 9 1234-5678");
+        this.personDTO = new PersonDTO("validPerson", "validPerson@mail.com", "83 9 8743-1234");
+        this.lostItem = new Item("validItem", "perdido na esqueina", "desconhecido", "cg", "pb", true);
+        this.foundItem = new Item("validItem", "perdido na esqueina", "desconhecido", "cg", "pb", false);
+        this.itemDTO = new ItemDTO("validItem", "perdido na esqueina", "desconhecido", "cg", "pb");
+    }
+
     @Test
     void shouldReturnsAPersonById() throws Exception {
-        Person person = new Person(1L, "validName", "valid@mail.com", "83 9 1234-5678");
-
         when(personService.getPersonById(eq(1L))).thenReturn(person);
 
         String response = mockMvc.perform(get("/person").queryParam("id", "1"))
@@ -60,11 +74,8 @@ class PersonControllerTest {
 
     @Test
     void shouldCreateAnewPerson() throws Exception {
-        Person person = new Person(1L, "validPerson", "validPerson@mail.com", "83 9 8743-1234");
-
         when(personService.savePerson(any(PersonDTO.class))).thenReturn(person);
 
-        PersonDTO personDTO = new PersonDTO("validPerson", "validPerson@mail.com", "83 9 8743-1234");
         MvcResult result = mockMvc.perform(post("/person")
                 .content(objectMapper.writeValueAsString(personDTO))
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
@@ -115,13 +126,10 @@ class PersonControllerTest {
 
     @Test
     void shouldAddLostItemToPerson() throws Exception {
-        Person person = new Person(1L, "validPerson", "valid@mail.com", "83 9 0984-2314");
-        Item item = new Item("validItem", "perdido na esqueina", "desconhecido", "cg", "pb", true);
-        person.getLostItems().add(item);
+        person.getLostItems().add(lostItem);
 
         when(personService.addLostItemToPerson(eq(1L), any(ItemDTO.class))).thenReturn(person);
 
-        ItemDTO itemDTO = new ItemDTO("validItem", "perdido na esqueina", "desconhecido", "cg", "pb");
         MvcResult result = mockMvc.perform(patch("/person/1/lost-item")
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .content(objectMapper.writeValueAsString(itemDTO)))
@@ -135,13 +143,10 @@ class PersonControllerTest {
 
     @Test
     void shouldAddFoundItemToPerson() throws Exception {
-        Person person = new Person(1L, "validPerson", "valid@mail.com", "83 9 0984-2314");
-        Item item = new Item("validItem", "perdido na esqueina", "desconhecido", "cg", "pb", false);
-        person.getLostItems().add(item);
+        person.getLostItems().add(foundItem);
 
         when(personService.addFoundItemToPerson(eq(1L), any(ItemDTO.class))).thenReturn(person);
 
-        ItemDTO itemDTO = new ItemDTO("validItem", "perdido na esquina", "desconhecido", "cg", "pb");
         MvcResult result = mockMvc.perform(patch("/person/1/found-item")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
