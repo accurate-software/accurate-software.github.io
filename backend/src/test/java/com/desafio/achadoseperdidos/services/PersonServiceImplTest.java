@@ -7,6 +7,7 @@ import com.desafio.achadoseperdidos.entities.Person;
 import com.desafio.achadoseperdidos.repositories.PersonRepository;
 import exceptions.BadRequestException;
 import exceptions.NotFoundException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,6 +31,15 @@ class PersonServiceImplTest {
     @InjectMocks
     private PersonService personService = new PersonServiceImpl();
 
+    private Person person;
+    private Item item;
+
+    @BeforeEach
+    void setUp() {
+        this.person = new Person("validName", "validEmail@mail.com", "(83) 9 1234-5678");
+        this.item = new Item("validName", "validDescription", "validCategory", "campina grande", "PB", false);
+    }
+
     @Test
     void shouldThrowErrorCallingGetPersonByIdWhenIdNotExists() {
         Long id = 999999L;
@@ -41,7 +51,6 @@ class PersonServiceImplTest {
 
     @Test
     void shouldReturnsPersonSuccessFullyWithGetPersonById() {
-        Person person = new Person("validName", "validEmail@mail.com", "(83) 9 1234-5678");
         when(personRepository.findById(1000L)).thenReturn(Optional.of(person));
 
         Person currentPerson = personService.getPersonById(1000L);
@@ -55,7 +64,6 @@ class PersonServiceImplTest {
 
     @Test
     void shouldThrowErrorCallingSavePersonWhenEmailAlredyExists() {
-        Person person = new Person("validName", "validEmail@mail.com", "(83) 9 1234-5678");
         when(personRepository.findByEmail("validEmail@mail.com")).thenReturn(Optional.of(person));
         assertThrows(BadRequestException.class, () -> {
             personService.savePerson(new PersonDTO("otherName", "validEmail@mail.com", "(83) 9 3214-2512"));
@@ -64,8 +72,6 @@ class PersonServiceImplTest {
 
     @Test
     void shouldReturnsAPersonWhenCallingSavePerson() {
-        Person person = new Person("validName", "validEmail@mail.com", "(83) 9 1234-5678");
-
         when(personRepository.findByEmail("validEmail@mail.com")).thenReturn(Optional.empty());
         when(personRepository.save(any(Person.class))).thenReturn(person);
 
@@ -81,9 +87,6 @@ class PersonServiceImplTest {
 
     @Test
     void addLostItemToPersonTest() {
-        Person person = new Person("validName", "validEmail@mail.com", "(83) 9 1234-5678");
-        Item item = new Item("validName", "validDescription", "validCategory", "campina grande", "PB", false);
-
         when(personRepository.findById(1L)).thenReturn(Optional.of(person));
         when(itemService.createItem(any(Item.class))).thenReturn(item);
 
@@ -102,9 +105,6 @@ class PersonServiceImplTest {
 
     @Test
     void addFoundItemToPersonTest() {
-        Person person = new Person("validName", "validEmail@mail.com", "(83) 9 1234-5678");
-        Item item = new Item("validName", "validDescription", "validCategory", "campina grande", "PB", false);
-
         when(personRepository.findById(1L)).thenReturn(Optional.of(person));
         when(itemService.createItem(any(Item.class))).thenReturn(item);
 
