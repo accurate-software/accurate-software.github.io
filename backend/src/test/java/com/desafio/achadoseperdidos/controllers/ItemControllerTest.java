@@ -43,12 +43,16 @@ class ItemControllerTest {
 
     private List<Item> itemList;
 
+    private Item item;
+
     @BeforeEach
     void setUp() {
         this.itemList = new LinkedList<>();
         itemList.add(new Item("boneco", "boneco perdido na praça", "brinquedo", "campina grande", "paraiba", true));
         itemList.add(new Item("bola", "bola achada na praia", "futebol", "joão pessoa", "paraiba", false));
         itemList.add(new Item("celular", "celular perdido na praça", "eletronico", "campina grande", "paraiba", true));
+
+        this.item = new Item(1L, "tablet", "tablet perdido na praça", "eletronico", "campina grande", "paraiba", true);
     }
 
     @Test
@@ -112,7 +116,6 @@ class ItemControllerTest {
 
     @Test
     void shouldUpdateItem() throws Exception {
-        Item item = new Item(1L, "tablet", "tablet perdido na praça", "eletronico", "campina grande", "paraiba", true);
         when(itemService.createItem(eq(item))).thenReturn(item);
 
         Item currentItem = itemService.createItem(item);
@@ -126,7 +129,6 @@ class ItemControllerTest {
 
     @Test
     void shouldReturn400WhenIsMissingField() throws Exception {
-        Item item = new Item(1L, "tablet", "tablet perdido na praça", "eletronico", "campina grande", "paraiba", true);
         when(itemService.createItem(eq(item))).thenReturn(item);
 
         Item currentItem = itemService.createItem(item);
