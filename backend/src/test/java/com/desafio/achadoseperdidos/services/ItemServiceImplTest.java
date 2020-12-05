@@ -135,20 +135,20 @@ class ItemServiceImplTest {
         Item item = new Item("item1", "belo item1", "category1", "campina grande", "PB", false);
         when(itemRepository.findById(1L)).thenReturn(Optional.of(item));
 
-        ItemDTO itemDTO = new ItemDTO("itemModified", "item top", "category", "campina grande", "PB", true);
+        ItemDTO itemDTO = new ItemDTO("itemModified", "item top", "category", "campina grande", "PB");
         Item currentItem = itemService.updateItem(1L, itemDTO);
 
         assertEquals("itemModified", currentItem.getName());
         assertEquals("item top", currentItem.getDescription());
         assertEquals("category", currentItem.getCategory());
-        assertEquals(true, currentItem.getLost());
+        assertEquals(false, currentItem.getLost());
     }
 
     @Test
     void shouldThrowAnErrorWhenAnItemDoesNotExists() {
         when(itemRepository.findById(1L)).thenReturn(Optional.empty());
 
-        ItemDTO itemDTO = new ItemDTO("itemModified", "item top", "category", "campina grande", "PB", true);
+        ItemDTO itemDTO = new ItemDTO("itemModified", "item top", "category", "campina grande", "PB");
         assertThrows(NotFoundException.class, () -> {
             itemService.updateItem(1L, itemDTO);
         });

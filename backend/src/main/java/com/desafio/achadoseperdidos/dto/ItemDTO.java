@@ -25,15 +25,11 @@ public class ItemDTO {
     @NotNull @NotEmpty @NotBlank
     private String state;
 
-    @NotNull
-    private Boolean lost;
-
-    public ItemDTO(String name, String description, String category, String city, String state, Boolean lost) {
+    public ItemDTO(String name, String description, String category, String city, String state) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.city = city;
         this.state = state;
-        this.lost = lost;
     }
 }

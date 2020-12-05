@@ -87,7 +87,7 @@ class PersonServiceImplTest {
         when(personRepository.findById(1L)).thenReturn(Optional.of(person));
         when(itemService.createItem(any(Item.class))).thenReturn(item);
 
-        ItemDTO itemDTO = new ItemDTO("validName", "validDescription", "validCategory", "campina grande", "PB", false);
+        ItemDTO itemDTO = new ItemDTO("validName", "validDescription", "validCategory", "campina grande", "PB");
         Person currentPerson = personService.addLostItemToPerson(1L, itemDTO);
 
         Set<Item> itemSet = new HashSet<>();
@@ -108,7 +108,7 @@ class PersonServiceImplTest {
         when(personRepository.findById(1L)).thenReturn(Optional.of(person));
         when(itemService.createItem(any(Item.class))).thenReturn(item);
 
-        ItemDTO itemDTO = new ItemDTO("validName", "validDescription", "validCategory", "campina grande", "PB", true);
+        ItemDTO itemDTO = new ItemDTO("validName", "validDescription", "validCategory", "campina grande", "PB");
         Person currentPerson = personService.addFoundItemToPerson(1L, itemDTO);
 
         Set<Item> itemSet = new HashSet<>();

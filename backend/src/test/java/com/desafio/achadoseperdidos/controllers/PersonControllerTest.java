@@ -121,7 +121,7 @@ class PersonControllerTest {
 
         when(personService.addLostItemToPerson(eq(1L), any(ItemDTO.class))).thenReturn(person);
 
-        ItemDTO itemDTO = new ItemDTO("validItem", "perdido na esqueina", "desconhecido", "cg", "pb", false);
+        ItemDTO itemDTO = new ItemDTO("validItem", "perdido na esqueina", "desconhecido", "cg", "pb");
         MvcResult result = mockMvc.perform(patch("/person/1/lost-item")
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .content(objectMapper.writeValueAsString(itemDTO)))
@@ -141,7 +141,7 @@ class PersonControllerTest {
 
         when(personService.addFoundItemToPerson(eq(1L), any(ItemDTO.class))).thenReturn(person);
 
-        ItemDTO itemDTO = new ItemDTO("validItem", "perdido na esquina", "desconhecido", "cg", "pb", true);
+        ItemDTO itemDTO = new ItemDTO("validItem", "perdido na esquina", "desconhecido", "cg", "pb");
         MvcResult result = mockMvc.perform(patch("/person/1/found-item")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))

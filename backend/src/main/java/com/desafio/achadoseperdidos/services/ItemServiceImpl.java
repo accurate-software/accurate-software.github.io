@@ -128,7 +128,6 @@ public class ItemServiceImpl implements ItemService{
         currentItem.setName(item.getName());
         currentItem.setCategory(item.getCategory());
         currentItem.setDescription(item.getDescription());
-        currentItem.setLost(item.getLost());
 
         return currentItem;
     }

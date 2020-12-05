@@ -103,7 +103,7 @@ class ItemControllerTest {
     void shouldReturns404WhenIdDoesNotExists() throws Exception {
         when(itemService.updateItem(eq(2L), any(ItemDTO.class))).thenThrow(new NotFoundException(""));
 
-        ItemDTO itemDTO = new ItemDTO("celular", "celular achado", "eletronico", "campina grande", "paraiba", false);
+        ItemDTO itemDTO = new ItemDTO("celular", "celular achado", "eletronico", "campina grande", "paraiba");
         mockMvc.perform(put("/item/2")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
@@ -117,7 +117,7 @@ class ItemControllerTest {
 
         Item currentItem = itemService.createItem(item);
 
-        ItemDTO itemDTO = new ItemDTO("celular", "celular achado", "eletronico", "campina grande", "paraiba", false);
+        ItemDTO itemDTO = new ItemDTO("celular", "celular achado", "eletronico", "campina grande", "paraiba");
         mockMvc.perform(put("/item/" + currentItem.getId())
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
@@ -131,7 +131,7 @@ class ItemControllerTest {
 
         Item currentItem = itemService.createItem(item);
 
-        ItemDTO itemDTO = new ItemDTO("", null, "eletronico", "campina grande", "paraiba", false);
+        ItemDTO itemDTO = new ItemDTO("", null, "eletronico", "campina grande", "paraiba");
         mockMvc.perform(put("/item/" + currentItem.getId())
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))

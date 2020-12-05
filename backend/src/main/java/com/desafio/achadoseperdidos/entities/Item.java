@@ -45,7 +45,6 @@ public class Item {
         this.category = itemDTO.getCategory();
         this.city = itemDTO.getCity();
         this.state = itemDTO.getState();
-        this.lost = itemDTO.getLost();
     }
 
     @Override
