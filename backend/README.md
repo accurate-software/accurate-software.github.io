@@ -10,7 +10,6 @@ Antes de tudo, é necessário ter algumas dependências instaladas.
 
 - Java (>= 8)
 - Maven
-</br>
 
 ### Executando a api
 
@@ -38,9 +37,8 @@ Endpoints para `person`: </br>
 | PATCH  | /person/`{id}`/lost-item     | Adiciona um novo item (perdido) por uma pessoa.    |
 | PATCH  | /person`{id}`/found-item     | Adiciona um novo item (encontrado) por uma pessoa. |
 
-</br>
 
-### Requests </br>
+### Requests
 
 POST /person
 
@@ -75,9 +73,7 @@ Endpoints para `item`:
 | GET    | /items?`filter`=             | Obtém todos os items presentes. Caso queira, é possível passar um filtro como parametro, mas é opcional. Os filtros possíveis são: `name`, `category`, `city`, `state` e `lost`. Um exemplo: /items?`category`= `eletrônico`. Retorna todos os items que são da categoria eletrônico|
 | PUT   | /item/`{id}`                  | Edita as informações de um item existente.         |
 
-</br>
-
-### Requests </br>
+### Requests
 
 PUT /item/`{id}`
 
