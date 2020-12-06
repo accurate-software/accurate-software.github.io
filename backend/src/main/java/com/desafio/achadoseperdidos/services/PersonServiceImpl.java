@@ -1,5 +1,6 @@
 package com.desafio.achadoseperdidos.services;
 
+import com.desafio.achadoseperdidos.constants.Messages;
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.dto.PersonDTO;
 import com.desafio.achadoseperdidos.entities.Item;
@@ -34,7 +35,7 @@ public class PersonServiceImpl implements PersonService {
     private void checkIfPersonAlreadyExists(Long id, Optional<Person> optionalPerson) {
         boolean personExists = optionalPerson.isPresent();
         if(!personExists) {
-            throw new NotFoundException("Person with id:" + id + " not found.");
+            throw new NotFoundException(String.format(Messages.Exception.PERSON_NOT_FOUND_D, id));
         }
     }
 
@@ -51,7 +52,7 @@ public class PersonServiceImpl implements PersonService {
     private void checkIfEmailAlreadyExists(String email) {
         boolean emailAlreadyExists = personRepository.findByEmail(email).isPresent();
         if(emailAlreadyExists) {
-            throw new BadRequestException("A person with email: " + email + " already exists.");
+            throw new BadRequestException(String.format(Messages.Exception.EMAIL_ALREADY_EXISTS_S, email));
         }
     }
 

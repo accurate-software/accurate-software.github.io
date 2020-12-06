@@ -1,5 +1,6 @@
 package com.desafio.achadoseperdidos.services;
 
+import com.desafio.achadoseperdidos.constants.Messages;
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.entities.Item;
 import com.desafio.achadoseperdidos.repositories.ItemRepository;
@@ -111,7 +112,7 @@ public class ItemServiceImpl implements ItemService{
     private void validateFilds(Map<String, String> fildToFilter) {
         boolean hasTwoOrMoreFildsToFilter = fildToFilter.size() > 1;
         if(hasTwoOrMoreFildsToFilter) {
-            throw new BadRequestException("There are more than one filter.");
+            throw new BadRequestException(Messages.Exception.THERE_ARE_MORE_THAN_ONE_FILTER);
         }
     }
 
@@ -146,7 +147,7 @@ public class ItemServiceImpl implements ItemService{
     private void checkIfItemExists(Long itemId, Optional<Item> optionalItem) {
         boolean itemExists = optionalItem.isPresent();
         if(!itemExists) {
-            throw new NotFoundException("Item with id: " + itemId + " not found.");
+            throw new NotFoundException(String.format(Messages.Exception.ITEM_NOT_FOUND_D, itemId));
         }
     }
 }
