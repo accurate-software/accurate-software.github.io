@@ -3,6 +3,7 @@ package com.desafio.achadoseperdidos.services;
 import com.desafio.achadoseperdidos.constants.Messages;
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.entities.Item;
+import com.desafio.achadoseperdidos.enums.Filter;
 import com.desafio.achadoseperdidos.repositories.ItemRepository;
 import exceptions.BadRequestException;
 import exceptions.NoContentException;
@@ -81,20 +82,21 @@ public class ItemServiceImpl implements ItemService{
 
     private boolean equalsValue(Item item, String field, Map<String, String> fildToFilter) {
         boolean equalsValue;
-        switch (field) {
-            case "name":
+        Filter filter = Filter.valueOf(field.toUpperCase());
+        switch (filter) {
+            case NAME:
                 equalsValue = fildToFilter.get(field).equals(item.getName());
                 break;
-            case "category":
+            case CATEGORY:
                 equalsValue = fildToFilter.get(field).equals(item.getCategory());
                 break;
-            case "city":
+            case CITY:
                 equalsValue = fildToFilter.get(field).equals(item.getCity());
                 break;
-            case "state":
+            case STATE:
                 equalsValue = fildToFilter.get(field).equals(item.getState());
                 break;
-            case "lost":
+            case LOST:
                 Boolean lost = Boolean.parseBoolean(fildToFilter.get(field));
                 equalsValue = lost.equals(item.getLost());
                 break;
