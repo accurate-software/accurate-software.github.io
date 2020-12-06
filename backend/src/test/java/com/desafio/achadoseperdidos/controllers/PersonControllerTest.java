@@ -18,6 +18,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import java.util.UUID;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -41,9 +43,14 @@ class PersonControllerTest {
     private Item foundItem;
     private ItemDTO itemDTO;
 
+    private static final String UUID_STRING = "5c166647-b030-43bb-9f27-cf295bf1f151";
+    private UUID uuid;
+
     @BeforeEach
     void setUp() {
-        this.person = new Person(1L, "validName", "valid@mail.com", "83 9 1234-5678");
+        this.uuid = UUID.fromString(UUID_STRING);
+
+        this.person = new Person(uuid, "validName", "valid@mail.com", "83 9 1234-5678");
         this.personDTO = new PersonDTO("validPerson", "validPerson@mail.com", "83 9 8743-1234");
         this.lostItem = new Item("validItem", "perdido na esqueina", "desconhecido", "cg", "pb", true);
         this.foundItem = new Item("validItem", "perdido na esqueina", "desconhecido", "cg", "pb", false);
@@ -52,9 +59,9 @@ class PersonControllerTest {
 
     @Test
     void shouldReturnsAPersonById() throws Exception {
-        when(personService.getPersonById(eq(1L))).thenReturn(person);
+        when(personService.getPersonById(eq(uuid))).thenReturn(person);
 
-        String response = mockMvc.perform(get("/person").queryParam("id", "1"))
+        String response = mockMvc.perform(get("/person").queryParam("id", UUID_STRING))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
@@ -66,9 +73,9 @@ class PersonControllerTest {
 
     @Test
     void shouldReturns404IfPersonDoesNotExists() throws Exception {
-        when(personService.getPersonById(eq(1L))).thenThrow(new NotFoundException(""));
+        when(personService.getPersonById(eq(uuid))).thenThrow(new NotFoundException(""));
 
-        mockMvc.perform(get("/person").queryParam("id", "1"))
+        mockMvc.perform(get("/person").queryParam("id", UUID_STRING))
                 .andExpect(status().isNotFound());
     }
 
@@ -128,9 +135,9 @@ class PersonControllerTest {
     void shouldAddLostItemToPerson() throws Exception {
         person.getLostItems().add(lostItem);
 
-        when(personService.addLostItemToPerson(eq(1L), any(ItemDTO.class))).thenReturn(person);
+        when(personService.addLostItemToPerson(eq(uuid), any(ItemDTO.class))).thenReturn(person);
 
-        MvcResult result = mockMvc.perform(patch("/person/1/lost-item")
+        MvcResult result = mockMvc.perform(patch("/person/" + UUID_STRING + "/lost-item")
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                             .content(objectMapper.writeValueAsString(itemDTO)))
                             .andExpect(status().isOk())
@@ -145,9 +152,9 @@ class PersonControllerTest {
     void shouldAddFoundItemToPerson() throws Exception {
         person.getLostItems().add(foundItem);
 
-        when(personService.addFoundItemToPerson(eq(1L), any(ItemDTO.class))).thenReturn(person);
+        when(personService.addFoundItemToPerson(eq(uuid), any(ItemDTO.class))).thenReturn(person);
 
-        MvcResult result = mockMvc.perform(patch("/person/1/found-item")
+        MvcResult result = mockMvc.perform(patch("/person/" + UUID_STRING + "/found-item")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
                 .andExpect(status().isOk())

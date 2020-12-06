@@ -2,22 +2,22 @@ package com.desafio.achadoseperdidos.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 public class Person {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Type(type="org.hibernate.type.UUIDCharType")
+    private UUID id;
     private String name;
     private String email;
     private String telephone;
@@ -29,7 +29,7 @@ public class Person {
     public Person() {}
 
 
-    public Person(Long id, String name, String email, String telephone) {
+    public Person(UUID id, String name, String email, String telephone) {
         this(name, email, telephone);
         this.id = id;
     }

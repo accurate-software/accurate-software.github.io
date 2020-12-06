@@ -20,6 +20,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,29 +34,32 @@ class PersonServiceImplTest {
     @InjectMocks
     private PersonService personService = new PersonServiceImpl();
 
+    private static final String UUID_STRING = "5c166647-b030-43bb-9f27-cf295bf1f151";
+    private UUID uuid;
+
     private Person person;
     private Item item;
 
     @BeforeEach
     void setUp() {
+        this.uuid = UUID.fromString(UUID_STRING);
         this.person = new Person("validName", "validEmail@mail.com", "(83) 9 1234-5678");
         this.item = new Item("validName", "validDescription", "validCategory", "campina grande", "PB", false);
     }
 
     @Test
     void shouldThrowErrorCallingGetPersonByIdWhenIdNotExists() {
-        Long id = 999999L;
-        when(personRepository.findById(id)).thenReturn(Optional.empty());
+        when(personRepository.findById(eq(uuid))).thenReturn(Optional.empty());
         assertThrows(NotFoundException.class, () -> {
-            personService.getPersonById(id);
+            personService.getPersonById(uuid);
         });
     }
 
     @Test
     void shouldReturnsPersonSuccessFullyWithGetPersonById() {
-        when(personRepository.findById(1000L)).thenReturn(Optional.of(person));
+        when(personRepository.findById(eq(uuid))).thenReturn(Optional.of(person));
 
-        Person currentPerson = personService.getPersonById(1000L);
+        Person currentPerson = personService.getPersonById(uuid);
 
         assertEquals("validName", currentPerson.getName());
         assertEquals("validEmail@mail.com", currentPerson.getEmail());
@@ -89,11 +93,11 @@ class PersonServiceImplTest {
 
     @Test
     void addLostItemToPersonTest() {
-        when(personRepository.findById(1L)).thenReturn(Optional.of(person));
+        when(personRepository.findById(eq(uuid))).thenReturn(Optional.of(person));
         when(itemService.createItem(any(Item.class))).thenReturn(item);
 
         ItemDTO itemDTO = new ItemDTO("validName", "validDescription", "validCategory", "campina grande", "PB");
-        Person currentPerson = personService.addLostItemToPerson(1L, itemDTO);
+        Person currentPerson = personService.addLostItemToPerson(uuid, itemDTO);
 
         Set<Item> itemSet = new HashSet<>();
         itemSet.add(item);
@@ -107,11 +111,11 @@ class PersonServiceImplTest {
 
     @Test
     void addFoundItemToPersonTest() {
-        when(personRepository.findById(1L)).thenReturn(Optional.of(person));
+        when(personRepository.findById(eq(uuid))).thenReturn(Optional.of(person));
         when(itemService.createItem(any(Item.class))).thenReturn(item);
 
         ItemDTO itemDTO = new ItemDTO("validName", "validDescription", "validCategory", "campina grande", "PB");
-        Person currentPerson = personService.addFoundItemToPerson(1L, itemDTO);
+        Person currentPerson = personService.addFoundItemToPerson(uuid, itemDTO);
 
         Set<Item> itemSet = new HashSet<>();
         itemSet.add(item);

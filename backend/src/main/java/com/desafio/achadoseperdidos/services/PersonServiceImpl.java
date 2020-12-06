@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -25,7 +26,7 @@ public class PersonServiceImpl implements PersonService {
     private ItemService itemService;
 
     @Override
-    public Person getPersonById(Long id) {
+    public Person getPersonById(UUID id) {
         Optional<Person> optionalPerson = personRepository.findById(id);
 
         checkIfPersonAlreadyExists(id, optionalPerson);
@@ -34,7 +35,7 @@ public class PersonServiceImpl implements PersonService {
         return person;
     }
 
-    private void checkIfPersonAlreadyExists(Long id, Optional<Person> optionalPerson) {
+    private void checkIfPersonAlreadyExists(UUID id, Optional<Person> optionalPerson) {
         boolean personExists = optionalPerson.isPresent();
         if(!personExists) {
             throw new NotFoundException(String.format(Messages.Exception.PERSON_NOT_FOUND_D, id));
@@ -59,7 +60,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person addLostItemToPerson(Long personId, ItemDTO itemDTO) {
+    public Person addLostItemToPerson(UUID personId, ItemDTO itemDTO) {
         Person person = getPersonById(personId);
         Set<Item> lostItemsSet = person.getLostItems();
 
@@ -73,7 +74,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person addFoundItemToPerson(Long personId, ItemDTO itemDTO) {
+    public Person addFoundItemToPerson(UUID personId, ItemDTO itemDTO) {
         Person person = getPersonById(personId);
         Set<Item> foundItemsSet = person.getFoundItems();
 

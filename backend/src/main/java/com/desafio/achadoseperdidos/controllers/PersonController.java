@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/person")
@@ -18,7 +19,7 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping
-    public ResponseEntity<Person> getPerson(@RequestParam Long id) {
+    public ResponseEntity<Person> getPerson(@RequestParam UUID id) {
         return new ResponseEntity<>(personService.getPersonById(id), HttpStatus.OK);
     }
 
@@ -28,12 +29,12 @@ public class PersonController {
     }
 
     @PatchMapping("/{personId}/lost-item")
-    public ResponseEntity<Person> addLostItemToPerson(@PathVariable Long personId, @Valid @RequestBody ItemDTO itemDTO){
+    public ResponseEntity<Person> addLostItemToPerson(@PathVariable UUID personId, @Valid @RequestBody ItemDTO itemDTO){
         return new ResponseEntity<>(personService.addLostItemToPerson(personId, itemDTO), HttpStatus.OK);
     }
 
     @PatchMapping("/{personId}/found-item")
-    public ResponseEntity<Person> addFoundItemToPerson(@PathVariable Long personId, @Valid @RequestBody ItemDTO itemDTO){
+    public ResponseEntity<Person> addFoundItemToPerson(@PathVariable UUID personId, @Valid @RequestBody ItemDTO itemDTO){
         return new ResponseEntity<>(personService.addFoundItemToPerson(personId, itemDTO), HttpStatus.OK);
     }
 }
