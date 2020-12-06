@@ -29,13 +29,13 @@ public class PersonServiceImpl implements PersonService {
     public Person getPersonById(UUID id) {
         Optional<Person> optionalPerson = personRepository.findById(id);
 
-        checkIfPersonAlreadyExists(id, optionalPerson);
+        checkIfPersonExists(id, optionalPerson);
 
         Person person = optionalPerson.get();
         return person;
     }
 
-    private void checkIfPersonAlreadyExists(UUID id, Optional<Person> optionalPerson) {
+    private void checkIfPersonExists(UUID id, Optional<Person> optionalPerson) {
         boolean personExists = optionalPerson.isPresent();
         if(!personExists) {
             throw new NotFoundException(String.format(Messages.Exception.PERSON_NOT_FOUND_D, id));
@@ -64,9 +64,8 @@ public class PersonServiceImpl implements PersonService {
         Person person = getPersonById(personId);
         Set<Item> lostItemsSet = person.getLostItems();
 
-        boolean lost = true;
         Item item = new Item(itemDTO);
-        item.setLost(lost);
+        item.setLost(true);
 
         addItemToPerson(person, item, lostItemsSet);
 
@@ -78,9 +77,8 @@ public class PersonServiceImpl implements PersonService {
         Person person = getPersonById(personId);
         Set<Item> foundItemsSet = person.getFoundItems();
 
-        boolean lost = false;
         Item item = new Item(itemDTO);
-        item.setLost(lost);
+        item.setLost(false);
 
         addItemToPerson(person, item, foundItemsSet);
 
