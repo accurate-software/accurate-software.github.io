@@ -118,7 +118,7 @@ class ItemControllerTest {
         Item currentItem = itemService.createItem(item);
 
         ItemDTO itemDTO = new ItemDTO("celular", "celular achado", "eletronico", "campina grande", "paraiba");
-        mockMvc.perform(put("/item/" + currentItem.getUuid())
+        mockMvc.perform(put("/item/" + currentItem.getId())
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
                 .andExpect(status().isOk());
@@ -131,7 +131,7 @@ class ItemControllerTest {
         Item currentItem = itemService.createItem(item);
 
         ItemDTO itemDTO = new ItemDTO("", null, "eletronico", "campina grande", "paraiba");
-        mockMvc.perform(put("/item/" + currentItem.getUuid())
+        mockMvc.perform(put("/item/" + currentItem.getId())
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
                 .andExpect(status().isBadRequest());

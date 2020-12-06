@@ -47,7 +47,7 @@ class ItemServiceImplTest {
 
         Item currentItem = itemService.createItem(new Item("something", "test@test.com", "testCategory", "campina grande", "PB", true));
 
-        assertEquals(item.getUuid(), currentItem.getUuid());
+        assertEquals(item.getId(), currentItem.getId());
         assertEquals(item.getCategory(), currentItem.getCategory());
         assertEquals(item.getDescription(), currentItem.getDescription());
         assertEquals(item.getLost(), currentItem.getLost());

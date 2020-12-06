@@ -19,7 +19,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid;
+    private UUID id;
     private String name;
     private String description;
     private String category;
@@ -29,9 +29,9 @@ public class Item {
 
     public Item() {}
 
-    public Item(UUID uuid, String name, String description, String category, String city, String state, Boolean lost) {
+    public Item(UUID id, String name, String description, String category, String city, String state, Boolean lost) {
         this(name, description, category, city, state, lost);
-        this.uuid = uuid;
+        this.id = id;
     }
 
     public Item(String name, String description, String category, String city, String state, Boolean lost) {
@@ -56,11 +56,11 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return Objects.equals(uuid, item.uuid);
+        return Objects.equals(id, item.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid);
+        return Objects.hash(id);
     }
 }
