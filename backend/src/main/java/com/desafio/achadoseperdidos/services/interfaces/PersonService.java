@@ -1,4 +1,4 @@
-package com.desafio.achadoseperdidos.services;
+package com.desafio.achadoseperdidos.services.interfaces;
 
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.dto.PersonDTO;

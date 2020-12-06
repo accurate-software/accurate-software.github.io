@@ -4,7 +4,7 @@ import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.dto.PersonDTO;
 import com.desafio.achadoseperdidos.entities.Item;
 import com.desafio.achadoseperdidos.entities.Person;
-import com.desafio.achadoseperdidos.services.PersonService;
+import com.desafio.achadoseperdidos.services.interfaces.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.BadRequestException;
 import exceptions.NotFoundException;

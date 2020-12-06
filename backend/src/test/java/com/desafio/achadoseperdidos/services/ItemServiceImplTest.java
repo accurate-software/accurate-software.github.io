@@ -3,6 +3,7 @@ package com.desafio.achadoseperdidos.services;
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.entities.Item;
 import com.desafio.achadoseperdidos.repositories.ItemRepository;
+import com.desafio.achadoseperdidos.services.interfaces.ItemService;
 import exceptions.NoContentException;
 import exceptions.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,11 +27,17 @@ class ItemServiceImplTest {
 
     private List<Item> itemList;
 
+    private UUID uuid;
+
+    private static final String UUID_STRING = "5c166647-b030-43bb-9f27-cf295bf1f151";
+
     @BeforeEach
     void setUp() {
         this.itemList = new LinkedList<>();
         itemList.add(new Item("item1", "belo item1", "category1", "campina grande", "PB", false));
         itemList.add(new Item("item2", "belo item2", "category2", "joão pessoa", "PE", true));
+
+        this.uuid = UUID.fromString(UUID_STRING);
     }
 
     @Test
@@ -40,7 +47,7 @@ class ItemServiceImplTest {
 
         Item currentItem = itemService.createItem(new Item("something", "test@test.com", "testCategory", "campina grande", "PB", true));
 
-        assertEquals(item.getId(), currentItem.getId());
+        assertEquals(item.getUuid(), currentItem.getUuid());
         assertEquals(item.getCategory(), currentItem.getCategory());
         assertEquals(item.getDescription(), currentItem.getDescription());
         assertEquals(item.getLost(), currentItem.getLost());
@@ -133,10 +140,10 @@ class ItemServiceImplTest {
     @Test
     void shouldUpdateAnItemThatExists() {
         Item item = new Item("item1", "belo item1", "category1", "campina grande", "PB", false);
-        when(itemRepository.findById(1L)).thenReturn(Optional.of(item));
+        when(itemRepository.findById(eq(uuid))).thenReturn(Optional.of(item));
 
         ItemDTO itemDTO = new ItemDTO("itemModified", "item top", "category", "campina grande", "PB");
-        Item currentItem = itemService.updateItem(1L, itemDTO);
+        Item currentItem = itemService.updateItem(uuid, itemDTO);
 
         assertEquals("itemModified", currentItem.getName());
         assertEquals("item top", currentItem.getDescription());
@@ -146,11 +153,11 @@ class ItemServiceImplTest {
 
     @Test
     void shouldThrowAnErrorWhenAnItemDoesNotExists() {
-        when(itemRepository.findById(1L)).thenReturn(Optional.empty());
+        when(itemRepository.findById(eq(uuid))).thenReturn(Optional.empty());
 
         ItemDTO itemDTO = new ItemDTO("itemModified", "item top", "category", "campina grande", "PB");
         assertThrows(NotFoundException.class, () -> {
-            itemService.updateItem(1L, itemDTO);
+            itemService.updateItem(uuid, itemDTO);
         });
     }
 }

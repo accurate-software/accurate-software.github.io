@@ -3,19 +3,23 @@ package com.desafio.achadoseperdidos.entities;
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 public class Item {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Type(type="org.hibernate.type.UUIDCharType")
+    private UUID uuid;
     private String name;
     private String description;
     private String category;
@@ -25,9 +29,9 @@ public class Item {
 
     public Item() {}
 
-    public Item(Long id, String name, String description, String category, String city, String state, Boolean lost) {
+    public Item(UUID uuid, String name, String description, String category, String city, String state, Boolean lost) {
         this(name, description, category, city, state, lost);
-        this.id = id;
+        this.uuid = uuid;
     }
 
     public Item(String name, String description, String category, String city, String state, Boolean lost) {
@@ -52,11 +56,11 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return Objects.equals(id, item.id);
+        return Objects.equals(uuid, item.uuid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(uuid);
     }
 }

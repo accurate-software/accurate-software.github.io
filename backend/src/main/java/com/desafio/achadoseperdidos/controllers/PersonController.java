@@ -3,7 +3,7 @@ package com.desafio.achadoseperdidos.controllers;
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.dto.PersonDTO;
 import com.desafio.achadoseperdidos.entities.Person;
-import com.desafio.achadoseperdidos.services.PersonService;
+import com.desafio.achadoseperdidos.services.interfaces.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

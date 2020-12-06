@@ -2,7 +2,7 @@ package com.desafio.achadoseperdidos.controllers;
 
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.entities.Item;
-import com.desafio.achadoseperdidos.services.ItemService;
+import com.desafio.achadoseperdidos.services.interfaces.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class ItemController {
     }
 
     @PutMapping("/item/{itemId}")
-    public ResponseEntity<Item> updateItem(@PathVariable Long itemId, @Valid @RequestBody ItemDTO itemDTO) {
+    public ResponseEntity<Item> updateItem(@PathVariable UUID itemId, @Valid @RequestBody ItemDTO itemDTO) {
         return new ResponseEntity<>(itemService.updateItem(itemId, itemDTO), HttpStatus.OK);
     }
 }

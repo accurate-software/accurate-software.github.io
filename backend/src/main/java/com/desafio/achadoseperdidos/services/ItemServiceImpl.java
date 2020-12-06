@@ -5,6 +5,7 @@ import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.entities.Item;
 import com.desafio.achadoseperdidos.enums.Filter;
 import com.desafio.achadoseperdidos.repositories.ItemRepository;
+import com.desafio.achadoseperdidos.services.interfaces.ItemService;
 import exceptions.BadRequestException;
 import exceptions.NoContentException;
 import exceptions.NotFoundException;
@@ -15,7 +16,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
     @Autowired
     private ItemRepository itemRepository;
 
@@ -119,7 +120,7 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public Item updateItem(Long itemId, ItemDTO itemDTO) {
+    public Item updateItem(UUID itemId, ItemDTO itemDTO) {
         Item currentItem = getItemById(itemId);
         currentItem = updateAllInfoItem(itemDTO, currentItem);
 
@@ -137,7 +138,7 @@ public class ItemServiceImpl implements ItemService{
         return currentItem;
     }
 
-    private Item getItemById(Long itemId) {
+    private Item getItemById(UUID itemId) {
         Optional<Item> optionalItem = itemRepository.findById(itemId);
 
         checkIfItemExists(itemId, optionalItem);
@@ -146,7 +147,7 @@ public class ItemServiceImpl implements ItemService{
         return item;
     }
 
-    private void checkIfItemExists(Long itemId, Optional<Item> optionalItem) {
+    private void checkIfItemExists(UUID itemId, Optional<Item> optionalItem) {
         boolean itemExists = optionalItem.isPresent();
         if(!itemExists) {
             throw new NotFoundException(String.format(Messages.Exception.ITEM_NOT_FOUND_D, itemId));

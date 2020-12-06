@@ -2,7 +2,7 @@ package com.desafio.achadoseperdidos.controllers;
 
 import com.desafio.achadoseperdidos.dto.ItemDTO;
 import com.desafio.achadoseperdidos.entities.Item;
-import com.desafio.achadoseperdidos.services.ItemService;
+import com.desafio.achadoseperdidos.services.interfaces.ItemService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.NoContentException;
 import exceptions.NotFoundException;
@@ -23,10 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,7 +49,7 @@ class ItemControllerTest {
         itemList.add(new Item("bola", "bola achada na praia", "futebol", "joão pessoa", "paraiba", false));
         itemList.add(new Item("celular", "celular perdido na praça", "eletronico", "campina grande", "paraiba", true));
 
-        this.item = new Item(1L, "tablet", "tablet perdido na praça", "eletronico", "campina grande", "paraiba", true);
+        this.item = new Item(UUID.fromString("5c166647-b030-43bb-9f27-cf295bf1f151"), "tablet", "tablet perdido na praça", "eletronico", "campina grande", "paraiba", true);
     }
 
     @Test
@@ -105,10 +102,10 @@ class ItemControllerTest {
     
     @Test
     void shouldReturns404WhenIdDoesNotExists() throws Exception {
-        when(itemService.updateItem(eq(2L), any(ItemDTO.class))).thenThrow(new NotFoundException(""));
+        when(itemService.updateItem(eq(UUID.fromString("2db18d4f-2d41-4640-9caa-3f9899e4c4c2")), any(ItemDTO.class))).thenThrow(new NotFoundException(""));
 
         ItemDTO itemDTO = new ItemDTO("celular", "celular achado", "eletronico", "campina grande", "paraiba");
-        mockMvc.perform(put("/item/2")
+        mockMvc.perform(put("/item/2db18d4f-2d41-4640-9caa-3f9899e4c4c2")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
                 .andExpect(status().isNotFound());
@@ -121,7 +118,7 @@ class ItemControllerTest {
         Item currentItem = itemService.createItem(item);
 
         ItemDTO itemDTO = new ItemDTO("celular", "celular achado", "eletronico", "campina grande", "paraiba");
-        mockMvc.perform(put("/item/" + currentItem.getId())
+        mockMvc.perform(put("/item/" + currentItem.getUuid())
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
                 .andExpect(status().isOk());
@@ -134,7 +131,7 @@ class ItemControllerTest {
         Item currentItem = itemService.createItem(item);
 
         ItemDTO itemDTO = new ItemDTO("", null, "eletronico", "campina grande", "paraiba");
-        mockMvc.perform(put("/item/" + currentItem.getId())
+        mockMvc.perform(put("/item/" + currentItem.getUuid())
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(itemDTO)))
                 .andExpect(status().isBadRequest());

@@ -5,6 +5,8 @@ import com.desafio.achadoseperdidos.dto.PersonDTO;
 import com.desafio.achadoseperdidos.entities.Item;
 import com.desafio.achadoseperdidos.entities.Person;
 import com.desafio.achadoseperdidos.repositories.PersonRepository;
+import com.desafio.achadoseperdidos.services.interfaces.ItemService;
+import com.desafio.achadoseperdidos.services.interfaces.PersonService;
 import exceptions.BadRequestException;
 import exceptions.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
