@@ -1,48 +1,58 @@
-## Accurate Software
+# LostAndFound
+  Essa aplicação contém um CRUD que possibilita cadastrar objetos perdidos e encontrados
 
-<img src="https://accurate.com.br/wp-content/uploads/2020/06/logo-accurate-300.svg" alt="drawing" width="200"/> 
+### Landing (Tela Inicial)
+Há uma separação de cores onde o tom vermelho representa perdido e azul representa encontrado
+![image](https://user-images.githubusercontent.com/60005589/101373135-61f52f00-388b-11eb-94a7-149ce807d500.png)
 
-Seja bem-vindo a [Accurate Software](https://accurate.com.br).
+### Tela de Cadastro
+Nessa tela preenchemos os dados do usuário perdeu/encontrou o objeto, uma foto e no mapa podemos marcar com um clique aonde foi perdido/encontrado.
+![image](https://user-images.githubusercontent.com/60005589/101375972-c82f8100-388e-11eb-9ae7-56a4b2d07308.png)
+![image](https://user-images.githubusercontent.com/60005589/101376099-ed23f400-388e-11eb-9bc2-3fa7c61de978.png)
+![image](https://user-images.githubusercontent.com/60005589/101376254-1e042900-388f-11eb-8cdb-1eecdc5160dc.png)
 
-Temos diversas vagas para desenvolvedores: Frontend, Backend e Fullstack!
+### Listagem de Items
+A listagem de items pode ser filtrada, cada item pode ser removido e há um icone que nos posibilita ver a posição no mapa de onde foi perdido/encontrado
+![image](https://user-images.githubusercontent.com/60005589/101373203-73d6d200-388b-11eb-8940-157027d42179.png)
+![image](https://user-images.githubusercontent.com/60005589/101373359-9a950880-388b-11eb-8f0e-be482fff4262.png)
 
-> Para conhecer melhor os candidatos, preparamos um desafio técnico. Não se preocupe em cumprir todos os requisitos propostos no desafio, este teste visa avaliar a sua capacidade de resolução de problemas. Abaixo serão apresentados dois desafios direcionados aos perfis frontend e backend, caso o seu perfil for voltado para fullstack fique a vontade em nos enviar uma solução completa abordando tanto frontend quanto backend!
 
-## Instruções
+### Iniciando aplicação
+Ambas aplicações são iniciadas a partir do comando (nas pastas backend e frontend)
 
-1. Para começar o desafio, realize um fork no repositório: https://github.com/accurate-software/accurate-software.github.io
+```sh
+$ yarn start
+```
 
-2. O desafio deverá set commitado no fork.
+### Dificuldades encontradas
+- Dados inicializados com a aplicação : As categorias são preenchidas ao inciar a aplicação através de uma lógica utilizando ORM e JavaScript. 
+- Persistencia de Dados : Foi utilizados o SQLite por ser uma aplicação simples.
+- Tratativas de exceções : Foi criado uma tratativa para erros assincronos.
+- Upload de arquivos : Resolvidos com multer(backend) e react-dropzone(frontend)
+- Mapa em um Modal : O mapa apresentava bugs ao ser gerado em um modal, foi resolvido com lógicas no css.
 
-3. Após a finalização do desafio, solicite um pull request do fork no nosso repositório ;)
+### Estrutura e Conceitos
+ - Conceitos aplicados : SOLID
+ - Estrutura Utilizada : MVC
+ 
+### Artes da aplicação
+Artes fornecidas por **Rodrigo Fernandes**
 
-### Desafio Frontend
+# Tecnologias Utilizadas
 
-O seu desafio é realizar um desenvolvimento de uma aplicação frontend que compra os requisitos:
+## Backend
+ - Express
+ - SQLite3
+ - Multer
+ - TypeORM
+ - TypeScript
+ 
+ ## Frontend
+  - React
+  - TypeScript
+  - Axios
+  - Router DOM
 
-+ Consumo de API REST
-+ CRUD ou listagem de algum recurso da API
-+ Utilizar alguma API pública, podendo ser alguma do site: https://public-apis.xyz/
-
-Vamos avaliar a sua capacidade como desenvolvedor frontend, observando os critérios:
-
-+ Uso semântico do HTML
-+ Estruturação do layout e tags CSS
-+ Layout acessível e responsivo
-+ Utilização de frameworks da atualizade, como: React, Vue, Angular ou algum outro de sua preferência.
-+ Lembre-se de documentar a solução com um README.MD :)
-
-### Desafio Backend
-
-O seu desafio é realizar um desenvolvimento de uma API Rest para um site de achados e perfidos. Sua API deve conter as seguintes funcionalidades:
-
-+ Cadastro de um "Achado"/"Perdido"
-+ Atualização de histórico de um "Achado"/"Perdido"
-+ Busca com opção de filtros, como por exemplo: Categoria
-+ Relatório de cruzamento de informações "Achados"/"Perdidos", dado um categoria e um raio.
-
-Fique a vontade para usar a linguagem e framework de sua preferência, como: Java, C# e Node! Porém se atente aos seguintes pontos:
-
-+ Tratamento de erros e exceções
-+ Clareza e clean code no desenvolvimento da solução
-+ Documentação da solução - README.MD :)
+# To Do
+  - Filtro de objetos encontrados no raio (em km)
+  - Update de items
