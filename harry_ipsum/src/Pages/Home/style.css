@@ -1,0 +1,109 @@
+#root
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.05fr 2fr 0.01fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+
+.homeHeader
+{   
+    grid-area: header;
+    background-color: #DF5AA2;
+}
+.homeHeader img
+{   
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.homeMain
+{ 
+    grid-area: main;
+    position: relative;
+    width: 55%;
+    margin: 0 auto;
+  
+}
+.homeMain p
+{ 
+    text-align: center;
+    margin-top: 10px;
+    
+}
+.homeMain section
+{
+    border: 3px solid #000000;
+    border-radius: 5px;
+    display: block;
+    margin: 10% auto 0 auto;
+    width: 60%;
+    height: 60%;
+    padding: 2px;
+}
+
+.homeMain button 
+{
+    display: block;
+    font: bold;
+    font-size: 1.2rem;
+    margin: 10px auto;
+    background-color: #DF5AA2;
+    border-radius: 5px;
+    color: #FBFF41;
+    width: 125px;
+    height: 40px;
+}
+
+.homeFooter
+{
+    grid-area: footer;
+    background-color: #DF5AA2;     
+}
+
+.homeFooter p 
+{
+    text-align: center;
+    margin: 2% auto;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font: bold;
+}
+
+@media(max-width: 1100px)
+{
+    .homeMain section
+    {
+        width: 80%;
+        min-height: 60%;
+    } 
+}
+@media(max-height: 750px)
+{
+    .homeMain section
+    {
+        height: 50%;
+    } 
+}
+@media(max-height: 750px ) and (max-width: 412px)
+{
+    .homeMain
+    {
+        width: 75%;
+    }
+    .homeMain section
+    {
+        height: 60%;
+        width: 100%;
+    } 
+}
+body{
+    overflow-x: hidden;
+}
