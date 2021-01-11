@@ -7,10 +7,10 @@ const Joke = ({
 }) => {
   return (
     <p>
-        {joke},
-        flags.forEach(element => {
+        {joke}
+        {flags.forEach(element => {
             <i>{element}</i>
-        });
+        })};
     </p>
   );
 };
