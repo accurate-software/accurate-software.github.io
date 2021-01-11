@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const Form = ({
+const Joke = ({
     joke,
     flags
 }) => {
@@ -15,4 +15,4 @@ const Form = ({
   );
 };
 
-export default Form;
+export default Joke;
