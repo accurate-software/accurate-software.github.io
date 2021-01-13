@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'; 
 import api from '../../Services/api'; 
 import logoImg from '../../Assets/Images/logo.png';
+import randomNumber from '../../Utils/RandomNumber';
 import './style.css';
 export default function Home()
 {
-   
     const [lyricsIpsumList, setLyricsIpsumList] =  useState([]);
     const [lyricsIpsum, setLyricsIpsum] = useState('');
     const handleLyricsIpsumIdList = async() => 
@@ -24,20 +24,15 @@ export default function Home()
     } 
     const handleLyricIpsumText = async ()=>
     {
-        function randomNumber(min, max) {  
-            min = Math.ceil(min); 
-            max = Math.floor(max); 
-            return Math.floor(Math.random() * (max - min + 1)) + min; 
-        } 
         
         try
         {
             const id = lyricsIpsumList.data[randomNumber(0,11)]; //random number 0~11
             const response = await api.get(`getListLyricsId/${id}`); 
             
-            //the lyrics response come with a dirty '******* This Lyrics is NOT for Commercial use ******* (1409620957320) ...'
+            //the response come with a warning '******* This Lyrics is NOT for Commercial use ******* (1409620957320) ...'
             const cleanLyricsWarning = response.data.replace("******* This Lyrics is NOT for Commercial use *******", ""); //removing ******* This Lyrics is NOT for Commercial use *******
-            const cleanLyricsCode = cleanLyricsWarning.replace("(1409620957320)", "");// removing code from string
+            const cleanLyricsCode = cleanLyricsWarning.replace("(1409620958651)", "");// removing code from string
             const cleanLyrics = cleanLyricsCode.replace("...", ""); //removing the suspension points
             
             setLyricsIpsum(cleanLyrics);
