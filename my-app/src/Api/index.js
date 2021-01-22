@@ -7,25 +7,20 @@ class Api {
     });
   }
 
-  getJokes = async (form) => {
-    let urlParams = `/${form.categories.join()}`;
-    let concat = "?";
+  getJokes = async () => {
+    const urlParams = "/Any?type=single&amount=10";
 
-    if (form.blacklists.length > 0) {
-      urlParams = `${urlParams}${concat}blacklistFlags=${form.blacklists.join()}`;
-      concat = "&";
+    try {
+      const { data } = await this.api.get(`${urlParams}`);
+      if (data.error) {
+        throw data.error;
+      }
+
+      return data.jokes;
+    } catch (error) {
+      console.error(`#Api.getJokes error: ${error}`);
+      return error;
     }
-
-    if (form.search.length > 0) {
-      urlParams = `${urlParams}${concat}contains=${form.search}`;
-      concat = "&";
-    }
-
-    urlParams = `${urlParams}${concat}amount=${form.amount}`;
-
-    const { data } = await this.api.get(`${urlParams}`);
-
-    return data;
   };
 }
 
