@@ -1,7 +1,5 @@
 <h1>Star Wars App</h1>
 
-Versão de produção: <a>http://swapp-yan-silva.surge.sh/</a>
-
 <p>Projeto desenvolvido em React JS.</p>
 <p>Aplicação criada com o objetivo de consumir dados da SWAPI API(Star Wars API).</p>
 
@@ -16,11 +14,9 @@ Versão de produção: <a>http://swapp-yan-silva.surge.sh/</a>
 - Requisições HTTP utilizando a biblioteca AXIOS;
 - Dados de API consumidos à partir da arquitetura REST;
 - Adaptação responsiva;
-- Inclusão da ferramenta de testes E2E Cypress;
 - Botões de acessibilidade no menu, permitindo qualquer página ser acessada em qualquer parte da aplicação;
 - Animações, transições, são utilizadas para uma melhor apresentação de conteúdo;
 - Versionamento em repositório git;
-- Deploy realizado à partir do link em destaque, utilizando a ferramenta de deploy Surge.sh
 
 <hr></hr>
 
@@ -31,7 +27,6 @@ Versão de produção: <a>http://swapp-yan-silva.surge.sh/</a>
 - Execute dentro da pasta raiz do projeto o comando: npm install;
 - Após a execução do comando anterior, iniciaremos a aplicação com o comando: npm start;
 - Sua aplicação será iniciada com a url localhost:3000;
-- Para executar ou escrever testes, instale a interface do Cypress no diretório raiz da aplicação com o comando: npm install cypress;
 
 <h4>Faça um bom uso!</h4>
 
