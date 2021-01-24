@@ -1,22 +1,26 @@
-<h1>Joke App</h1>
+<h1>Star Wars App</h1>
+
+Versão de produção: <a>http://swapp-yan-silva.surge.sh/</a>
 
 <p>Projeto desenvolvido em React JS.</p>
-<p>Aplicação criada com o objetivo de consumir dados de piadas, consumindo da  API (JOKES API) .</p>
+<p>Aplicação criada com o objetivo de consumir dados da SWAPI API(Star Wars API).</p>
 
 <hr></hr>
 
 <h3>Tecnologias e requisitos aplicados:</h3>
 	
 - Construção de template dinâmico usando React JS e Hooks;
-- Criação de rotas usando uma logica de paginas estaticas;
-- Formatação no estilo e nas interações utilizando modules;
-- Organização na estrutura de projeto utilizando componentes reutilizáveis e pages;
+- Criação de rotas na aplicação utilizando React Router;
+- Formatação no estilo e nas interações utilizando SCSS e modules;
+- Organização na estrutura de projeto utilizando componentes reutilizáveis, pages e services;
 - Requisições HTTP utilizando a biblioteca AXIOS;
 - Dados de API consumidos à partir da arquitetura REST;
 - Adaptação responsiva;
+- Inclusão da ferramenta de testes E2E Cypress;
 - Botões de acessibilidade no menu, permitindo qualquer página ser acessada em qualquer parte da aplicação;
 - Animações, transições, são utilizadas para uma melhor apresentação de conteúdo;
 - Versionamento em repositório git;
+- Deploy realizado à partir do link em destaque, utilizando a ferramenta de deploy Surge.sh
 
 <hr></hr>
 
@@ -27,7 +31,16 @@
 - Execute dentro da pasta raiz do projeto o comando: npm install;
 - Após a execução do comando anterior, iniciaremos a aplicação com o comando: npm start;
 - Sua aplicação será iniciada com a url localhost:3000;
+- Para executar ou escrever testes, instale a interface do Cypress no diretório raiz da aplicação com o comando: npm install cypress;
 
-<h4>Faça um bom uso e se divirta !</h4>
+<h4>Faça um bom uso!</h4>
 
 <hr></hr>
+
+<h3>Disponibilização de prints das telas da aplicação em funcionamento:</h3>
+
+<img align="left" width="200" height="200" src="src/assets/img/prints/1.png">
+<img align="left" width="200" height="200" src="src/assets/img/prints/2.png">
+<img align="left" width="200" height="200" src="src/assets/img/prints/3.png">
+<img align="left" width="200" height="200" src="src/assets/img/prints/4.png">
+<img align="left" width="200" height="200" src="src/assets/img/prints/5.png">

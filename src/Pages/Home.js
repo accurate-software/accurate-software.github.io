@@ -1,36 +1,29 @@
 import React from 'react';
-import style from '../module/Home.module.css';
-import Card from './Cards';
-import jokes from '../Array';
-import styles from '../module/Cards.module.css';
-import animate from '../module/Components.module.css';
+// Styles
+import './Home.scss';
+// Img
+import swbanner from '../assets/img/swbanner.png';
+import swbanner2 from '../assets/img/swbanner2.jpg';
+//
+import HeadTitle from '../Components/HeadTitle/HeadTitle';
 
 const Home = () => {
   return (
-    <div className={animate.animeLeft}>
-      <div className={style.container}>
-        <div className={style.div}>
-          <img
-            src="https://cdn.mensagenscomamor.com/content/images/p000003218.jpg?v=0&w=400&h=225&c=1"
-            alt="Mussun"
-          />
-
-          <div className={style.para}>
-            <h3> FRASES DE HUMORISTAS</h3>
-            <p>
-              Alguns humoristas possuem falas marcantes, ou até mesmo marcaram
-              época! Venha rever algumas frases de humoristas famosos para dar
-              muita risada e conhecer um pouco mais dos artistas desse mundo do
-              riso.
-            </p>
-          </div>
-        </div>
-        <ul className={styles.gridList}>
-          {jokes.map((joke, i) => (
-            <Card key={i} {...joke} />
-          ))}
-        </ul>
-      </div>
+    <div className="home animeLeft">
+      <HeadTitle
+        title={`StarWars App | Welcome`}
+        description={`StarWars App | Welcome to StarWars App`}
+      />
+      <h1>
+        <span>SWAPI</span> | Explore o universo Star Wars
+      </h1>
+      <img src={swbanner} alt="Star Wars Banner" />
+      <p>
+        Escolha as opções disponíveis no menu acima e visualize informações de
+        todo o universo Star Wars.
+      </p>
+      <img src={swbanner2} alt="Star Wars Banner" />
+      <p>Explore e divirta-se!</p>
     </div>
   );
 };
