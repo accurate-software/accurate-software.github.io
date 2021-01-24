@@ -1,0 +1,25 @@
+.footer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-size: cover;
+  background-position: initial;
+  background-image: url('https://media.istockphoto.com/photos/conceptual-announcement-text-caption-inspiration-showing-comedy-for-picture-id886039116');
+  opacity: 0.6;
+}
+
+.footer footer {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 300;
+  font-weight: bold;
+  color: #000;
+  opacity: 1;
+  margin-top: 2rem;
+  padding: 1.2rem;
+  box-sizing: border-box;
+}

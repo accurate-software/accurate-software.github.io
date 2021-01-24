@@ -1,26 +1,28 @@
 import React from 'react';
-import Api from '../ApiUrl';
+import Header from './Header';
+import Jokes from './Jokes';
+import About from './About';
+import Home from './Home';
+import Footer from './Footer';
 
 const App = () => {
-  const [data, setData] = React.useState(null);
-  const [error, setError] = React.useState(false);
+  const { pathname } = window.location;
 
-  const resp = 'joke/';
-  React.useEffect(() => {
-    async function getFilmInfo(url) {
-      try {
-        const { data } = await Api.get(`/films/${url}`);
-        setData(data);
-      } catch (error) {
-        setError('Erro de requisição.');
-      } finally {
-        console.log(data);
-      }
-    }
-    getFilmInfo(resp);
-  }, [resp]);
-
-  return;
+  let Component;
+  if (pathname === '/jokes') {
+    Component = Jokes;
+  } else if (pathname === '/about') {
+    Component = About;
+  } else {
+    Component = Home;
+  }
+  return (
+    <div>
+      <Header />
+      <Component />
+      <Footer />
+    </div>
+  );
 };
 
 export default App;

@@ -1,14 +1,18 @@
 import React from 'react';
+import style from '../module/Header.module.css';
 
 const Header = () => {
   return (
-    <header>
+    <header className={style.header}>
       <ul>
-        <li style={{ listStyle: 'none' }}>
+        <li>
           <a href="/">Home</a>
         </li>
-        <li style={{ listStyle: 'none' }}>
-          <a href="/produtos">Produtos</a>
+        <li>
+          <a href="/about">About</a>
+        </li>
+        <li>
+          <a href="/jokes">Jokes</a>
         </li>
       </ul>
     </header>
