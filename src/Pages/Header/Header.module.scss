@@ -1,0 +1,37 @@
+.header {
+  margin-bottom: 2rem;
+}
+
+.header ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: #f0f2f7;
+  padding: 0 .5rem .5rem .5rem;
+  border-radius: 5px;
+}
+
+.header ul li {
+  margin: .5rem 1rem 0 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.5s ease;
+  background-color: #639aff;
+  &.active, 
+  &:hover {
+    background-color: #9866fb;
+  }
+  span {
+    margin-left: 5px;
+  }
+}

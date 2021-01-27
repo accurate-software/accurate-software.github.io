@@ -1,48 +1,41 @@
-## Accurate Software
+<h1>Star Wars App</h1>
 
-<img src="https://accurate.com.br/wp-content/uploads/2020/06/logo-accurate-300.svg" alt="drawing" width="200"/> 
+<p>Projeto desenvolvido em React JS.</p>
+<p>Aplicação criada com o objetivo de consumir dados da SWAPI API(Star Wars API).</p>
 
-Seja bem-vindo a [Accurate Software](https://accurate.com.br).
+<hr></hr>
 
-Temos diversas vagas para desenvolvedores: Frontend, Backend e Fullstack!
+<h3>Tecnologias e requisitos aplicados:</h3>
+	
+- Construção de template dinâmico usando React JS e Hooks;
+- Criação de rotas na aplicação utilizando React Router;
+- Formatação no estilo e nas interações utilizando SCSS e modules;
+- Organização na estrutura de projeto utilizando componentes reutilizáveis, pages e services;
+- Requisições HTTP utilizando a biblioteca AXIOS;
+- Dados de API consumidos à partir da arquitetura REST;
+- Adaptação responsiva;
+- Botões de acessibilidade no menu, permitindo qualquer página ser acessada em qualquer parte da aplicação;
+- Animações, transições, são utilizadas para uma melhor apresentação de conteúdo;
+- Versionamento em repositório git;
 
-> Para conhecer melhor os candidatos, preparamos um desafio técnico. Não se preocupe em cumprir todos os requisitos propostos no desafio, este teste visa avaliar a sua capacidade de resolução de problemas. Abaixo serão apresentados dois desafios direcionados aos perfis frontend e backend, caso o seu perfil for voltado para fullstack fique a vontade em nos enviar uma solução completa abordando tanto frontend quanto backend!
+<hr></hr>
 
-## Instruções
+<h3>Instruções para uso local à partir da clonagem do repositório:</h3>
 
-1. Para começar o desafio, realize um fork no repositório: https://github.com/accurate-software/accurate-software.github.io
+- Baixe o projeto pelo github;
+- Instale o nodejs acessando o site https://nodejs.org/pt-br/download/ ou por um gerenciador de pacotes de sua preferência;
+- Execute dentro da pasta raiz do projeto o comando: npm install;
+- Após a execução do comando anterior, iniciaremos a aplicação com o comando: npm start;
+- Sua aplicação será iniciada com a url localhost:3000;
 
-2. O desafio deverá set commitado no fork.
+<h4>Faça um bom uso!</h4>
 
-3. Após a finalização do desafio, solicite um pull request do fork no nosso repositório ;)
+<hr></hr>
 
-### Desafio Frontend
+<h3>Disponibilização de prints das telas da aplicação em funcionamento:</h3>
 
-O seu desafio é realizar um desenvolvimento de uma aplicação frontend que compra os requisitos:
-
-+ Consumo de API REST
-+ CRUD ou listagem de algum recurso da API
-+ Utilizar alguma API pública, podendo ser alguma do site: https://public-apis.xyz/
-
-Vamos avaliar a sua capacidade como desenvolvedor frontend, observando os critérios:
-
-+ Uso semântico do HTML
-+ Estruturação do layout e tags CSS
-+ Layout acessível e responsivo
-+ Utilização de frameworks da atualizade, como: React, Vue, Angular ou algum outro de sua preferência.
-+ Lembre-se de documentar a solução com um README.MD :)
-
-### Desafio Backend
-
-O seu desafio é realizar um desenvolvimento de uma API Rest para um site de achados e perfidos. Sua API deve conter as seguintes funcionalidades:
-
-+ Cadastro de um "Achado"/"Perdido"
-+ Atualização de histórico de um "Achado"/"Perdido"
-+ Busca com opção de filtros, como por exemplo: Categoria
-+ Relatório de cruzamento de informações "Achados"/"Perdidos", dado um categoria e um raio.
-
-Fique a vontade para usar a linguagem e framework de sua preferência, como: Java, C# e Node! Porém se atente aos seguintes pontos:
-
-+ Tratamento de erros e exceções
-+ Clareza e clean code no desenvolvimento da solução
-+ Documentação da solução - README.MD :)
+<img align="left" width="200" height="200" src="src/assets/img/prints/1.png">
+<img align="left" width="200" height="200" src="src/assets/img/prints/2.png">
+<img align="left" width="200" height="200" src="src/assets/img/prints/3.png">
+<img align="left" width="200" height="200" src="src/assets/img/prints/4.png">
+<img align="left" width="200" height="200" src="src/assets/img/prints/5.png">
