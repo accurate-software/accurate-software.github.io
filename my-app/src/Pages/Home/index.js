@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Api from "../../Api";
 import "./style.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 class Home extends Component {
   constructor() {
@@ -28,11 +31,24 @@ class Home extends Component {
   render() {
     const { error } = this.state;
     return (
-      <main>
-        <h1>Vamos buscar novas piadas?</h1>
-        <button onClick={this.searchJoke}>Buscar Piadas</button>
-        {error && <h3>{error}</h3>}
-      </main>
+      <div>
+        <main>
+          <h1>Vamos buscar novas piadas?</h1>
+          <button className="btn" onClick={this.searchJoke}>
+            Buscar Piadas
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+          {error && <h3>{error}</h3>}
+        </main>
+        <footer>
+          <a href="https://github.com/gomesmillena29/" target="_blank">
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+          <a href="https://www.linkedin.com/in/millena-gomes/" target="_blank">
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+        </footer>
+      </div>
     );
   }
 }
