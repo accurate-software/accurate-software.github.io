@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { Container, Header, Body, Footer, Options } from './styles';
+import { Container, Header, Body, Options } from './styles';
 
 import Swal from 'sweetalert2';
 
 import trashIcon from '../../assets/trashIcon.svg';
 
 import LabelCard from '../LabelCard';
-import { IData } from '../../hooks/dataApi';
+import { Data } from '../../types/dataApi';
 
 interface ICardFunctions {
   deleteRepository(id: string | number): void;
 }
 
-type Props = IData & ICardFunctions;
+type Props = Data & ICardFunctions;
 
 const Card: React.FC<Props> = ({
   id,

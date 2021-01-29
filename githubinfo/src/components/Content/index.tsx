@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useDataApi } from '../../hooks/dataApi';
+import { Data } from '../../types/dataApi';
 import { Container } from './styles';
 import Card from '../Card';
 import Empty from '../Empty';
@@ -16,21 +17,33 @@ const Content: React.FC = () => {
   return (
     <Container>
       {data?.length !== 0 ? (
-        data?.map((repository) => (
-          <Card
-            key={repository.id}
-            id={repository.id}
-            avatar_url={repository.avatar_url}
-            full_name={repository.full_name}
-            stargazers_count={repository.stargazers_count}
-            forks_count={repository.forks_count}
-            open_issues_count={repository.open_issues_count}
-            language={repository.language}
-            created_at={repository.created_at}
-            updated_at={repository.updated_at}
-            deleteRepository={deleteRepository}
-          />
-        ))
+        data?.map(
+          ({
+            id,
+            avatar_url,
+            full_name,
+            stargazers_count,
+            forks_count,
+            open_issues_count,
+            language,
+            created_at,
+            updated_at,
+          }: Data) => (
+            <Card
+              key={id}
+              id={id}
+              avatar_url={avatar_url}
+              full_name={full_name}
+              stargazers_count={stargazers_count}
+              forks_count={forks_count}
+              open_issues_count={open_issues_count}
+              language={language}
+              created_at={created_at}
+              updated_at={updated_at}
+              deleteRepository={deleteRepository}
+            />
+          ),
+        )
       ) : (
         <Empty />
       )}

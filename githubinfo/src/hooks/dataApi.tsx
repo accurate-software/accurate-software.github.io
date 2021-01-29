@@ -1,48 +1,13 @@
 import React, { createContext, useState, useContext } from 'react';
-import { IProps } from '../hooks/githubRepository';
-
-interface IApiGitHub {
-  full_name: string;
-  stargazers_count: number;
-  forks_count: number;
-  open_issues_count: number;
-  language: string;
-  created_at: string;
-  updated_at: string;
-  owner: {
-    avatar_url: string;
-  };
-}
-
-export interface IData {
-  id: number | undefined;
-  full_name: string;
-  stargazers_count: number;
-  forks_count: number;
-  open_issues_count: number;
-  language: string;
-  created_at: string;
-  updated_at: string;
-  avatar_url: string;
-}
-
-interface IContextApi {
-  data: IData[] | undefined;
-  setData: (data: IData[]) => void;
-  getRepository(repository: string): void;
-  error: Error;
-}
-interface Error {
-  status: boolean;
-  message: string;
-}
+import { ApiGitHub, ContextApi, Data } from '../types/dataApi';
+import { Props } from '../hooks/githubRepository';
 
 import api from '../services/api';
 
-const DataApiContext = createContext<IContextApi>({} as IContextApi);
+const DataApiContext = createContext<ContextApi>({} as ContextApi);
 
-const DataApiProvider = ({ children }: IProps) => {
-  const [data, setData] = useState<IData[]>([]);
+const DataApiProvider = ({ children }: Props) => {
+  const [data, setData] = useState<Data[]>([]);
   const [error, setError] = useState({
     status: false,
     message: '',
@@ -73,7 +38,7 @@ const DataApiProvider = ({ children }: IProps) => {
 
   const getRepository = async (repository: string) => {
     try {
-      const result = await api.get<IApiGitHub>(`/${repository}`);
+      const result = await api.get<ApiGitHub>(`/${repository}`);
 
       const resultFormatted = Array(result.data).map(
         ({

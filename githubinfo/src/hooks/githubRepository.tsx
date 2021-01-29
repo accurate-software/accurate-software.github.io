@@ -1,19 +1,19 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
-interface IGitRepository {
+type GitRepository =  {
   modalIsOpen: boolean;
   setModalIsOpen: (isModal: boolean) => void;
 }
 
-export interface IProps {
+export type Props =  {
   children: ReactNode;
 }
 
-const GitHubRepositoryContext = createContext<IGitRepository>(
-  {} as IGitRepository,
+const GitHubRepositoryContext = createContext<GitRepository>(
+  {} as GitRepository,
 );
 
-const GitHubRepositoryProvider = ({ children }: IProps) => {
+const GitHubRepositoryProvider = ({ children }: Props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (

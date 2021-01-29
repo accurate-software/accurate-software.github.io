@@ -14,7 +14,6 @@ const ModalRepository: React.FC = () => {
     setRepository('');
     setModalIsOpen(false);
   };
-  console.log(modalIsOpen);
 
   const sendRepository = (repository: string) => {
     getRepository(repository);
