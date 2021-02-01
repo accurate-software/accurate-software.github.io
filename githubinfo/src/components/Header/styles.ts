@@ -4,7 +4,8 @@ export const Container = styled.div`
   box-sizing: border-box;
 
   display: flex;
-  flex-direction: column;
+  position: relative;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
 
@@ -17,6 +18,14 @@ export const Container = styled.div`
 
   color: #fff;
   font-weight: bold;
+`;
+
+export const LoginContainer = styled.div`
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 10px);
 `;
 
 export const Logo = styled.img`

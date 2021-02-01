@@ -1,17 +1,20 @@
 import React from 'react';
 
-import Index from './Pages';
+import Routes from '../src/components/routes';
 
 import GlobalStyles from './GlobalStyles';
 
 import { GitHubRepositoryProvider } from './hooks/githubRepository';
 import { DataApiProvider } from './hooks/dataApi';
+import { AuthProvider } from './hooks/auth';
 
 function App() {
   return (
     <DataApiProvider>
       <GitHubRepositoryProvider>
-        <Index />
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
         <GlobalStyles />
       </GitHubRepositoryProvider>
     </DataApiProvider>
