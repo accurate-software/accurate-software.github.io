@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 import { Container, Header, Body, Options } from './styles';
@@ -21,7 +22,6 @@ const Card: React.FC<Props> = ({
   stargazers_count,
   forks_count,
   open_issues_count,
-  language,
   created_at,
   updated_at,
   avatar_url,
@@ -76,7 +76,7 @@ const Card: React.FC<Props> = ({
               </span>
             </div>
             <Options>
-              <img onClick={(e) => id && confirmDelete(id)} src={trashIcon} />
+              <img onClick={() => id && confirmDelete(id)} src={trashIcon} />
             </Options>
           </Header>
           <Body>

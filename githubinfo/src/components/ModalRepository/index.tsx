@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Modal from 'react-modal';
 import { Title, Button, Body, Footer, Input, Error } from './styles';
 
@@ -10,10 +10,10 @@ const ModalRepository: React.FC = () => {
   const { modalIsOpen, setModalIsOpen } = useGitHubRepository();
   const { getRepository, error, data } = useDataApi();
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setRepository('');
     setModalIsOpen(false);
-  };
+  }, [setModalIsOpen]);
 
   const sendRepository = (repository: string) => {
     getRepository(repository);
@@ -24,7 +24,7 @@ const ModalRepository: React.FC = () => {
       return;
     }
     closeModal();
-  }, [data, error]);
+  }, [data, error, closeModal]);
 
   Modal.setAppElement('#root');
   const styles = {
@@ -56,7 +56,7 @@ const ModalRepository: React.FC = () => {
           <Button
             color={'#0984e3'}
             disabled={repository == '' ? true : false}
-            onClick={(e) => sendRepository(repository)}
+            onClick={() => sendRepository(repository)}
           >
             Enviar
           </Button>

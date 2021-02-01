@@ -9,7 +9,7 @@ const Button: React.FC = () => {
   };
   return (
     <Container>
-      <ButtonRepository onClick={(e) => openModal()}>
+      <ButtonRepository onClick={() => openModal()}>
         Cadastrar Repositório
       </ButtonRepository>
     </Container>

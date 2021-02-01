@@ -1,13 +1,13 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
-type GitRepository =  {
+type GitRepository = {
   modalIsOpen: boolean;
   setModalIsOpen: (isModal: boolean) => void;
-}
+};
 
-export type Props =  {
+export type Props = {
   children: ReactNode;
-}
+};
 
 const GitHubRepositoryContext = createContext<GitRepository>(
   {} as GitRepository,
