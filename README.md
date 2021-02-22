@@ -13,6 +13,8 @@
   <li>Node.Js 14.15</li>
   <li>NPM 7.5.4</li>
   <li>Biblioteca Bootstrap 5.0</li>
+  <li>Banco SQLite3</li>
+  <li>Knex Sql Query Builder</li>
 </ul>
 
 <p>Foi implementado:</p>
