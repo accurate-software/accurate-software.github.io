@@ -1,0 +1,335 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16x;
+    background: #fff;
+    background-image: url('assets/icon_lupa_background.svg');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 40%;
+}
+
+.loader-page {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    color: rgb(0, 0, 0);
+    transition: all 0.3s ease-in-out;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(53, 53, 53);
+    transition: all ease-in-out .3s;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+.text-danger {
+    color: rgb(156, 63, 63);
+    font-weight: 500;
+    font-size: .85em;
+}
+
+.text-find {
+    font-family: 'Slackey', sans-serif;
+    color: #4F36B6;
+    font-size: 1.6em;
+}
+
+.text-lost {
+    font-family: 'Slackey', sans-serif;
+    color: #43CA99;
+    font-size: 1.6em;
+}
+
+.text-concluded {
+    font-family: 'Slackey', sans-serif;
+    color: #27649e;
+    font-size: 1.6em;
+}
+
+.container {
+    padding: 0 150px;
+}
+
+.container .navbar-app {
+    /* background: rgb(255, 255, 255); */
+}
+
+.container .navbar-app .logo {
+    padding-top: 15px;
+}
+
+.container .navbar-app a {
+    text-decoration: none;
+    color: rgb(53, 53, 53);
+    transition: all ease-in-out .3s;
+}
+
+.container .navbar-app a:hover {
+    color: #4F36B6;
+    font-weight: bold;
+}
+
+.container .banner {
+    width: 100%;
+    color: #fff;
+    background: #4F36B6;
+    font-size: 1.4em;
+    /* position: absolute; */
+    left: 0;
+    padding: 1.2em 0;
+}
+
+.container .buttons-lost-find {
+    padding: 1.5em 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .buttons-lost-find .buttom-lost,
+.container .buttons-lost-find .buttom-find {
+    color: #fff;
+    width: 80%;
+    padding: 1em 0;
+    font-size: 1.2em;
+    transition: all ease-in-out .3s;
+}
+
+.container .buttons-lost-find .buttom-lost {
+    background: #43CA99;
+}
+
+.container .buttons-lost-find .buttom-lost:hover {
+    background: #30946f;
+}
+
+.container .buttons-lost-find .buttom-find {
+    background: #4F36B6;
+}
+
+.container .buttons-lost-find .buttom-find:hover {
+    background: #3b2888;
+}
+
+.container a.see-all-find {
+    color: #3b2888;
+}
+
+.container a.see-all-lost {
+    color: #30946f;
+}
+
+.container .card {
+    -webkit-box-shadow: 0px 9px 11px -1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 9px 11px -1px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.container .card:hover {
+    -webkit-box-shadow: 0px 4px 11px -1px rgba(0, 0, 0, 0.96);
+    box-shadow: 0px 4px 11px -1px rgba(0, 0, 0, 0.96);
+}
+
+.container .card .header .local,
+.container .card .header .time {
+    font-size: .8em;
+}
+
+.container .card .photo {
+    height: 8em;
+    display: block;
+    background-position: top;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container .card .footer.recovered,
+.container .card .footer.find,
+.container .card .footer.lost {
+    font-size: 1.5em;
+    color: #fff;
+    text-align: right;
+    font-weight: bold;
+}
+
+.container .card .footer.recovered .reward,
+.container .card .footer.find .reward,
+.container .card .footer.lost .reward {
+    font-size: .5em;
+    opacity: .8;
+    color: #dfe218;
+    display: block;
+    height: 1.2em;
+}
+
+.container .card .footer.find {
+    background: #3b2888;
+}
+
+.container .card .footer.lost {
+    background: #30946f;
+}
+
+.container .card .footer.recovered {
+    background: #34c211;
+}
+
+.container footer {
+    opacity: .5;
+    text-align: center;
+}
+
+.container .data-count {
+    padding: '15px';
+}
+
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+}
+
+.lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgb(0, 0, 0);
+    margin: -4px 0 0 -4px;
+}
+
+.lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+}
+
+.lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+}
+
+.lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+}
+
+.lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+}
+
+.lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+}
+
+.lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+}
+
+.lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+}
+
+.lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+}
+
+.lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+}
+
+.lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+}
+
+.lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+}
+
+.lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+}
+
+.lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+}
+
+.lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+}
+
+.lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+}
+
+.lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+}
+
+@keyframes lds-roller {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.modal-page {
+    width: 100vw;
+    height: 100vh;
+    background: #00000063;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+    body {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 10x;
+        background-position-x: -2em;
+        background-size: 70%;
+    }
+    .container {
+        padding: 15px;
+        /* width: 100vw; */
+    }
+    .container .banner {
+        font-size: 1.1em;
+    }
+    .container .buttons-lost-find .buttom-lost,
+    .container .buttons-lost-find .buttom-find {
+        width: 100%;
+        margin: .5em 0;
+    }
+    .container .card .photo {
+        height: 3em;
+    }
+    .container .card .footer.find,
+    .container .card .footer.lost {
+        font-size: 1em;
+    }
+}
