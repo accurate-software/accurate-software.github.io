@@ -17,6 +17,7 @@ import LoaderPage from '../../components/loaderPage';
 
 
 
+/* tipagens */
 interface ApiCategories{
   id: number;
   category: string;
@@ -32,19 +33,14 @@ interface ApiCity{
 
 
 
-
-
-
 const FoundAnnouncement = () =>{
 
-  /*loaderpage */
+  /* loaderpage */
   const [loaderPage, setLoaderPage] = useState(false);
 
 
 
-   /**
-   * busca de estados
-   */
+  /* busca de estados  */
   const [ufs, setUfs] = useState<string[]>([]);
   useEffect(()=>{
     axios.get<ApiUf[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response =>{
@@ -54,9 +50,7 @@ const FoundAnnouncement = () =>{
   },[]);
 
 
-  /**
-   * pega o estado selecionado
-   */
+  /* pega o estado selecionado  */
   const [uf, setSelectedUf] = useState<string>('');
   function handleSelectedUf(event: ChangeEvent<HTMLSelectElement>){
     const uf = event.target.value;
@@ -64,9 +58,7 @@ const FoundAnnouncement = () =>{
   }
 
 
-  /**
-   * busca das cidades do estado selecionado
-   */
+  /* busca das cidades do estado selecionado  */
   const [cities, setCities] = useState<string[]>([]);
   useEffect(() => {
     if(uf === ''){
@@ -79,9 +71,8 @@ const FoundAnnouncement = () =>{
   },[uf]);
 
  
-  /*pega localização */
+  /* pega localização */
   const [initialLatLng, setInitialLatLng] = useState<[number, number]>([-20.832914100000004,-49.395793499999996]);
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(positon => {
      const {latitude, longitude} = positon.coords;
@@ -92,15 +83,14 @@ const FoundAnnouncement = () =>{
   },[]);
 
 
-  /*seleção de nova localização */
+  /* seleção de nova localização */
   const [selectedLatLng, setLatLng] = useState<[number, number]>(initialLatLng);  
-
   function handleMapClick(event: LeafletMouseEvent){
     setLatLng([event.latlng.lat, event.latlng.lng]);
   }
 
 
-  /*form*/
+  /*para o submit do form*/
   const [codeConclusion, setCodeConclusion] = useState<number>();  
 
   const [initialCategories, setInitialCategories] = useState<ApiCategories[]>([]);
@@ -109,7 +99,6 @@ const FoundAnnouncement = () =>{
       setInitialCategories(response.data);      
     });
   },[]);
-
 
   const [formData,setFormData] = useState({
     name: '',

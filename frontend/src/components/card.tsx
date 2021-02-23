@@ -2,6 +2,10 @@ import React, { Children } from 'react';
 
 import icon_map_point from '../assets/icon_map_point.svg';
 
+import DateBr from '../components/dateBr';
+
+
+/* tipagens */
 interface myProps{
   city: string;
   time: string;
@@ -11,7 +15,13 @@ interface myProps{
   hasReward: string;
 }
 
-const Card: React.FC<myProps> = props => {
+
+
+
+
+
+const Card: React.FC<myProps> = props => {  
+
   return (
     <div className="card mb-2">
       <ul className="list-group list-group-flush">
@@ -22,7 +32,7 @@ const Card: React.FC<myProps> = props => {
           </div>
           <div className='d-flex flex-column'>
             <span className='local text-truncate'>{props.city}</span>
-            <span className='time'>{props.time}</span>
+            <span className='time'> <DateBr date={props.time}/> </span>
           </div>
 
         </li>

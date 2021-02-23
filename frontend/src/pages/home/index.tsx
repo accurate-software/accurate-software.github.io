@@ -9,12 +9,8 @@ import Card from '../../components/card';
 import Footer from '../../components/footer';
 
 
-// para exemplos
-import photo_1 from '../../assets/EXEMPLO_photo.jpg';
-import photo_2 from '../../assets/EXEMPLO_photo_2.jpg';
 
-
-
+/* tipagens */
 interface ApiUf{
   sigla: string;
 }
@@ -42,9 +38,7 @@ interface ApiList{
 
 const Home = () =>{
 
-  /**
-   * busca de estados
-   */
+  /* api ibge:busca de estados  */
   const [ufs, setUfs] = useState<string[]>([]);
   useEffect(()=>{
     axios.get<ApiUf[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response =>{
@@ -54,9 +48,7 @@ const Home = () =>{
   },[]);
 
 
-  /**
-   * pega o estado selecionado
-   */
+  /* pega o estado selecionado  */
   const [uf, setSelectedUf] = useState<string>('');
   function handleSelectedUf(event: ChangeEvent<HTMLSelectElement>){
     const uf = event.target.value;
@@ -64,9 +56,7 @@ const Home = () =>{
   }
 
 
-  /**
-   * busca das cidades do estado selecionado
-   */
+  /* api ibge: busca das cidades do estado selecionado  */
   const [cities, setCities] = useState<string[]>([]);
   useEffect(() => {
     if(uf === ''){
@@ -79,9 +69,7 @@ const Home = () =>{
   },[uf]);
 
 
-  /**
-   * alimenta o campo categorias
-   */
+  /* api:alimenta o campo categorias  */
   const [initialCategories, setInitialCategories] = useState<ApiCategories[]>([]);
   useEffect(()=>{
     api.get('categories').then(response =>{  
@@ -90,9 +78,7 @@ const Home = () =>{
   },[]);
 
 
-  /**
-   * listagem de achados
-   */
+  /* api:listagem de achados   */
   const [initialFound, setinitialFound] = useState<ApiList[]>([]);
   useEffect(()=>{
     api.get('search-annoucement/1').then(response =>{  
@@ -100,9 +86,7 @@ const Home = () =>{
     });
   },[]);
 
-  /**
-   * listagem de perdidos
-   */
+  /* api:listagem de perdidos  */
   const [initialLost, setinitialLost] = useState<ApiList[]>([]);
   useEffect(()=>{
     api.get('search-annoucement/2').then(response =>{  
@@ -111,9 +95,7 @@ const Home = () =>{
   },[]);
 
 
-  /**
-   * valores de achados conlcuidos e perdidos
-   */
+  /* api:valores de achados conlcuidos e perdidos   */
   const [valueType_found, setValueType_found] = useState<number[]>([]);
   const [valueType_lost, setValueType_lost] = useState<number[]>([]);
   const [valueType_concluded, setValueType_concluded] = useState<number[]>([]);
@@ -134,7 +116,7 @@ const Home = () =>{
     <div className='container'>
 
       {/*navbar*/}
-     <Navbar/>
+      <Navbar/>
 
 
       {/*banner*/}

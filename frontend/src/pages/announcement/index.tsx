@@ -8,11 +8,14 @@ import Navbar from '../../components/navbar';
 import Banner from '../../components/banner';
 import Footer from '../../components/footer';
 import LoaderPage from '../../components/loaderPage';
+import DateBr from '../../components/dateBr';
 
 import './style.css';
 
 import OKgif from '../../assets/ok.gif'
 
+
+/* tipagens */
 interface AnnoucementInt {
   id: number;  
   category: string;
@@ -32,10 +35,12 @@ interface AnnoucementInt {
   type: string;
 }
 
+
 const FoundAnnouncement = () =>{
 
   /*loaderpage */
   const [loaderPage, setLoaderPage] = useState(false);
+
   
   /*pegando dados do anuncio */
   const [annoucement, setAnnoucement] = useState<AnnoucementInt[]>([]); 
@@ -50,7 +55,7 @@ const FoundAnnouncement = () =>{
   },[]);
 
 
-  /*exibe ou nao elementos */
+  /*exibe ou nao elementos no corpo do anuncio */
   var status;
   var showButton = true;
   if(annoucement[0] !== undefined){
@@ -70,7 +75,8 @@ const FoundAnnouncement = () =>{
       
   }
 
-  // modal de conclusao
+
+  /* modal de conclusao */
   const [modalConlusion, setModalConlusion ] = useState<boolean>(false)
   function handleModalConclusion(){
     if(modalConlusion === true)
@@ -81,8 +87,7 @@ const FoundAnnouncement = () =>{
 
 
 
-  // submit do form de conclusao
-  
+  /* submit do form de conclusao */  
   const [formData,setFormData] = useState({   
     code_conclusion: '',
     description_conclusion: '',    
@@ -233,7 +238,7 @@ const FoundAnnouncement = () =>{
 
           <div className='row mb-3'>
             <div className="col-12 sub-title">
-              Anunciado por: <strong>{annoucement[0].name}</strong> em: <strong>{annoucement[0].insert_in}</strong>  atualizado em: <strong>{annoucement[0].updated_at}</strong> 
+              Anunciado por: <strong>{annoucement[0].name}</strong> em: <strong><DateBr date={annoucement[0].insert_in}/></strong>  atualizado em: <strong><DateBr date={annoucement[0].updated_at}/> </strong> 
             </div>
           </div>
 

@@ -1,5 +1,4 @@
 import {Request, Response} from 'express';
-import Knex from 'knex';
 import knex from '../database/connection';
 
 class AnnoucementsController{

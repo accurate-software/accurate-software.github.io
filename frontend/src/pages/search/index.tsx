@@ -9,12 +9,11 @@ import Footer from '../../components/footer';
 import LoaderPage from '../../components/loaderPage';
 import Card from '../../components/card';
 
-
 import './style.css';
 
 
 
-
+/* tipagens */
 interface Announcements{
   id: number;
   city: string;
@@ -25,41 +24,31 @@ interface Announcements{
   type: string;
 }
 
+
 const Search: React.FC = props =>{
 
-
-
+  /* lista de anuncios */
   const [annoucements, setAnnoucements] = useState<Announcements[]>([]); 
-
   useEffect(() => {
     const urlParams = window.location.search.split('?')[1].split('&');   
 
     api.get(`search-annoucement${window.location.search}`).then(response =>{     
-     
-      
-      console.log(response.data.data)
-
-      console.log(Object.keys(response.data.data).length)
-
-      if(Object.keys(response.data.data).length === 0){
-        
-      }else{
-        console.log('ok')
+         
+      if(Object.keys(response.data.data).length !== 0){
         setAnnoucements(response.data.data)   
       }   
     });
    
   },[]);
 
-  console.log(annoucements)
+
   
+
+ 
 
 
   return (
-    <div className='container'>
-
-      {/* modal */}
-      {/* <Modal/> */}
+    <div className='container'>      
 
 
       {/*banner*/}
@@ -72,8 +61,11 @@ const Search: React.FC = props =>{
         </p>
       </Banner> 
 
-      <h3>Busca</h3>
-      
+
+      {/*titulo*/}
+      <h3 className='mt-2'>Resultados da busca</h3>  
+      <hr/>    
+
 
       {/* corpo do anuncio*/}
       {annoucements[0] !== undefined ? (
@@ -95,8 +87,7 @@ const Search: React.FC = props =>{
       ):
         <LoaderPage>
           <h1><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></h1>
-        </LoaderPage>
-       
+        </LoaderPage>       
       } 
 
 

@@ -16,7 +16,7 @@ import LoaderPage from '../../components/loaderPage';
 import api from '../../services/api';
 
 
-
+/* tipagens */
 interface ApiCategories{
   id: number;
   category: string;
@@ -39,9 +39,8 @@ const LostAnnouncement = () =>{
   /*loaderpage */
   const [loaderPage, setLoaderPage] = useState(false);
 
-  /**
-   * busca de estados
-   */
+
+  /* busca de estados  */
   const [ufs, setUfs] = useState<string[]>([]);
   useEffect(()=>{
     axios.get<ApiUf[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response =>{
@@ -51,9 +50,7 @@ const LostAnnouncement = () =>{
   },[]);
 
 
-  /**
-   * pega o estado selecionado
-   */
+  /* pega o estado selecionado  */
   const [uf, setSelectedUf] = useState<string>('');
   function handleSelectedUf(event: ChangeEvent<HTMLSelectElement>){
     const uf = event.target.value;
@@ -61,9 +58,7 @@ const LostAnnouncement = () =>{
   }
 
 
-  /**
-   * busca das cidades do estado selecionado
-   */
+  /* busca das cidades do estado selecionado  */
   const [cities, setCities] = useState<string[]>([]);
   useEffect(() => {
     if(uf === ''){
@@ -76,9 +71,8 @@ const LostAnnouncement = () =>{
   },[uf]);
 
 
-  /*pega localização */
+  /* pega localização */
   const [initialLatLng, setInitialLatLng] = useState<[number, number]>([-20.832914100000004,-49.395793499999996]);
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(positon => {
      const {latitude, longitude} = positon.coords;
@@ -89,16 +83,15 @@ const LostAnnouncement = () =>{
   },[]);
 
 
-  /*selecion nova localização */
-  const [selectedLatLng, setLatLng] = useState<[number, number]>(initialLatLng);
-  
+  /* seleciona nova localização */
+  const [selectedLatLng, setLatLng] = useState<[number, number]>(initialLatLng);  
   function handleMapClick(event: LeafletMouseEvent){
     setLatLng([event.latlng.lat, event.latlng.lng]);
   }
 
+
   /*form*/  
   const [codeConclusion, setCodeConclusion] = useState<number>();  
-
   const [initialCategories, setInitialCategories] = useState<ApiCategories[]>([]);
   useEffect(()=>{
     api.get('categories').then(response =>{  
@@ -131,9 +124,8 @@ const LostAnnouncement = () =>{
   function handleTextareaChange(event: ChangeEvent<HTMLTextAreaElement>){
     const {name, value} = event.target;
     setFormData({ ...formData, [name]:value});
-  }  
-
-  /*submit */
+  } 
+  
   async function handleFormSubmit(event: FormEvent){
     event.preventDefault();
 
