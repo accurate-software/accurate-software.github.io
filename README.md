@@ -1,48 +1,34 @@
-## Accurate Software
+# lostfound
+ projeto de achados e perdidos - backend
 
-<img src="https://accurate.com.br/wp-content/uploads/2020/06/logo-accurate-300.svg" alt="drawing" width="200"/> 
 
-Seja bem-vindo a [Accurate Software](https://accurate.com.br).
+SISTEMA DE ACHADOS E PERDIDOS
 
-Temos diversas vagas para desenvolvedores: Frontend, Backend e Fullstack!
+PROJETO - INICIADO 09/01/2022
 
-> Para conhecer melhor os candidatos, preparamos um desafio técnico. Não se preocupe em cumprir todos os requisitos propostos no desafio, este teste visa avaliar a sua capacidade de resolução de problemas. Abaixo serão apresentados dois desafios direcionados aos perfis frontend e backend, caso o seu perfil for voltado para fullstack fique a vontade em nos enviar uma solução completa abordando tanto frontend quanto backend!
+    Cadastro de Objetos Achados (achado)
+        descricao: string
+        localEncontrado: string
+        data: date
+        devolvido: boolean
+        devolvidoPara: string
 
-## Instruções
 
-1. Para começar o desafio, realize um fork no repositório: https://github.com/accurate-software/accurate-software.github.io
+    Cadastro de Objetos Perdidos (perdido)
+        descricao: string
+        localPerda: string
+        data: date
+        recuperado: boolean
+        nomeProprietario: string
+        enderecoProprietario: string
+        telefoneProprietario: string
 
-2. O desafio deverá set commitado no fork.
-
-3. Após a finalização do desafio, solicite um pull request do fork no nosso repositório ;)
-
-### Desafio Frontend
-
-O seu desafio é realizar um desenvolvimento de uma aplicação frontend que compra os requisitos:
-
-+ Consumo de API REST
-+ CRUD ou listagem de algum recurso da API
-+ Utilizar alguma API pública, podendo ser alguma do site: https://public-apis.xyz/
-
-Vamos avaliar a sua capacidade como desenvolvedor frontend, observando os critérios:
-
-+ Uso semântico do HTML
-+ Estruturação do layout e tags CSS
-+ Layout acessível e responsivo
-+ Utilização de frameworks da atualizade, como: React, Vue, Angular ou algum outro de sua preferência.
-+ Lembre-se de documentar a solução com um README.MD :)
-
-### Desafio Backend
-
-O seu desafio é realizar um desenvolvimento de uma API Rest para um site de achados e perfidos. Sua API deve conter as seguintes funcionalidades:
-
-+ Cadastro de um "Achado"/"Perdido"
-+ Atualização de histórico de um "Achado"/"Perdido"
-+ Busca com opção de filtros, como por exemplo: Categoria
-+ Relatório de cruzamento de informações "Achados"/"Perdidos", dado um categoria e um raio.
-
-Fique a vontade para usar a linguagem e framework de sua preferência, como: Java, C# e Node! Porém se atente aos seguintes pontos:
-
-+ Tratamento de erros e exceções
-+ Clareza e clean code no desenvolvimento da solução
-+ Documentação da solução - README.MD :)
+LINKS:
+localhost:3001/incluir-achado = inclui registro de objeto achado
+localhost:3001/incluir-perdido = inclui registro de objeto perdido
+localhost:3001/listar-achados = lista todos objetos achados
+localhost:3001/listar-perdidos = lista todos objetos perdidos
+localhost:3001/editar-achado/:id = edita registro de objeto achado
+localhost:3001/editar-perdido/:id = edita registro de objeto perdido
+localhost:3001/excluir-achado/:id = exclui registro de objeto achado
+localhost:3001/excluir-perdido/:id = exclui registro de objeto achado
