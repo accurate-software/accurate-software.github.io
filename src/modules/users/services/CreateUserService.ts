@@ -1,6 +1,7 @@
 import { AppError } from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import { ICreateUserDTO } from '../domain/dtos/ICreateUserDTO';
+import { IUser } from '../domain/models/IUser';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
 import { IHashProvider } from '../providers/models/IHashProvider';
 
@@ -13,7 +14,7 @@ class CreateUserService {
     private hashProvider: IHashProvider,
   ) {}
 
-  async execute({ name, email, password }: ICreateUserDTO): Promise<void> {
+  async execute({ name, email, password }: ICreateUserDTO): Promise<IUser> {
     const emailExists = await this.usersRepository.findByEmail(email);
 
     if (emailExists) {
@@ -22,11 +23,13 @@ class CreateUserService {
 
     const hashdPassword = await this.hashProvider.generateHash(password);
 
-    await this.usersRepository.create({
+    const user = await this.usersRepository.create({
       name,
       email,
       password: hashdPassword,
     });
+
+    return user;
   }
 }
 
