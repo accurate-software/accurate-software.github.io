@@ -1,12 +1,22 @@
+import authConfig from '@config/auth';
 import { AppError } from '@shared/errors/AppError';
+import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
-import { IUser } from '../domain/models/IUser';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
 import { IHashProvider } from '../providers/models/IHashProvider';
 
 interface IRequest {
   email: string;
   password: string;
+}
+
+interface IResponse {
+  user: {
+    name: string;
+    email: string;
+  };
+
+  token: string;
 }
 
 @injectable()
@@ -18,7 +28,7 @@ class CreateSessionService {
     private hashProvider: IHashProvider,
   ) {}
 
-  async execute({ email, password }: IRequest): Promise<IUser> {
+  async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
@@ -34,7 +44,21 @@ class CreateSessionService {
       throw new AppError('Email or password incorrect.', 401);
     }
 
-    return user;
+    const token = sign({}, authConfig.jwt.secret, {
+      subject: user.id,
+      expiresIn: authConfig.jwt.expiresIn,
+    });
+
+    const returnToken = {
+      user: {
+        name: user.name,
+        email: user.email,
+      },
+
+      token,
+    };
+
+    return returnToken;
   }
 }
 
