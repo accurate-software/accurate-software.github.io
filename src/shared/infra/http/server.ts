@@ -6,9 +6,11 @@ import { errors } from 'celebrate';
 import { routes } from './routes';
 import { AppError } from '@shared/errors/AppError';
 
-import '@shared/infra/typeorm';
+import createConnection from '@shared/infra/typeorm';
+
 import '@shared/container';
 
+createConnection();
 const app = express();
 
 app.use(cors());

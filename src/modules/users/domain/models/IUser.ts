@@ -4,6 +4,7 @@ interface IUser {
   email: string;
   password: string;
   avatar: string;
+  isAdmin: boolean;
   created_at: Date;
   updated_at: Date;
 }
