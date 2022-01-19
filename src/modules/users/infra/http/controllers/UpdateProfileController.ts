@@ -1,5 +1,6 @@
 import { UpdateProfileService } from '@modules/users/services/UpdateProfileService';
 import { Request, Response } from 'express';
+import { instanceToInstance } from 'class-transformer';
 import { container } from 'tsyringe';
 
 class UpdateProfileController {
@@ -18,7 +19,7 @@ class UpdateProfileController {
       old_password,
     });
 
-    return response.json(updateProfile);
+    return response.json(instanceToInstance(updateProfile));
   }
 }
 
