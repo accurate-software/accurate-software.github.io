@@ -11,6 +11,10 @@ class UsersRepository implements IUsersRepository {
     this.repository = getRepository(User);
   }
 
+  async save(user: IUser): Promise<void> {
+    await this.repository.save(user);
+  }
+
   findAll(): Promise<IUser[]> {
     const users = this.repository.find();
 
