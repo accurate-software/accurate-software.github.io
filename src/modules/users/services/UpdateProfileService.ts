@@ -32,7 +32,7 @@ class UpdateProfileService {
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
-      throw new AppError('User not found.');
+      throw new AppError('User not found.', 404);
     }
 
     const userEmail = await this.usersRepository.findByEmail(email);
@@ -52,7 +52,7 @@ class UpdateProfileService {
       );
 
       if (!checkOldPassword) {
-        throw new AppError('Old password does not match.');
+        throw new AppError('Old password does not match.', 401);
       }
 
       user.password = await this.hashProvider.generateHash(password);

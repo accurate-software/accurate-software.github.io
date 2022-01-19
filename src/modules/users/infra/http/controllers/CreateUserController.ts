@@ -1,5 +1,6 @@
 import { CreateUserService } from '@modules/users/services/CreateUserService';
 import { Request, Response } from 'express';
+import { instanceToInstance } from 'class-transformer';
 import { container } from 'tsyringe';
 
 class CreateUserController {
@@ -14,7 +15,7 @@ class CreateUserController {
       password,
     });
 
-    return response.status(201).json(createUser);
+    return response.status(201).json(instanceToInstance(createUser));
   }
 }
 
