@@ -10,9 +10,9 @@ import {
 
 import { v4 as uuidV4 } from 'uuid';
 
-@Entity('users_tokens')
+@Entity('user_tokens')
 class UserToken implements IUserToken {
-  @PrimaryColumn()
+  @PrimaryColumn('uuid')
   id: string;
 
   @Column()

@@ -1,8 +1,7 @@
 import { AppError } from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
-import { IUsersTokensRepository } from '../domain/repositories/IUsersTokensRepository';
-import path from 'path';
+import { IUserTokensRepository } from '../domain/repositories/IUsersTokensRepository';
 
 interface IResqust {
   email: string;
@@ -13,8 +12,8 @@ class SendForgotPasswordEmailService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-    @inject('UsersTokensRepository')
-    private usersTokensRepository: IUsersTokensRepository,
+    @inject('UserTokensRepository')
+    private userTokensRepository: IUserTokensRepository,
   ) {}
 
   async execute({ email }: IResqust): Promise<void> {
@@ -24,14 +23,9 @@ class SendForgotPasswordEmailService {
       throw new AppError('User not found.', 404);
     }
 
-    const { token } = await this.usersTokensRepository.generateToken(user.id);
+    const token = await this.userTokensRepository.generate(user.id);
 
-    const forgotPasswordTamplete = path.resolve(
-      __dirname,
-      '..',
-      'views',
-      'forgot_password.hbs',
-    );
+    console.log(token);
   }
 }
 

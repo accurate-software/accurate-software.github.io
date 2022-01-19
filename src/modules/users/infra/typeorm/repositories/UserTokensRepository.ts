@@ -1,9 +1,9 @@
 import { IUserToken } from '@modules/users/domain/models/IUserToken';
-import { IUsersTokensRepository } from '@modules/users/domain/repositories/IUsersTokensRepository';
+import { IUserTokensRepository } from '@modules/users/domain/repositories/IUsersTokensRepository';
 import { getRepository, Repository } from 'typeorm';
 import { UserToken } from '../entities/UserToken';
 
-class UserTokensRepository implements IUsersTokensRepository {
+class UserTokensRepository implements IUserTokensRepository {
   private repository: Repository<UserToken>;
 
   constructor() {
@@ -16,7 +16,7 @@ class UserTokensRepository implements IUsersTokensRepository {
     return userToken;
   }
 
-  async generateToken(user_id: string): Promise<IUserToken> {
+  async generate(user_id: string): Promise<IUserToken | undefined> {
     const userToken = this.repository.create({ user_id });
 
     await this.repository.save(userToken);

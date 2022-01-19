@@ -7,7 +7,7 @@ const sessionsRoutes = Router();
 const createSessionController = new CreateSessionController();
 
 sessionsRoutes.post(
-  '/',
+  '/sessions',
   celebrate({
     [Segments.BODY]: {
       email: Joi.string().required().email(),

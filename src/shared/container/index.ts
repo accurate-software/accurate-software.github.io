@@ -3,15 +3,16 @@ import { UsersRepository } from '@modules/users/infra/typeorm/repositories/Users
 
 import { container } from 'tsyringe';
 import '@modules/users/providers';
-import { IUsersTokensRepository } from '@modules/users/domain/repositories/IUsersTokensRepository';
+
 import { UserTokensRepository } from '@modules/users/infra/typeorm/repositories/UserTokensRepository';
+import { IUserTokensRepository } from '@modules/users/domain/repositories/IUsersTokensRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
 );
 
-container.registerSingleton<IUsersTokensRepository>(
-  'UsersTokensRepository',
+container.registerSingleton<IUserTokensRepository>(
+  'UserTokensRepository',
   UserTokensRepository,
 );

@@ -1,10 +1,10 @@
 import { AppError } from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
-import { IUsersTokensRepository } from '../domain/repositories/IUsersTokensRepository';
 
 import { isAfter, addHours } from 'date-fns';
 import { IHashProvider } from '../providers/models/IHashProvider';
+import { IUserTokensRepository } from '../domain/repositories/IUsersTokensRepository';
 
 interface IResqust {
   password: string;
@@ -16,14 +16,14 @@ class ResetPasswordService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-    @inject('UsersTokensRepository')
-    private usersTokensRepository: IUsersTokensRepository,
+    @inject('UserTokensRepository')
+    private userTokensRepository: IUserTokensRepository,
     @inject('HashProvider')
     private hashProvider: IHashProvider,
   ) {}
 
   async execute({ password, token }: IResqust): Promise<void> {
-    const userToken = await this.usersTokensRepository.findByToken(token);
+    const userToken = await this.userTokensRepository.findByToken(token);
 
     if (!userToken) {
       throw new AppError('User token does not exists.', 404);
