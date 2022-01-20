@@ -5,12 +5,14 @@ import { Router } from 'express';
 import { ListCategoriesController } from '../controllers/ListCategoriesController';
 import { CreateCategoryController } from '../controllers/CreateCategoryController';
 import { DeleteCategoryController } from '../controllers/DeleteCategoryController';
+import { UpdateCategoryController } from '../controllers/UpdateCategoryController';
 
 const categoriesRoutes = Router();
 
 const createCategoryController = new CreateCategoryController();
 const listCategoriesController = new ListCategoriesController();
 const deleteCategoryController = new DeleteCategoryController();
+const updateCategoryController = new UpdateCategoryController();
 
 categoriesRoutes.post(
   '/',
@@ -37,6 +39,13 @@ categoriesRoutes.delete(
   ensureAuthenticated,
   ensureAdmin,
   deleteCategoryController.handle,
+);
+
+categoriesRoutes.put(
+  '/:id',
+  ensureAuthenticated,
+  ensureAdmin,
+  updateCategoryController.handle,
 );
 
 export { categoriesRoutes };
