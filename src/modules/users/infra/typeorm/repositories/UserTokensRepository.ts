@@ -16,7 +16,7 @@ class UserTokensRepository implements IUserTokensRepository {
     return userToken;
   }
 
-  async generate(user_id: string): Promise<IUserToken | undefined> {
+  async generate(user_id: string): Promise<IUserToken> {
     const userToken = this.repository.create({ user_id });
 
     await this.repository.save(userToken);
