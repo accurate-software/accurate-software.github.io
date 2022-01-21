@@ -6,6 +6,7 @@ import { ListAllObjectsController } from '../controllers/ListAllObjectsControlle
 import { UploadObjectImageController } from '../controllers/UploadObjectImageController';
 import uploadConfig from '@config/upload';
 import { ListAvaliableObjectController } from '../controllers/ListAvaliableObjectController';
+import { celebrate, Joi, Segments } from 'celebrate';
 
 const objectsRoutes = Router();
 
@@ -16,7 +17,19 @@ const listAvaliableObjectController = new ListAvaliableObjectController();
 
 const uploadImages = multer(uploadConfig);
 
-objectsRoutes.post('/', ensureAuthenticated, createObjectController.handle);
+objectsRoutes.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      comments: Joi.string(),
+      type: Joi.string().required(),
+      category_id: Joi.string().required().uuid(),
+    },
+  }),
+  ensureAuthenticated,
+  createObjectController.handle,
+);
 
 objectsRoutes.get('/', listAllObjectsController.handle);
 
