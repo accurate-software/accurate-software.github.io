@@ -5,6 +5,7 @@ import { container } from 'tsyringe';
 class CreateObjectController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { name, comments, type, category_id } = request.body;
+    const { id } = request.user;
 
     const createObjectService = container.resolve(CreateObjectService);
 
@@ -13,6 +14,7 @@ class CreateObjectController {
       comments,
       type,
       category_id,
+      user_id: id,
     });
 
     return response.status(201).json(createObject);

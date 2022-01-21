@@ -32,6 +32,9 @@ class ObjectLostFound implements IObject {
   type: TypeEnum;
 
   @Column()
+  user_id: string;
+
+  @Column()
   category_id: string;
 
   @ManyToOne(() => Category)
