@@ -10,6 +10,8 @@ import { ICategoriesRepository } from '@modules/categories/domain/repositories/I
 import { CategoriesRepository } from '@modules/categories/infra/typeorm/repositories/CategoriesRepository';
 import { IObjectsRepository } from '@modules/objects/domain/repositories/IObjectsRepository';
 import { ObjectsRepository } from '@modules/objects/infra/typeorm/repositories/ObjectsRepository';
+import { IObjectsImagesRepository } from '@modules/objects/domain/repositories/IObjectsImagesRepository';
+import { ObjectsImagesRepository } from '@modules/objects/infra/typeorm/repositories/ObjectsImagesRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -29,4 +31,9 @@ container.registerSingleton<ICategoriesRepository>(
 container.registerSingleton<IObjectsRepository>(
   'ObjectsRepository',
   ObjectsRepository,
+);
+
+container.registerSingleton<IObjectsImagesRepository>(
+  'ObjectsImagesRepository',
+  ObjectsImagesRepository,
 );
