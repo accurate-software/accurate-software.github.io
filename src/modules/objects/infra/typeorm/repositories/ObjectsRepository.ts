@@ -11,6 +11,12 @@ class ObjectsRepository implements IObjectsRepository {
     this.repository = getRepository(ObjectLostFound);
   }
 
+  async findAll(): Promise<IObject[]> {
+    const objects = await this.repository.find();
+
+    return objects;
+  }
+
   async create({
     name,
     comments,
