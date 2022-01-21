@@ -21,8 +21,10 @@ class CategoriesRepository implements ICategoriesRepository {
     await this.repository.delete(id);
   }
 
-  async save(category: ICategory): Promise<void> {
+  async save(category: ICategory): Promise<ICategory> {
     await this.repository.save(category);
+
+    return category;
   }
 
   async list(): Promise<ICategory[]> {
@@ -36,13 +38,15 @@ class CategoriesRepository implements ICategoriesRepository {
     return category;
   }
 
-  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
+  async create({ name, description }: ICreateCategoryDTO): Promise<ICategory> {
     const createCategory = this.repository.create({
       name,
       description,
     });
 
-    await this.repository.save(createCategory);
+    const category = await this.repository.save(createCategory);
+
+    return category;
   }
 }
 

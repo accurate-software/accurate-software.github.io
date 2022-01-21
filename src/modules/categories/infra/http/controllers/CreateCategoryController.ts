@@ -8,12 +8,12 @@ class CreateCategoryController {
 
     const createCategoryService = container.resolve(CreateCategoryService);
 
-    await createCategoryService.execute({
+    const category = await createCategoryService.execute({
       name,
       description,
     });
 
-    return response.status(201).send();
+    return response.status(201).json(category);
   }
 }
 
