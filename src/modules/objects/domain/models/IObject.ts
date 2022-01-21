@@ -7,7 +7,6 @@ interface IObject {
   comments: string;
   available: boolean;
   type: TypeEnum;
-  user_id: string;
   category_id: string;
   category: Category;
   created_at: Date;

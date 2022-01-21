@@ -38,10 +38,6 @@ export class CreateObject1642708699976 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'user_id',
-            type: 'uuid',
-          },
-          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
@@ -58,14 +54,6 @@ export class CreateObject1642708699976 implements MigrationInterface {
             referencedTableName: 'categories',
             referencedColumnNames: ['id'],
             columnNames: ['category_id'],
-            onDelete: 'SET NULL',
-            onUpdate: 'SET NULL',
-          },
-          {
-            name: 'FKUserObject',
-            referencedTableName: 'users',
-            referencedColumnNames: ['id'],
-            columnNames: ['user_id'],
             onDelete: 'SET NULL',
             onUpdate: 'SET NULL',
           },

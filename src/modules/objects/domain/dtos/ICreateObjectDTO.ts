@@ -5,7 +5,6 @@ interface ICreateObjectDTO {
   comments: string;
   type: TypeEnum;
   category_id: string;
-  user_id: string;
 }
 
 export { ICreateObjectDTO };
