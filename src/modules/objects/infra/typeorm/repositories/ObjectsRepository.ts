@@ -11,6 +11,24 @@ class ObjectsRepository implements IObjectsRepository {
     this.repository = getRepository(ObjectLostFound);
   }
 
+  async findAvaliable(name?: string, category_id?: string): Promise<IObject[]> {
+    const objectsQuery = await this.repository
+      .createQueryBuilder('c')
+      .where('available = :available', { available: true });
+
+    if (name) {
+      objectsQuery.andWhere('name = :name', { name });
+    }
+
+    if (category_id) {
+      objectsQuery.andWhere('category_id = :category_id', { category_id });
+    }
+
+    const objects = await objectsQuery.getMany();
+
+    return objects;
+  }
+
   async findAll(): Promise<IObject[]> {
     const objects = await this.repository.find();
 
