@@ -5,13 +5,23 @@ import uploadConfig from '@config/upload';
 import multer from 'multer';
 import ensureAuthenticated from '@shared/infra/http/middlewares/ensureAuthenticated';
 import { UpdateAvatarUserController } from '../controllers/UpdateAvatarUserController';
+import ensureAdmin from '@shared/infra/http/middlewares/ensureAdmin';
+import { ShowUserController } from '../controllers/ShowUserController';
 
 const usersRoutes = Router();
 
 const createUserController = new CreateUserController();
 const updateAvatarUserController = new UpdateAvatarUserController();
+const showUserController = new ShowUserController();
 
 const upload = multer(uploadConfig);
+
+usersRoutes.get(
+  '/:id',
+  ensureAuthenticated,
+  ensureAdmin,
+  showUserController.handle,
+);
 
 usersRoutes.post(
   '/',
