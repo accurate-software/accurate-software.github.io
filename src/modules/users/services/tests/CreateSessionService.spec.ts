@@ -1,3 +1,4 @@
+import { AppError } from '../../../../shared/errors/AppError';
 import { UsersFakeRepository } from '../../domain/repositories/fakes/UsersFakeRepository';
 import { HashProviderFakeRepository } from '../../providers/fakes/HashProviderFakeRepository';
 import { CreateSessionService } from '../CreateSessionService';
@@ -38,5 +39,14 @@ describe('Create Session', () => {
     });
 
     expect(result).toHaveProperty('token');
+  });
+
+  it('should not be able to authenticate with non existent user', async () => {
+    expect(
+      createSessionService.execute({
+        email: 'teste@teste.com',
+        password: '123456',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });
