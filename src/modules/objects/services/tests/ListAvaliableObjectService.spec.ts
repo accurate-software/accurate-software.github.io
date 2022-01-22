@@ -30,4 +30,19 @@ describe('List Objetcs', () => {
 
     expect(objetcs).toEqual([objectAvailable]);
   });
+
+  it('should be able to list all available objetcs by name', async () => {
+    const objectAvailable = await createObjectService.execute({
+      name: 'Object',
+      comments: 'Comments',
+      type: TypeEnum.Found,
+      category_id: 'category_id',
+    });
+
+    const objetcs = await listAvaliableObject.execute({
+      name: 'Object',
+    });
+
+    expect(objetcs).toEqual([objectAvailable]);
+  });
 });
