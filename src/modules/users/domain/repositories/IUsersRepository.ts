@@ -3,7 +3,7 @@ import { IUser } from '../models/IUser';
 
 interface IUsersRepository {
   findByDelete(id: string): Promise<void>;
-  save(user: IUser): Promise<void>;
+  save(user: IUser): Promise<IUser>;
   findAll(): Promise<IUser[]>;
   create(data: ICreateUserDTO): Promise<IUser>;
   findByEmail(email: string): Promise<IUser | undefined>;

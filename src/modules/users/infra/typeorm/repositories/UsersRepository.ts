@@ -15,8 +15,10 @@ class UsersRepository implements IUsersRepository {
     await this.repository.delete(id);
   }
 
-  async save(user: IUser): Promise<void> {
+  async save(user: IUser): Promise<IUser> {
     await this.repository.save(user);
+
+    return user;
   }
 
   findAll(): Promise<IUser[]> {
