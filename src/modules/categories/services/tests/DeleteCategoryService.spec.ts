@@ -16,8 +16,6 @@ describe('Delete Category', () => {
       description: 'Category Description',
     });
 
-    expect(category).toHaveProperty('id');
-
     const deleteCategory = await categoriesFakeRepository.findByDelete(
       category.id,
     );
