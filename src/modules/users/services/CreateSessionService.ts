@@ -1,5 +1,5 @@
-import authConfig from '@config/auth';
-import { AppError } from '@shared/errors/AppError';
+import authConfig from '../../../config/auth';
+import { AppError } from '../../../shared/errors/AppError';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
