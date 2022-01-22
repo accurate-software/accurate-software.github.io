@@ -4,11 +4,14 @@ import {
   CreateDateColumn,
   Entity,
   Generated,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 import { v4 as uuidV4 } from 'uuid';
+import { User } from './User';
 
 @Entity('user_tokens')
 class UserToken implements IUserToken {
@@ -21,6 +24,10 @@ class UserToken implements IUserToken {
 
   @Column()
   user_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
   @CreateDateColumn()
   created_at: Date;
