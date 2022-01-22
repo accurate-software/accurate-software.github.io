@@ -49,4 +49,19 @@ describe('Create Session', () => {
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
+
+  it('should not be able to authenticate with wrong password', async () => {
+    await usersFakeRepository.create({
+      name: 'Nome Test',
+      email: 'test@test.com',
+      password: '123456',
+    });
+
+    expect(
+      createSessionService.execute({
+        email: 'test@test.com',
+        password: '123321',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
 });
