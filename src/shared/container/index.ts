@@ -12,6 +12,8 @@ import { IObjectsRepository } from '@modules/objects/domain/repositories/IObject
 import { ObjectsRepository } from '@modules/objects/infra/typeorm/repositories/ObjectsRepository';
 import { IObjectsImagesRepository } from '@modules/objects/domain/repositories/IObjectsImagesRepository';
 import { ObjectsImagesRepository } from '@modules/objects/infra/typeorm/repositories/ObjectsImagesRepository';
+import { ObjectsMessagesRepository } from '@modules/objects/infra/typeorm/repositories/ObjectsMessagesRepository';
+import { IObjectsMessagesRepository } from '@modules/objects/domain/repositories/IObjectsMessagesRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -36,4 +38,9 @@ container.registerSingleton<IObjectsRepository>(
 container.registerSingleton<IObjectsImagesRepository>(
   'ObjectsImagesRepository',
   ObjectsImagesRepository,
+);
+
+container.registerSingleton<IObjectsMessagesRepository>(
+  'ObjectsMessagesRepository',
+  ObjectsMessagesRepository,
 );

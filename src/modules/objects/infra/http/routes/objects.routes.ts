@@ -7,6 +7,8 @@ import { UploadObjectImageController } from '../controllers/UploadObjectImageCon
 import uploadConfig from '@config/upload';
 import { ListAvaliableObjectController } from '../controllers/ListAvaliableObjectController';
 import { celebrate, Joi, Segments } from 'celebrate';
+import { CreateObjectMessageController } from '../controllers/CreateObjectMessageController';
+import ensureAdmin from '@shared/infra/http/middlewares/ensureAdmin';
 
 const objectsRoutes = Router();
 
@@ -14,6 +16,7 @@ const createObjectController = new CreateObjectController();
 const listAllObjectsController = new ListAllObjectsController();
 const uploadObjectImageController = new UploadObjectImageController();
 const listAvaliableObjectController = new ListAvaliableObjectController();
+const createObjectMessageController = new CreateObjectMessageController();
 
 const uploadImages = multer(uploadConfig);
 
@@ -40,6 +43,13 @@ objectsRoutes.post(
   ensureAuthenticated,
   uploadImages.array('images'),
   uploadObjectImageController.handle,
+);
+
+objectsRoutes.post(
+  '/message',
+  ensureAuthenticated,
+  ensureAdmin,
+  createObjectMessageController.handle,
 );
 
 export { objectsRoutes };
