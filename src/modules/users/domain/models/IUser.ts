@@ -6,6 +6,7 @@ interface IUser {
   email: string;
   password: string;
   avatar: string;
+  telephone: string;
   object_lost_found: ObjectLostFound[];
   isAdmin: boolean;
   created_at: Date;

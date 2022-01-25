@@ -31,6 +31,9 @@ class User implements IUser {
   avatar: string;
 
   @Column()
+  telephone: string;
+
+  @Column()
   isAdmin: boolean;
 
   @OneToMany(() => ObjectLostFound, object_lost_found => object_lost_found.user)

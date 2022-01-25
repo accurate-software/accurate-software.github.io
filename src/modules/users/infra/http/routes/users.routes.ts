@@ -29,6 +29,7 @@ usersRoutes.post(
     [Segments.BODY]: {
       name: Joi.string().required(),
       email: Joi.string().required().email(),
+      telephone: Joi.string().required(),
       password: Joi.string().required().min(6).max(18),
     },
   }),
