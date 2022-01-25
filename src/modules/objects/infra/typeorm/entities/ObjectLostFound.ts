@@ -13,6 +13,7 @@ import {
 
 import { v4 as uuidV4 } from 'uuid';
 import { TypeEnum } from './TypeEnum';
+import { User } from '@modules/users/infra/typeorm/entities/User';
 
 @Entity('objects')
 class ObjectLostFound implements IObject {
@@ -37,6 +38,13 @@ class ObjectLostFound implements IObject {
   @ManyToOne(() => Category)
   @JoinColumn({ name: 'category_id' })
   category: Category;
+
+  @Column()
+  user_id: string;
+
+  @ManyToOne(() => User, user => user.object_lost_found)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
   @CreateDateColumn()
   created_at: Date;

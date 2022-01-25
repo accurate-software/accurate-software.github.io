@@ -14,12 +14,14 @@ class CreateObjectService {
     name,
     comments,
     type,
+    user_id,
     category_id,
   }: ICreateObjectDTO): Promise<IObject> {
     const object = this.objectsRepository.create({
       name,
       comments,
       type,
+      user_id,
       category_id,
     });
 

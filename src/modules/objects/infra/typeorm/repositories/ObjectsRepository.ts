@@ -45,12 +45,14 @@ class ObjectsRepository implements IObjectsRepository {
     name,
     comments,
     type,
+    user_id,
     category_id,
   }: ICreateObjectDTO): Promise<IObject> {
     const object = this.repository.create({
       name,
       comments,
       type,
+      user_id,
       category_id,
     });
 

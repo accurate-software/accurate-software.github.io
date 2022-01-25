@@ -4,6 +4,7 @@ interface ICreateObjectDTO {
   name: string;
   comments: string;
   type: TypeEnum;
+  user_id: string;
   category_id: string;
 }
 

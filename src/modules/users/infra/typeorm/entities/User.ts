@@ -3,12 +3,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 
 import { v4 as uuidV4 } from 'uuid';
+import { ObjectLostFound } from '@modules/objects/infra/typeorm/entities/ObjectLostFound';
 
 @Entity('users')
 class User implements IUser {
@@ -30,6 +32,9 @@ class User implements IUser {
 
   @Column()
   isAdmin: boolean;
+
+  @OneToMany(() => ObjectLostFound, object_lost_found => object_lost_found.user)
+  object_lost_found: ObjectLostFound[];
 
   @CreateDateColumn()
   created_at: Date;

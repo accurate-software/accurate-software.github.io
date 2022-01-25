@@ -1,4 +1,3 @@
-import { IUsersRepository } from '@modules/users/domain/repositories/IUsersRepository';
 import { AppError } from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import { IObjectMessage } from '../domain/models/IObjectMessage';
@@ -11,6 +10,8 @@ import { IObjectsRepository } from '../domain/repositories/IObjectsRepository';
 @injectable()
 class CreateObjectMessageService {
   constructor(
+    @inject('ObjectsRepository')
+    private objectsRepository: IObjectsRepository,
     @inject('ObjectsMessagesRepository')
     private objectsMessagesRepository: IObjectsMessagesRepository,
   ) {}
@@ -20,6 +21,12 @@ class CreateObjectMessageService {
     object_id,
     message,
   }: ICreateObjectMessageDTO): Promise<IObjectMessage> {
+    const object = await this.objectsRepository.findById(object_id);
+
+    if (!object) {
+      throw new AppError('Object not found', 404);
+    }
+
     const objectMessage = await this.objectsMessagesRepository.create({
       user_id,
       object_id,
