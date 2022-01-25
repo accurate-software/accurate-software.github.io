@@ -33,6 +33,8 @@ class CreateObjectMessageService {
       message,
     });
 
+    await this.objectsRepository.updateAvailable(object_id, false);
+
     return objectMessage;
   }
 }

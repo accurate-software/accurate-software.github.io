@@ -20,9 +20,9 @@
 
 - Deve ser possível que o usuário faça upload de fotos dos objetos perdidos e/ou encontrados.
 
-- Deve ser possível que o usuário filtre objetos disponíveis por categorias e nome.
+- Deve ser possível que o usuário filtre todos os objetos disponíveis por categorias e nome.
 
-- Deve ser possível que o usuário administrador envie uma mensagem ao usuário que criou o objeto perdido, avisando-o que o objeto foi encontrado. O dono pode se dirigir ao setor responsável para retirá-lo.
+- Deve ser possível que o usuário administrador envie uma mensagem ao usuário que criou o objeto perdido, avisando-o que o objeto foi encontrado, com isso o objeto fica indisponível automaticamente. O dono pode se dirigir ao setor responsável para retirá-lo.
 
 - Deve ser possível a listagem de todos os objetos, antes de fazer o cadastro de usuário.
 

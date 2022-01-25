@@ -54,6 +54,12 @@ class ObjectsFakeRepository implements IObjectsRepository {
 
     return objects;
   }
+
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    const findIndex = this.objects.findIndex(object => object.id === id);
+
+    this.objects[findIndex].available = available;
+  }
 }
 
 export { ObjectsFakeRepository };
