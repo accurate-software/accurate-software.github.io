@@ -1,4 +1,4 @@
-import { RedisCache } from '@shared/cache/RedisCache';
+import redisCache from '@shared/cache/RedisCache';
 import { inject, injectable } from 'tsyringe';
 import { IObject } from '../domain/models/IObject';
 import { IObjectsRepository } from '../domain/repositories/IObjectsRepository';
@@ -11,8 +11,6 @@ class ListAllObjectsService {
   ) {}
 
   async execute(): Promise<IObject[]> {
-    const redisCache = new RedisCache();
-
     let objects = await redisCache.recover<IObject[]>(
       'api-lost-and-found_OBJECTS_LIST',
     );

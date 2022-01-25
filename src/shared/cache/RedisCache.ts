@@ -33,5 +33,4 @@ class RedisCache {
   }
 }
 
-export { RedisCache };
-//export default new RedisCache();
+export default new RedisCache();
