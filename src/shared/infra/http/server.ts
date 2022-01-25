@@ -10,6 +10,8 @@ import uploadConfig from '@config/upload';
 
 import createConnection from '@shared/infra/typeorm';
 
+import rateLimiter from './middlewares/rateLimiter';
+
 import '@shared/container';
 
 createConnection();
@@ -17,6 +19,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(rateLimiter);
 
 app.use('/file', express.static(uploadConfig.directory));
 
