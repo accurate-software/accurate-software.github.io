@@ -1,3 +1,4 @@
+import { RedisCache } from '@shared/cache/RedisCache';
 import { inject, injectable } from 'tsyringe';
 import { ICreateObjectDTO } from '../domain/dtos/ICreateObjectDTO';
 import { IObject } from '../domain/models/IObject';
@@ -17,6 +18,8 @@ class CreateObjectService {
     user_id,
     category_id,
   }: ICreateObjectDTO): Promise<IObject> {
+    const redisCache = new RedisCache();
+
     const object = this.objectsRepository.create({
       name,
       comments,
@@ -24,6 +27,8 @@ class CreateObjectService {
       user_id,
       category_id,
     });
+
+    await redisCache.invalidate('api-lost-and-found_OBJECTS_LIST');
 
     return object;
   }

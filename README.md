@@ -4,7 +4,7 @@
 
 ## Funcionalidades do Sistema
 
-- Deve ser possível usuário se cadastrar, ler, atualizar e deletar seus dados pessoais. Visando também o controle sobre sua conta. Os usuários são dividios em usuários comuns com funcionalidades restritas para seu cadastro e usuário admnistrador com acesso a todas as funcionalidades do sistema. Os usuários comuns não poderam excluir suas contas.
+- Deve ser possível usuário se cadastrar, ler, atualizar e deletar seus dados pessoais. Visando também o controle sobre sua conta. Os usuários são dividios em usuários comuns com funcionalidades restritas para seu cadastro e usuário administrador com acesso a todas as funcionalidades do sistema. Os usuários comuns não poderam excluir suas contas.
 
 - Deve ser possível que usuário faça upload do seu avatar de usuário.
 
@@ -22,7 +22,7 @@
 
 - Deve ser possível que o usuário filtre todos os objetos disponíveis por categorias e nome.
 
-- Deve ser possível que o usuário administrador envie uma mensagem ao usuário que criou o objeto perdido, avisando-o que o objeto foi encontrado, com isso o objeto fica indisponível automaticamente. O dono pode se dirigir ao setor responsável para retirá-lo.
+- Deve ser possível que o usuário administrador envie uma mensagem ao usuário que criou o objeto perdido, avisando-o que o objeto foi encontrado, com isso o objeto ficará indisponível automaticamente. O dono pode se dirigir ao setor responsável para retirá-lo.
 
 - Deve ser possível a listagem de todos os objetos, antes de fazer o cadastro de usuário.
 
