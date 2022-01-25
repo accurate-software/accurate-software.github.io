@@ -10,7 +10,7 @@ import {
 import { Exclude } from 'class-transformer';
 
 import { v4 as uuidV4 } from 'uuid';
-import { ObjectLostFound } from '@modules/objects/infra/typeorm/entities/ObjectLostFound';
+import { ObjectLostFound } from '../../../../objects/infra/typeorm/entities/ObjectLostFound';
 
 @Entity('users')
 class User implements IUser {

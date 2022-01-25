@@ -13,7 +13,7 @@ import {
 
 import { v4 as uuidV4 } from 'uuid';
 import { TypeEnum } from './TypeEnum';
-import { User } from '@modules/users/infra/typeorm/entities/User';
+import { User } from '../../../../users/infra/typeorm/entities/User';
 
 @Entity('objects')
 class ObjectLostFound implements IObject {

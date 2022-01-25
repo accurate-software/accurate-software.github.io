@@ -10,6 +10,7 @@ class ObjectsFakeRepository implements IObjectsRepository {
     name,
     comments,
     type: TypeEnum,
+    user_id,
     category_id,
   }: ICreateObjectDTO): Promise<IObject> {
     const object = new ObjectLostFound();
@@ -18,6 +19,7 @@ class ObjectsFakeRepository implements IObjectsRepository {
       name,
       comments,
       type: TypeEnum,
+      user_id,
       category_id,
     });
 
@@ -45,6 +47,12 @@ class ObjectsFakeRepository implements IObjectsRepository {
     });
 
     return availableObjects;
+  }
+
+  async findById(id: string): Promise<IObject | undefined> {
+    const objects = this.objects.find(object => object.id === id);
+
+    return objects;
   }
 }
 

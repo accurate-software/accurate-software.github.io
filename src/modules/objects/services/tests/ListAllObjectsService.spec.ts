@@ -23,6 +23,7 @@ describe('List Objetcs', () => {
       name: 'Object',
       comments: 'Comments',
       type: TypeEnum.Found,
+      user_id: 'user_id',
       category_id: 'Category',
     });
 
