@@ -20,6 +20,7 @@ describe('Delete User', () => {
     const user = await createUserService.execute({
       name: 'Nome Test',
       email: 'test@test.com',
+      telephone: '99999999',
       password: '123456',
     });
 

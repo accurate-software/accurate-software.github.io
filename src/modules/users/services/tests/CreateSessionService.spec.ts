@@ -28,6 +28,7 @@ describe('Create Session', () => {
     const user = {
       name: 'Nome Test',
       email: 'test@test.com',
+      telephone: '99999999',
       password: '123456',
     };
 
@@ -54,6 +55,7 @@ describe('Create Session', () => {
     await usersFakeRepository.create({
       name: 'Nome Test',
       email: 'test@test.com',
+      telephone: '99999999',
       password: '123456',
     });
 

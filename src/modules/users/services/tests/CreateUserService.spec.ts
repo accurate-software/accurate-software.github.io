@@ -21,6 +21,7 @@ describe('Create User', () => {
     const createUser = await createUserService.execute({
       name: 'Nome Test',
       email: 'test@test.com',
+      telephone: '99999999',
       password: '123456',
     });
 
@@ -31,12 +32,14 @@ describe('Create User', () => {
     const user = {
       name: 'Nome Test',
       email: 'test@test.com',
+      telephone: '99999999',
       password: '123456',
     };
 
     await createUserService.execute({
       name: user.name,
       email: user.email,
+      telephone: user.telephone,
       password: user.password,
     });
 
@@ -44,6 +47,7 @@ describe('Create User', () => {
       createUserService.execute({
         name: user.name,
         email: user.email,
+        telephone: user.telephone,
         password: user.password,
       }),
     ).rejects.toBeInstanceOf(AppError);
