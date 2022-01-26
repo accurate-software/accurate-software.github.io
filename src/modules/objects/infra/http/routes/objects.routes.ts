@@ -49,6 +49,13 @@ objectsRoutes.post(
   '/message',
   ensureAuthenticated,
   ensureAdmin,
+  celebrate({
+    [Segments.BODY]: {
+      user_id: Joi.string().required().uuid(),
+      object_id: Joi.string().required().uuid(),
+      message: Joi.string().required(),
+    },
+  }),
   createObjectMessageController.handle,
 );
 

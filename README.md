@@ -1,6 +1,6 @@
 ## Objetivo Geral
 
-- Desenvolvimento de uma API Restful para realizar o gerenciamento de objetos achados e perdidos.
+- API Restful para realizar o gerenciamento de objetos achados e perdidos.
 
 ## Funcionalidades do Sistema
 
@@ -28,7 +28,7 @@
 
 ## Ferramentas e Tecnologias Utilizadas
 
-- Conceitos de boas práticas e qualidade no código, usando Design Patterns, Domain Driven Design (DDD) e Princípios SOLID, além de introduzir Testes Automatizados com o framework Jest.
+- Conceitos de boas práticas e qualidade no código, usando Design Patterns, Clean Architecture, Domain Driven Design (DDD) e Princípios SOLID, além de introduzir Testes Automatizados com o framework Jest e autenticação via JWT Token.
 
 - Node.js com Typescript;
 
@@ -41,3 +41,7 @@
 - Redis;
 
 - Docker;
+
+- Celebrate Validation;
+
+- Rate Limiter;
