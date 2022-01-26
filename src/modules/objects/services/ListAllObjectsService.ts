@@ -1,4 +1,4 @@
-import redisCache from '@shared/cache/RedisCache';
+import redisCache from '../../../shared/cache/RedisCache';
 import { inject, injectable } from 'tsyringe';
 import { IObject } from '../domain/models/IObject';
 import { IObjectsRepository } from '../domain/repositories/IObjectsRepository';

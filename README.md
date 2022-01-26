@@ -1,6 +1,6 @@
 ## Objetivo Geral
 
-- Desenvolver um software para realizar o gerenciamento de objetos achados e perdidos.
+- Desenvolvimento de uma API Restful para realizar o gerenciamento de objetos achados e perdidos.
 
 ## Funcionalidades do Sistema
 
@@ -27,3 +27,17 @@
 - Deve ser possível a listagem de todos os objetos, antes de fazer o cadastro de usuário.
 
 ## Ferramentas e Tecnologias Utilizadas
+
+- Conceitos de boas práticas e qualidade no código, usando Design Patterns, Domain Driven Design (DDD) e Princípios SOLID, além de introduzir Testes Automatizados com o framework Jest.
+
+- Node.js com Typescript;
+
+- Express;
+
+- TypeORM;
+
+- PostgreSQL;
+
+- Redis;
+
+- Docker;
