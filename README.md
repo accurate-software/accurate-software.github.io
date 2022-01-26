@@ -1,48 +1,47 @@
-## Accurate Software
+## Objetivo Geral
 
-<img src="https://accurate.com.br/wp-content/uploads/2020/06/logo-accurate-300.svg" alt="drawing" width="200"/> 
+- API Restful para realizar o gerenciamento de objetos achados e perdidos.
 
-Seja bem-vindo a [Accurate Software](https://accurate.com.br).
+## Funcionalidades do Sistema
 
-Temos diversas vagas para desenvolvedores: Frontend, Backend e Fullstack!
+- Deve ser possível usuário se cadastrar, ler, atualizar e deletar seus dados pessoais. Visando também o controle sobre sua conta. Os usuários são dividios em usuários comuns com funcionalidades restritas para seu cadastro e usuário administrador com acesso a todas as funcionalidades do sistema. Os usuários comuns não poderam excluir suas contas.
 
-> Para conhecer melhor os candidatos, preparamos um desafio técnico. Não se preocupe em cumprir todos os requisitos propostos no desafio, este teste visa avaliar a sua capacidade de resolução de problemas. Abaixo serão apresentados dois desafios direcionados aos perfis frontend e backend, caso o seu perfil for voltado para fullstack fique a vontade em nos enviar uma solução completa abordando tanto frontend quanto backend!
+- Deve ser possível que usuário faça upload do seu avatar de usuário.
 
-## Instruções
+- Deve ser possível que usuário faça a recuperação de senha informando o email que será enviado um token de autorização.
 
-1. Para começar o desafio, realize um fork no repositório: https://github.com/accurate-software/accurate-software.github.io
+- Deve ser possível que usuário logado faça a troca de senha.
 
-2. O desafio deverá set commitado no fork.
+- Deve ser possível que usuário administrador cadastre, exclua, atualiza e liste categorias de objetos.
 
-3. Após a finalização do desafio, solicite um pull request do fork no nosso repositório ;)
+- Deve ser possível que usuário administrador liste todos os usuários cadastrados.
 
-### Desafio Frontend
+- Deve ser possível que o usuário, desde que logado no sistema, cadastrar um objeto perdido e/ou encontrado. O usuário administrador tem acesso pleno aos objetos criados por outros usuários.
 
-O seu desafio é realizar um desenvolvimento de uma aplicação frontend que compra os requisitos:
+- Deve ser possível que o usuário faça upload de fotos dos objetos perdidos e/ou encontrados.
 
-+ Consumo de API REST
-+ CRUD ou listagem de algum recurso da API
-+ Utilizar alguma API pública, podendo ser alguma do site: https://public-apis.xyz/
+- Deve ser possível que o usuário filtre todos os objetos disponíveis por categorias e nome.
 
-Vamos avaliar a sua capacidade como desenvolvedor frontend, observando os critérios:
+- Deve ser possível que o usuário administrador envie uma mensagem ao usuário que criou o objeto perdido, avisando-o que o objeto foi encontrado, com isso o objeto ficará indisponível automaticamente. O dono pode se dirigir ao setor responsável para retirá-lo.
 
-+ Uso semântico do HTML
-+ Estruturação do layout e tags CSS
-+ Layout acessível e responsivo
-+ Utilização de frameworks da atualizade, como: React, Vue, Angular ou algum outro de sua preferência.
-+ Lembre-se de documentar a solução com um README.MD :)
+- Deve ser possível a listagem de todos os objetos, antes de fazer o cadastro de usuário.
 
-### Desafio Backend
+## Ferramentas e Tecnologias Utilizadas
 
-O seu desafio é realizar um desenvolvimento de uma API Rest para um site de achados e perfidos. Sua API deve conter as seguintes funcionalidades:
+- Conceitos de boas práticas e qualidade no código, usando Design Patterns, Clean Architecture, Domain Driven Design (DDD) e Princípios SOLID, além de introduzir Testes Automatizados com o framework Jest e autenticação via JWT Token.
 
-+ Cadastro de um "Achado"/"Perdido"
-+ Atualização de histórico de um "Achado"/"Perdido"
-+ Busca com opção de filtros, como por exemplo: Categoria
-+ Relatório de cruzamento de informações "Achados"/"Perdidos", dado um categoria e um raio.
+- Node.js com Typescript;
 
-Fique a vontade para usar a linguagem e framework de sua preferência, como: Java, C# e Node! Porém se atente aos seguintes pontos:
+- Express;
 
-+ Tratamento de erros e exceções
-+ Clareza e clean code no desenvolvimento da solução
-+ Documentação da solução - README.MD :)
+- TypeORM;
+
+- PostgreSQL;
+
+- Redis;
+
+- Docker;
+
+- Celebrate Validation;
+
+- Rate Limiter;
