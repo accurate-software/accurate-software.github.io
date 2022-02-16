@@ -1,0 +1,66 @@
+<div>
+  <table class="table table-striped table-bordered table-hover"></table>
+
+  <h3 class="p-3 text-center bg-primary">
+    Teste Para trainee Desenvolvedor Front End <br />
+    Accurate software
+  </h3>
+
+  <!-- Para chamar o Api -->
+  <main class="container text-center">
+    <div class="bg-light p-5 rounded">
+      <h1>Clique de chamada do API</h1>
+      <p class="lead">
+        Ao acessar o Click veremos demonstração da API chamada!
+        <!-- Click de botão -->
+        <ng-template [ngIf]="isOpen">
+          <div>
+            <h1>
+              {{ emailFinder.data.first_name }}
+              {{ emailFinder.data.last_name }}
+            </h1>
+            <h4>Email:{{ emailFinder.data.email }}</h4>
+          </div>
+          <h3> Sources Array: </h3>
+          <div *ngFor="let source of emailFinder.data.sources">
+            <h5>{{ source.domain }}</h5>
+          </div>
+        </ng-template>
+      </p>
+
+      <hr />
+      <a
+        (click)="loadHome()"
+        class="btn btn-lg btn-primary"
+        href="javascript:void(0)"
+        >Click</a
+      >
+    </div>
+  </main>
+  <html>
+    <head>
+      <!-- bootstrap css -->
+      <link
+        href="//netdna.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        rel="stylesheet"
+      />
+    </head>
+    <body>
+      <!-- credits -->
+      <div class="text-center">
+        <p>
+          <a href="https://github.com/Theulislee" target="_top"
+            >GitHub - Matheus</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://www.linkedin.com/in/matheus-magalhaes-311695203/"
+            target="_top"
+            >Linkedin - Matheus Magalhães</a
+          >
+        </p>
+      </div>
+    </body>
+  </html>
+</div>
