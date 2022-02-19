@@ -8,10 +8,10 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 public class FiltroDTO {
-    @NotNull
+    @NotNull(message = "{campo.latitude.obrigatorio}")
     private double latitude;
-    @NotNull
+    @NotNull(message = "{campo.longitude.obrigatorio}")
     private double longitude;
-    @NotNull
+    @NotNull(message = "{campo.distancia.obrigatorio}")
     private double distancia;
 }
