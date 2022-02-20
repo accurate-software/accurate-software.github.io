@@ -29,7 +29,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("Achados e Perdido API")
+                .title("Achados e Perdidos API")
                 .description("Desafio da Accurate Software.")
                 .version("1.0")
                 .contact(contact())
