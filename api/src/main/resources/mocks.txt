@@ -1,0 +1,129 @@
+/* Jales -> Latitude: -20.2682, Longitude: -50.5489 */
+
+{
+  "nome"  : "Carteira de Motorista Sr Taylson M Martinez",
+  "categoria" : "DOCUMENTOS",
+  "status" : "PERDIDO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-9999",
+  "cidade" : "Jales-SP",
+  "latitude" : -20.2682,
+  "longitude" : -50.5489
+}
+
+{
+  "nome"  : "RG Andreia ",
+  "categoria" : "DOCUMENTOS",
+  "status" : "PERDIDO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-9999",
+  "cidade" : "Jales-SP",
+  "latitude" : -20.2682,
+  "longitude" : -50.5489
+}
+
+{
+  "nome"  : "IPHONE 7S encontrado no centro",
+  "categoria" : "CELULAR",
+  "status" : "ACHADO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-9999",
+  "cidade" : "Jales-SP",
+  "latitude" : -20.2682,
+  "longitude" : -50.5489
+}
+
+{
+  "nome"  : "IPHONE 12S perdido na IBV",
+  "categoria" : "CELULAR",
+  "status" : "PERDIDO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-9999",
+  "cidade" : "Jales-SP",
+  "latitude" : -20.2682,
+  "longitude" : -50.5489
+}
+
+/* Votuporanga -> Latitude: -20.4203, Longitude: -49.9783 */
+
+{
+  "nome"  : "Xiaomi perdido no Centro",
+  "categoria" : "CELULAR",
+  "status" : "PERDIDO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-8888",
+  "cidade" : "Votuporanga-SP",
+  "latitude" : -20.4203,
+  "longitude" : -49.9783
+}
+{
+  "nome"  : "Iphone MAX perdido no Centro",
+  "categoria" : "CELULAR",
+  "status" : "PERDIDO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-8888",
+  "cidade" : "Votuporanga-SP",
+  "latitude" : -20.4203,
+  "longitude" : -49.9783
+}
+{
+  "nome"  : "Conjunto de Chaves(Fiat) encontrado no centro",
+  "categoria" : "CHAVES",
+  "status" : "ACHADO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-8888",
+  "cidade" : "Votuporanga-SP",
+  "latitude" : -20.4203,
+  "longitude" : -49.9783
+}
+{
+  "nome"  : "Conjunto de Chaves(Casa) encontrado na Rodoviaria",
+  "categoria" : "CHAVES",
+  "status" : "ACHADO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-8888",
+  "cidade" : "Votuporanga-SP",
+  "latitude" : -20.4203,
+  "longitude" : -49.9783
+}
+
+{
+  "nome"  : "Bolsa de Couro no centro",
+  "categoria" : "OUTROS",
+  "status" : "ACHADO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-8888",
+  "cidade" : "Votuporanga-SP",
+  "latitude" : -20.4203,
+  "longitude" : -49.9783
+}
+
+/* SJRP -> Latitude: -20.8202, Longitude: -49.3797 */
+{
+  "nome"  : "Livro Rapido e Devagar encontrado no Rio Preto Shopping",
+  "categoria" : "OUTROS",
+  "status" : "ACHADO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-6666",
+  "cidade" : "SJRP-SP",
+  "latitude" : -20.8202,
+  "longitude" : -49.3797
+}
+
+{
+  "nome"  : "Bolsa perdida no Centro",
+  "categoria" : "OUTROS",
+  "status" : "PERDIDO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-2222",
+  "cidade" : "SJRP-SP",
+  "latitude" : -20.8202,
+  "longitude" : -49.3797
+}
+{
+  "nome"  : "Iphone MAX perdido no Centro",
+  "categoria" : "CELULAR",
+  "status" : "PERDIDO",
+  "responsavel" : "Entrar em contato pelo tel(17)99999-2222",
+  "cidade" : "SJRP-SP",
+  "latitude" : -20.8202,
+  "longitude" : -49.3797
+}
+{
+  "nome"  : "Iphone MAX ROSA",
+  "categoria" : "CELULAR",
+  "status" : "PERDIDO",
+  "responsavel" : "Entrar em contato pelo tel(17)2222-2222",
+  "cidade" : "SJRP-SP",
+  "latitude" : -20.8202,
+  "longitude" : -49.3797
+}
