@@ -5,6 +5,7 @@ import com.taylsonmartinez.api.models.Item;
 import com.taylsonmartinez.api.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,8 +39,10 @@ public class ItemService {
     }
 
     @Transactional
-    public List<Item> findItemWithInDistance(FiltroDTO filtro){
-       return repository.findItemWithInDistance(filtro.getLatitude(), filtro.getLongitude(), filtro.getDistancia());
+    public List<Item> findFilter(FiltroDTO filtro){
+        if (ObjectUtils.isEmpty(filtro.getCategoria()))
+            return repository.findItemWithInDistance(filtro.getLatitude(), filtro.getLongitude(), filtro.getDistancia());
+        return repository.findItemWithInDistanceAndCategory(filtro.getLatitude(), filtro.getLongitude(), filtro.getDistancia(), filtro.getCategoria().toString());
     }
 
 }

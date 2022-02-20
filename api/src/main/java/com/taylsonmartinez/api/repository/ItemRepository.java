@@ -1,5 +1,6 @@
 package com.taylsonmartinez.api.repository;
 
+import com.taylsonmartinez.api.enums.Categoria;
 import com.taylsonmartinez.api.models.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +16,8 @@ public interface ItemRepository extends JpaRepository<Item, UUID> {
 
     @Query(value = "SELECT * FROM Item s WHERE " + HAVERSINE_PART + " < :distancia ORDER BY "+ HAVERSINE_PART + " DESC",nativeQuery = true)
     List<Item> findItemWithInDistance(@Param("latitude") double latitude, @Param("longitude") double longitude, @Param("distancia") double distanceWithInKM );
+
+    @Query(value = "SELECT * FROM Item s WHERE " + HAVERSINE_PART + " < :distancia and s.categoria = :categoria ORDER BY "+ HAVERSINE_PART + " DESC",nativeQuery = true)
+    List<Item> findItemWithInDistanceAndCategory(@Param("latitude") double latitude, @Param("longitude") double longitude, @Param("distancia") double distanceWithInKM,  @Param("categoria") String categoria );
 
 }

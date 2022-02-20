@@ -29,9 +29,9 @@ public class ItemController {
         return service.save(item);
     }
 
-    @PostMapping("/itens/distancia")
+    @GetMapping("/itens/search")
     public List<Item> listFilter(@RequestBody @Valid FiltroDTO filtro){
-        return service.findItemWithInDistance(filtro);
+        return service.findFilter(filtro);
     }
 
     @GetMapping("/itens")

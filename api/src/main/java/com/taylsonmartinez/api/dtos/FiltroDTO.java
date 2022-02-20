@@ -1,5 +1,6 @@
 package com.taylsonmartinez.api.dtos;
 
+import com.taylsonmartinez.api.enums.Categoria;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,4 +15,5 @@ public class FiltroDTO {
     private double longitude;
     @NotNull(message = "{campo.distancia.obrigatorio}")
     private double distancia;
+    private Categoria categoria;
 }
