@@ -1,6 +1,7 @@
 package com.taylsonmartinez.api.services;
 
 import com.taylsonmartinez.api.dtos.FiltroDTO;
+import com.taylsonmartinez.api.exception.RegraNegocioException;
 import com.taylsonmartinez.api.models.Item;
 import com.taylsonmartinez.api.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,8 @@ public class ItemService {
     }
 
     public Optional<Item> findById(UUID id) {
-        return repository.findById(id);
+        return Optional.ofNullable(repository.findById(id).orElseThrow(() -> new RegraNegocioException("Código de Item inválido.")
+        ));
     }
 
     @Transactional
