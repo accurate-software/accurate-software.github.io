@@ -20,4 +20,7 @@ public interface ItemRepository extends JpaRepository<Item, UUID> {
     @Query(value = "SELECT * FROM Item s WHERE " + HAVERSINE_PART + " < :distancia and s.categoria = :categoria ORDER BY "+ HAVERSINE_PART + " DESC",nativeQuery = true)
     List<Item> findItemWithInDistanceAndCategory(@Param("latitude") double latitude, @Param("longitude") double longitude, @Param("distancia") double distanceWithInKM,  @Param("categoria") String categoria );
 
+    @Query(value = "SELECT * FROM Item s WHERE s.categoria = :categoria",nativeQuery = true)
+    List<Item> findItemWithCategory(@Param("categoria") String categoria );
+
 }

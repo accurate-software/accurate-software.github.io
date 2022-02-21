@@ -1,6 +1,7 @@
 package com.taylsonmartinez.api.services;
 
 import com.taylsonmartinez.api.dtos.FiltroDTO;
+import com.taylsonmartinez.api.enums.Categoria;
 import com.taylsonmartinez.api.exception.RegraNegocioException;
 import com.taylsonmartinez.api.models.Item;
 import com.taylsonmartinez.api.repository.ItemRepository;
@@ -47,4 +48,8 @@ public class ItemService {
         return repository.findItemWithInDistanceAndCategory(filtro.getLatitude(), filtro.getLongitude(), filtro.getDistancia(), filtro.getCategoria().toString());
     }
 
+    @Transactional
+    public List<Item> findCategory(Categoria category) {
+        return repository.findItemWithCategory(category.toString());
+    }
 }

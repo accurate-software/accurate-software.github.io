@@ -1,6 +1,7 @@
 package com.taylsonmartinez.api.controllers;
 
 import com.taylsonmartinez.api.dtos.FiltroDTO;
+import com.taylsonmartinez.api.enums.Categoria;
 import com.taylsonmartinez.api.models.Item;
 import com.taylsonmartinez.api.services.ItemService;
 import io.swagger.annotations.ApiOperation;
@@ -26,14 +27,21 @@ public class ItemController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value="Salva o item.")
     public Item save(@RequestBody @Valid Item item ){
         return service.save(item);
     }
 
     @GetMapping("/search")
-    @ApiOperation(value="Relatório de cruzamento com filtro avançado. (Categoria e/ou um Raio de Kms")
+    @ApiOperation(value="Relatório de cruzamento com filtro avançado. (Categoria e/ou um Raio de Kms.")
     public List<Item> listFilter(@RequestBody @Valid FiltroDTO filtro){
         return service.findFilter(filtro);
+    }
+
+    @GetMapping("/category/{category}")
+    @ApiOperation(value="Retorna os itens pela categoria.")
+    public List<Item> findWithCategory(@PathVariable(value="category") Categoria categoria){
+        return service.findCategory(categoria);
     }
 
     @GetMapping
