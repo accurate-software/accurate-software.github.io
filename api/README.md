@@ -63,6 +63,9 @@ mvn spring-boot:run
 
 > Note: não há interface do usuário para este aplicativo; ele só expõe endpoints REST
 
+## Postman
+
+* [API](https://www.getpostman.com/collections/13e894fa8f3be025a8c6)
 
 Swagger
 ---
@@ -78,3 +81,4 @@ API Endpoints
 ![Models](https://github.com/taylsonmartinez/accurate-software.github.io/blob/main/api/modelos.png)
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)
+
