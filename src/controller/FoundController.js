@@ -97,7 +97,7 @@ module.exports = {
                 error: err
             });
      })
-    console.log(_id)
+    
     if (founds) {
 
       await Found.deleteOne({ _id })
