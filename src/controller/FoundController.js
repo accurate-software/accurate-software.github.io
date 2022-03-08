@@ -90,15 +90,15 @@ module.exports = {
     const { _id } = req.params
 
     //Verifica se o id do usuario existe
-    let dev = await Found.findOne({ _id })
+    let founds = await Found.findOne({ _id })
      .catch((err) => {
         return res.status(404).json({
                 msg: "Objeto não encontrado",
                 error: err
             });
      })
-    
-    if (dev) {
+    console.log(_id)
+    if (founds) {
 
       await Found.deleteOne({ _id })
       .then((data) => {
