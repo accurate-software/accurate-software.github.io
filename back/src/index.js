@@ -12,11 +12,11 @@ mongoose.connect(
   }
 );
 
+var cors = require('cors');
+
+app.use(cors({ origin: 'http://localhost:8080' }));
+
 app.use(express.json());
-// Tipos de parametros
-// Query params: request.query (FIltros, ordenação, paginação) ...
-// Routes params: request.params (ex: /user/:id)
-// Body:
 
 app.use(routes);
 

@@ -8,8 +8,10 @@ const FoundSchema = new mongoose.Schema({
   description: String,
   status: Boolean,
   categories: [String],
-  location: {
-    city: String,
+  street: String,
+  city: String,
+  postalCode: String,
+  location: {        
     type: PointSchema,
     index: "2dsphere",
   },

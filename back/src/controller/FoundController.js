@@ -8,8 +8,23 @@ module.exports = {
   * Método de listagem de achados/perdidos
   */
   async index(req, res) {
-    const founds = await Found.find(); //Retorna todos os achados/perdidos
 
+    const { _id } = req.params
+
+    let founds = [];
+
+    if (_id) {
+      founds = await Found.findOne({ _id })
+      .catch((err) => {
+          return res.status(404).json({
+                  msg: "Objeto não encontrado",
+                  error: err
+              });
+      })
+    } else {
+      founds = await Found.find(); //Retorna todos os achados/perdidos
+    }
+  
     return res.json(founds);
   },
 
@@ -17,12 +32,11 @@ module.exports = {
   * Método de inclusão de achados/perdidos
   */
   async store(req, res) {
-    const { my_name, item_name, cel, description, categories, city, latitude, longitude } = req.body;
+    const { my_name, item_name, cel, description, categories, street, city, postalCode, latitude, longitude } = req.body;
 
     const categoriesArray = parseStringAsArray(categories);
 
-    const location = {
-      city: city,
+    const location = {  
       type: "Point",
       coordinates: [longitude, latitude],
     };
@@ -34,6 +48,9 @@ module.exports = {
       description,
       status: 0,
       categories: categoriesArray,
+      street: street,
+      city: city,
+      postalCode: postalCode,
       location,
     });
 
@@ -45,7 +62,7 @@ module.exports = {
   */
   async update(req, res) {
 
-    const { _id, my_name, item_name, cel, description, categories, city, latitude, longitude } = req.body; //Obtem objetos do payload
+    const { _id, my_name, item_name, cel, description, categories, street, city, postalCode, latitude, longitude } = req.body; //Obtem objetos do payload
     
     await Found.findOne({ _id }) //Verifica se o id do usuario existe
      .catch((err) => {
@@ -59,8 +76,7 @@ module.exports = {
 
     const filter = { _id }; //Variavel para filtrar o id do achado/perdido
 
-    const location = { //Tratativa para as coordenadas
-      city: city,
+    const location = { //Tratativa para as coordenadas     
       type: "Point",
       coordinates: [longitude, latitude]
     };
@@ -71,6 +87,9 @@ module.exports = {
       cel,
       description,
       categories: categoriesArray,
+      street: street,
+      city: city,
+      postalCode: postalCode,
       location
     };
 
