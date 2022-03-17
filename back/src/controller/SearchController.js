@@ -5,26 +5,65 @@ const parseStringAsArray = require("../utils/parseStringAsArray");
 
 module.exports = {
   async index(req, res) {
-    const { item_name, city, status, latitude, longitude, categories } = req.query;
+    const { my_name, cel, item_name, street, city, postalCode, status, latitude, longitude, maxDistance, categories } = req.query;
 
-    const categoriesArray = parseStringAsArray(categories);
+    
+    let objFind = {};
 
-    const founds = await Found.find({
-      item_name,
-      status,
-      categories: {
-        $in: categoriesArray,
-      },
-      location: {
+    if (my_name.length > 0 || my_name != "") {
+      objFind['my_name'] = my_name;
+    }
+
+    if (cel.length > 0 || cel != "") {
+      objFind['cel'] = cel;
+    }
+
+    if (item_name.length > 0 || item_name != "") {
+      objFind['item_name'] = item_name;
+    }
+
+    if (street.length > 0 || street != "") {
+      objFind['street'] = street;
+    }
+
+    if (city.length > 0 || city != "") {
+      objFind['city'] = city;
+    }
+
+    if (postalCode.length > 0 || postalCode != "") {
+      objFind['postalCode'] = postalCode;
+    }
+
+    if (status.length > 0 || status != "") {
+      objFind['status'] = status;
+    }
+
+    if (latitude.length > 0 || latitude != "" && longitude.length > 0 || longitude != "") {
+      let local = {
         $near: {
-          $geometry: {
-            city: city,
-            type: "Point",
-            coordinates: [longitude, latitude],
+            $geometry: {         
+              type: "Point",
+              coordinates: [longitude, latitude],
+            },
+            $maxDistance: (maxDistance * 1000) // maxDistance é calculado em metros
           },
-          $maxDistance: 10000,
-        },
-      },
+      };
+      objFind['location'] = local
+    }
+
+    if (categories.length > 0  || categories != "") {
+      const categoriesArray = parseStringAsArray(categories);
+
+      objFind['categories'] = categoriesArray;
+    }
+
+    const founds = await Found.find(
+      objFind
+    ).catch((err) => {
+      return res.status(404).json({
+              msg: "Ocorreu um erro.",
+              error: err
+          });
     });
 
     return res.json({ founds });
