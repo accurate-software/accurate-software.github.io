@@ -62,7 +62,7 @@ module.exports = {
   */
   async update(req, res) {
 
-    const { _id, my_name, item_name, cel, description, categories, street, city, postalCode, latitude, longitude } = req.body; //Obtem objetos do payload
+    const { _id, my_name, item_name, cel, description, categories, street, city, postalCode, latitude, longitude, status } = req.body; //Obtem objetos do payload
     
     await Found.findOne({ _id }) //Verifica se o id do usuario existe
      .catch((err) => {
@@ -90,7 +90,8 @@ module.exports = {
       street: street,
       city: city,
       postalCode: postalCode,
-      location
+      location,
+      status
     };
 
     let found = await Found.findOneAndUpdate(filter, update, { //Procura pelo achado/perdido e faz o update na linha
