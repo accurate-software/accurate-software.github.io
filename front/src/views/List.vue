@@ -12,9 +12,20 @@
 
     <div v-for="(found, index) in founds" :key="index">
       <b-card :title="found.subject" class="mb-3">
-        <b-card-title
-          ><h4>{{ found.item_name }}</h4></b-card-title
-        >
+        <div class="d-flex flex-column-reverse">
+          <b-card-title
+            ><h4 class="d-flex flex-column">
+              {{ found.item_name }}
+            </h4></b-card-title
+          >
+          <div v-if="found.status == 0" class="d-flex justify-content-end">
+            <b-badge variant="danger">Perdido</b-badge>
+          </div>
+
+          <div v-if="found.status == 1" class="d-flex justify-content-end">
+            <b-badge variant="success">Encontrado</b-badge>
+          </div>
+        </div>
         <hr />
 
         <b-card-text>

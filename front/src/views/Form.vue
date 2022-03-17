@@ -151,8 +151,32 @@
               </b-form-group>
             </b-col>
 
+            <b-col lg="6">
+              <b-form-group
+                label="Qual o status do item?"
+                v-slot="{ ariaDescribedby }"
+              >
+                <b-form-radio
+                  v-model="founds.status"
+                  :aria-describedby="ariaDescribedby"
+                  name="status"
+                  value="0"
+                  >Perdido</b-form-radio
+                >
+                <b-form-radio
+                  v-model="founds.status"
+                  :aria-describedby="ariaDescribedby"
+                  name="status"
+                  value="1"
+                  >Encontrado</b-form-radio
+                >
+              </b-form-group>
+            </b-col>
+
+            <b-col lg="6"></b-col>
+
             <b-col>
-              <div>
+              <div lg="12">
                 <label class="typo__label">Categorias(*)</label>
                 <multiselect
                   v-model="value"
@@ -203,6 +227,7 @@ export default {
         street: "",
         city: "",
         postalCode: "",
+        status: "",
         location: {
           coordinates: {
             0: "",
@@ -230,6 +255,12 @@ export default {
       //Se houver id, lista os dados e preenche os inputs
       Founds.listById(this._id).then((res) => {
         this.founds = res.data;
+
+        if (this.founds.status == false) {
+          this.founds.status = 0;
+        } else {
+          this.founds.status = 1;
+        }
 
         //Prenche o select de categorias
         let arr_categories = [];
@@ -279,6 +310,7 @@ export default {
         categories: this.founds.categories.replace(/[\\"]/g, ""),
         street: this.founds.street,
         city: this.founds.city,
+        status: this.founds.status,
         postalCode: this.founds.postalCode,
         latitude: this.founds.location.coordinates[1],
         longitude: this.founds.location.coordinates[0],

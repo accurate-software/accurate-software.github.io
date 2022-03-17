@@ -243,7 +243,7 @@ export default {
       ],
       categories: "",
       sliderCustomzie: {
-        val: 10,
+        val: 300,
         lineHeight: 20,
         processStyle: {
           backgroundColor: "#42b883",
