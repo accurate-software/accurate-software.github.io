@@ -113,17 +113,18 @@
             </b-col>
 
             <b-col lg="12">
-              <vue-slide-bar
-                v-model="sliderCustomzie.val"
-                :min="1"
-                :max="10000"
-                :processStyle="sliderCustomzie.processStyle"
-                :lineHeight="sliderCustomzie.lineHeight"
-                :tooltipStyles="sliderCustomzie.tooltipStyles"
-              >
-              </vue-slide-bar>
+              <div class="form-group">
+                <input
+                  type="range"
+                  min="10"
+                  max="10000"
+                  v-model="founds.maxDistance"
+                  class="form-control-range"
+                  id="formControlRange"
+                />
+              </div>
               <div>
-                Buscar em um raio de <b>{{ sliderCustomzie.val }} Km</b>
+                Buscar em um raio de <b>{{ founds.maxDistance }} Km</b>
               </div>
               <small
                 >Para uma busca em um raio maior de distância, use o slide de
@@ -206,13 +207,11 @@
 import Founds from "../services/founds";
 import axios from "axios";
 import Multiselect from "vue-multiselect";
-import VueSlideBar from "vue-slide-bar";
 
 export default {
   name: "SearchModal",
   components: {
     Multiselect,
-    VueSlideBar,
   },
   props: {},
   data() {
@@ -227,6 +226,7 @@ export default {
         city: "",
         postalCode: "",
         status: 0,
+        maxDistance: 10,
         location: {
           coordinates: {
             0: "",
@@ -241,21 +241,26 @@ export default {
         { name: "Objetos", code: "2" },
         { name: "Pets", code: "3" },
       ],
-      categories: "",
-      sliderCustomzie: {
-        val: 300,
-        lineHeight: 20,
-        processStyle: {
-          backgroundColor: "#42b883",
-        },
-        tooltipStyles: {
-          backgroundColor: "#42b883",
-          borderColor: "#42b883",
-        },
-      },
     };
   },
 
+  watch: {
+    value: function (val) {
+      //Trata o campo value que é um objeto para inserir uma string no campo founds.categories
+      let result = [];
+
+      val.map((cat, index) => {
+        result.push(cat.name);
+      });
+
+      result = JSON.stringify(result);
+
+      result = result.replace("[", "");
+      result = result.replace("]", "");
+
+      this.founds.categories = result;
+    },
+  },
   methods: {
     addTag(newTag) {
       const tag = {
@@ -278,15 +283,18 @@ export default {
         postalCode: this.founds.postalCode,
         latitude: this.founds.location.coordinates[1],
         longitude: this.founds.location.coordinates[0],
-        maxDistance: this.sliderCustomzie.val,
-        status: 0,
+        maxDistance: this.founds.maxDistance,
+        status: this.founds.status,
       };
 
       axios
         .get("http://localhost:3333/search", { params: dataPost })
         .then((res) => {
           if (res.status == 200) {
-            console.log(res);
+            //Envia os dados para o componente List
+            if (res.data) {
+              this.$emit("search", res.data);
+            }
           } else {
             alert("Ops! Aconteu algum erro.");
           }

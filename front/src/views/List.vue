@@ -1,13 +1,28 @@
 <template>
   <div class="container mt-2">
-    <b-row>
-      <b-col lg="12">
-        <div class="float-right mb-3 mt-2">
-          <b-button v-b-modal.search-modal variant="outline-primary"
-            >Busca Avançada</b-button
-          >
-        </div>
-      </b-col>
+    <b-row class="m-0">
+      <div class="mb-3 mt-2">
+        <b-button
+          class="btn-sm"
+          v-b-modal.search-modal
+          variant="outline-primary"
+          >Busca Avançada</b-button
+        >
+      </div>
+
+      <div class="ml-2 mb-3 mt-2">
+        <b-button class="btn-sm" variant="outline-primary" @click="clearSearch"
+          >Limpar Busca</b-button
+        >
+      </div>
+
+      <div class="ml-2 mb-3 mt-2">
+        <b-link href="/form"
+          ><b-button class="btn-sm" variant="success"
+            >Nova Publicação</b-button
+          ></b-link
+        >
+      </div>
     </b-row>
 
     <div v-for="(found, index) in founds" :key="index">
@@ -43,6 +58,7 @@
 
         <b-card-text>{{ found.description }}</b-card-text>
 
+        <b-card-text><b>Cidade:</b> {{ found.city }}</b-card-text>
         <hr />
         <b-card-text class="float-left author"
           ><i>Por: {{ found.my_name }}</i></b-card-text
@@ -84,6 +100,7 @@
     <div>
       <b-modal
         id="search-modal"
+        ref="search-modal"
         size="xl"
         class="d-block text-center"
         hide-footer
@@ -91,7 +108,7 @@
         <template #modal-title class="d-block text-center"
           >Busca Avançada</template
         >
-        <SearchModal />
+        <SearchModal @search="search" />
       </b-modal>
     </div>
   </div>
@@ -142,6 +159,17 @@ export default {
         } else {
           alert("Ops! Aconteu algum erro.");
         }
+      });
+    },
+    search(e) {
+      //Recebe os dados de da busca avançada
+      this.founds = e.founds;
+      this.$refs["search-modal"].hide();
+    },
+
+    clearSearch() {
+      Founds.list().then((res) => {
+        this.founds = res.data;
       });
     },
   },
