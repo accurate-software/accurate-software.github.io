@@ -15,12 +15,7 @@ mongoose.connect(
 );
 
 //Configurações do Swagger
-// const swaggerOptions = {
-//   swaggerDefinition: {},
-//   apis: [`${__dirname}/swagger.js`]
-// }
-
-const swaggerDocument = require("./sw.json");
+const swaggerDocument = require("./swagger.json");
   
 //const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -28,7 +23,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 var cors = require('cors');
 
 app.use(cors({ origin: 'http://localhost:8080' }));
-//app.use(cors({ origin: 'http://localhost:3333' }));
 
 app.use(express.json());
 
