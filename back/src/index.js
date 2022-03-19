@@ -28,7 +28,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 var cors = require('cors');
 
 app.use(cors({ origin: 'http://localhost:8080' }));
-app.use(cors({ origin: 'http://localhost:3333' }));
+//app.use(cors({ origin: 'http://localhost:3333' }));
 
 app.use(express.json());
 
