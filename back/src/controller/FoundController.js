@@ -4,9 +4,7 @@ const parseStringAsArray = require("../utils/parseStringAsArray");
 
 module.exports = {
 
-  /*
-  * Método de listagem de achados/perdidos
-  */
+  // Método de listagem de achados/perdidos  
   async index(req, res) {
 
     const { _id } = req.params

@@ -1,34 +1,25 @@
-const { Router } = require("express");
-const FoundController = require("./controller/FoundController");
-const SearchController = require("./controller/SearchController");
-
-const routes = Router();
-
-
-//Routes
-require("./swagger")
-routes.get("/founds", FoundController.index);
-
-routes.get("/founds/:_id", FoundController.index);
-
-routes.post("/founds", FoundController.store);
-
 /**
  * @swagger
  * /founds:
+ *  get:
+ *    tags: 
+ *      - Founds
+ *    description: Use para retornar todos os posts.
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ *  post:
+ *    tags: 
+ *      - Founds
+ *    description: Use para retornar um post especifico.
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ 
  *  put:
  *    tags: 
  *      - Founds
  *    description: Use para retornar um post especifico.
- *    content:
- *     application/json:
- *       schema:
- *        type: object
- *        properties:
- *          _id:
- *            type: integer
- *            description: Id da aplicação
-
  * 
  *    parameters:
  *      - in: path
@@ -37,8 +28,8 @@ routes.post("/founds", FoundController.store);
  *          type: string
  *        required: true
  *        description: Id do post
- *        example: 123123
- *        value: 123123
+ *        example: 62300b3463a8bdecf7df2cd0
+ *        value: 62300b3463a8bdecf7df2cd0
  * 
  *      - in: path
  *        name: my_name
@@ -104,7 +95,7 @@ routes.post("/founds", FoundController.store);
  *        value: São Paulo
  
  *      - in: path
- *        name: zipcode
+ *        name: postalCode
  *        schema:
  *          type: string
  *        required: false
@@ -138,38 +129,8 @@ routes.post("/founds", FoundController.store);
  *        description: Altera o status do post (0 = perdido, 1 = encontrado)
  *        example: "0"
  *        value: "0"
- 
  * 
  *    responses:
  *      '200':
  *        description: A successful response
  */
-routes.put("/founds", FoundController.update);
-
-/**
- * @swagger
- * /founds:
- *  delete:
- *    tags: 
- *      - Founds
- *    description: Use para retornar um post especifico.
- *    responses:
- *      '200':
- *        description: A successful response
- */
-routes.delete("/founds/:_id", FoundController.destroy);
-
-/**
- * @swagger
- * /search:
- *  get:
- *    tags: 
- *      - Search
- *    description: Use para retornar um post especifico.
- *    responses:
- *      '200':
- *        description: A successful response
- */
-routes.get("/search", SearchController.index);
-
-module.exports = routes;
