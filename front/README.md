@@ -36,7 +36,7 @@ Primeiro crie uma pasta em um diretorio desejado, e usar o comando abaixo
 #
 
 ```sh
-git pull origin https://github.com/LyndonMarques/accurate-software.github.io.git
+git clone https://github.com/LyndonMarques/accurate-software.github.io.git
 ```
 
 ##### _Back-end_
