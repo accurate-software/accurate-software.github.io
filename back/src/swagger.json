@@ -1,0 +1,526 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Um simples servidor para aplicação de achados e perdidos.",
+    "version": "1.0.0",
+    "title": "Aplicação Achados & Perdidos",
+    "contact": {
+      "name": "Lyndon Marques",
+      "email": "lyndon.omarques@gmail.com"
+    }
+  },
+  "host": "localhost:3333",
+  
+  "tags": [
+    {
+      "name": "Founds",
+      "description": "Endpoints para aplicação achados e perdidos."
+    },
+    {
+      "name": "Search",
+      "description": "Lista post's filtrando por parametros enviados."
+    }    
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+
+    "/founds": {
+      "get": {
+        "tags": [
+          "Founds"
+        ],
+        "summary": "Lista todas as postagem.",
+        
+        "operationId": "getPost",
+
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FoundsGet"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Founds"
+        ],
+        "summary": "Adiciona uma nova postagem.",
+        
+        "operationId": "addPost",
+
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Payload necessário para inserir uma nova postagem.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FoundsPost"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Founds"
+        ],
+        "summary": "Edita uma postagem.",
+        
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Payload necessário para editar uma nova postagem.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FoundsPut"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Post not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+      
+    },
+
+    "/founds/{_id}": {
+      "get": {
+        "tags": [
+          "Founds"
+        ],
+        "summary": "Encontra post pelo ID",
+        "description": "Retorna um específico post",
+        "operationId": "getPostById",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "ID do post",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+           
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Post not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Founds"
+        ],
+        "summary": "Remove post pelo ID",
+        "description": "Remove um específico post",
+        "operationId": "deletePostById",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "ID do post",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+           
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Post not found"
+          }
+        }
+      }
+    },
+
+    "/search": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Lista post's filtrando por parametros enviados. Apenas os campos preenchidos serão filtrados",
+        
+        "operationId": "getSearch",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "my_name",
+            "description": "Filtra por nome",
+            "required": true,
+            "value": ""             
+          },
+          {
+            "in": "query",
+            "name": "cel",
+            "description": "Filtra por celular",
+            "value": "",
+            "required": true            
+          },
+          {
+            "in": "query",
+            "name": "item_name",
+            "description": "Filtra por titulo do post",
+            "value": "",
+            "required": true            
+          },
+          {
+            "in": "query",
+            "name": "postalCode",
+            "description": "Filtra por cep",
+            "value": "",
+            "required": true            
+          },
+          {
+            "in": "query",
+            "name": "street",
+            "description": "Filtra pelo nome da rua",
+            "value": "",
+            "required": true            
+          },
+          {
+            "in": "query",
+            "name": "city",
+            "description": "Filtra por cidade",
+            "value": "",
+            "required": true            
+          },
+          {
+            "in": "query",
+            "name": "categories",
+            "description": "Filtra por categorias",
+            "value": "",
+            "required": true            
+          },
+          {
+            "in": "query",
+            "name": "latitude",
+            "description": "Filtra por latitude",
+            "value": "",
+            "required": true            
+          },
+          {
+            "in": "query",
+            "name": "longitude",
+            "description": "Filtra por longitude",
+            "value": "",
+            "required": true            
+          },
+          {
+            "in": "query",
+            "type": "integer",
+            "name": "maxDistance",
+            "description": "Campo necessário para o MongoDB fazer a a busca pela distancia inserida. (Calcula distancia em Metros)",
+            "required": true,
+            "value": 10000            
+          },
+          {
+            "in": "query",
+            "type": "integer",
+            "name": "status",
+            "description": "Filtra o status",
+            "required": true,
+            "value": "0"           
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FoundsGet"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "FoundsPost": {
+      "type": "object",
+      "required": ["my_name", "item_name", "cel", "description", "categories", "street", "city", "postalCode", "latitude", "longitude"],
+      "properties": {        
+        "my_name": {
+          "type": "string",
+          "required": true,          
+          "example": "Smeagol",
+          "value": "Smeagol"
+        },
+        "item_name": {
+          "type": "string",
+          "required": true,          
+          "example": "Cachorro desaparecido",
+          "value": "Cachorro desaparecido"
+        },
+        "cel": {
+          "type": "string",
+          "required": true,          
+          "example": "(11) 94896-8787",
+          "value": "(11) 94896-8787"          
+        },
+        "description": {
+          "type": "string",
+          "required": true,          
+          "example": "Perdi meu cachorro e gostaria de encontrar",
+          "value": "Perdi meu cachorro e gostaria de encontrar"          
+        },
+        "categories": {
+          "type": "string",
+          "required": true,          
+          "example": "Animais, Casa, Pets",
+          "value": "Animais, Casa, Pets"          
+        },
+        "street": {
+          "type": "string",
+          "required": true,          
+          "example": "Rua Maria Paula",
+          "value": "Rua Maria Paula"          
+        },
+        "city": {
+          "type": "string",
+          "required": true,          
+          "example": "São Paulo",
+          "value": "São Paulo"          
+        },
+        "postalCode": {
+          "type": "string",
+          "required": true,          
+          "description": "Campo necessário para busca em geolocalizao do mongoDB, fazendo consultas de posts semelhantes  em um raio de distancia passado",
+          "example": "01319001",
+          "value": "01319001"          
+        },
+        "latitude": {
+          "type": "string",
+          "required": true,          
+          "example": "-21.5521808",
+          "value": "-21.5521808"          
+        },
+        "longitude": {
+          "type": "string",
+          "required": true,          
+          "example": "-42.6403861",
+          "value": "-42.6403861"           
+        }
+      }
+    },
+    "FoundsPut": {
+      "type": "object",
+      "required": ["_id"],
+      "properties": {  
+        "_id": {
+          "type": "string",
+          "required": true,          
+          "example": "62300b3463a8bdecf7df2cd0",
+          "value": "62300b3463a8bdecf7df2cd0"
+        },      
+        "my_name": {
+          "type": "string",
+          "required": true,          
+          "example": "Smeagol",
+          "value": "Smeagol"
+        },
+        "item_name": {
+          "type": "string",
+          "required": true,          
+          "example": "Cachorro desaparecido",
+          "value": "Cachorro desaparecido"
+        },
+        "cel": {
+          "type": "string",
+          "required": true,          
+          "example": "(11) 94896-8787",
+          "value": "(11) 94896-8787"          
+        },
+        "description": {
+          "type": "string",
+          "required": true,          
+          "example": "Edit Perdi meu cachorro e gostaria de encontrar",
+          "value": "Edit Perdi meu cachorro e gostaria de encontrar"          
+        },
+        "categories": {
+          "type": "string",
+          "required": true,          
+          "example": "Animais, Casa",
+          "value": "Animais, Casa"          
+        },
+        "street": {
+          "type": "string",
+          "required": true,          
+          "example": "Rua Maria Paula",
+          "value": "Rua Maria Paula"          
+        },
+        "city": {
+          "type": "string",
+          "required": true,          
+          "example": "São Paulo",
+          "value": "São Paulo"          
+        },
+        "postalCode": {
+          "type": "string",
+          "required": true,          
+          "description": "Campo necessário para busca em geolocalizao do mongoDB, fazendo consultas de posts semelhantes  em um raio de distancia passado",
+          "example": "01319001",
+          "value": "01319001"          
+        },
+        "latitude": {
+          "type": "string",
+          "required": true,          
+          "example": "-21.5521808",
+          "value": "-21.5521808"          
+        },
+        "longitude": {
+          "type": "string",
+          "required": true,          
+          "example": "-42.6403861",
+          "value": "-42.6403861"           
+        },
+        "status": {
+          "type": "integer",
+          "required": true,          
+          "example": 0,
+          "value": 0           
+        }
+      }
+    },
+    "FoundsGet": {
+      "type": "object",
+      "required": ["_id","my_name", "item_name", "cel", "description", "categories", "street", "city", "postalCode", "latitude", "longitude"],
+      "properties": {  
+        "_id": {
+          "type": "string",         
+          "example": "6235167f8724b96888d3f774",
+          "value": "6235167f8724b96888d3f774"
+        },      
+        "item_name": {
+          "type": "string",
+          "required": true,          
+          "example": "Cachorro desaparecido",
+          "value": "Cachorro desaparecido"
+        },
+        "description": {
+          "type": "string",
+          "required": true,          
+          "example": "Perdi meu cachorro e gostaria de encontrar",
+          "value": "Perdi meu cachorro e gostaria de encontrar"          
+        },
+        "status": {
+          "type": "string",
+          "required": true,          
+          "example": false,
+          "value": "false"
+        },
+        "categories":  {
+          "type": "object",
+          "properties": {
+            "casa": {},
+            "pets": {}
+          }
+        },
+        "street": {
+          "type": "string",
+          "required": true,          
+          "example": "Rua Maria Paula",
+          "value": "Rua Maria Paula"          
+        },
+        "city": {
+          "type": "string",
+          "required": true,          
+          "example": "São Paulo",
+          "value": "São Paulo"          
+        },
+        "postalCode": {
+          "type": "string",
+          "required": true,          
+          "description": "Campo necessário para busca em geolocalizao do mongoDB, fazendo consultas de posts semelhantes  em um raio de distancia passado",
+          "example": "01319001",
+          "value": "01319001"          
+        },
+        "location":  {
+          "type": "object",
+          "properties": {
+            "type":  {
+              "type": "string",
+              "example": "Point",
+              "value": "Point"
+            },
+            "coordinates": {
+              "type": "object",
+              "properties": {
+                "-46.5249106": {},
+                "-23.4416609": {}
+              }
+            }
+          }
+        },
+        "cel": {
+          "type": "string",
+          "required": true,          
+          "example": "(11) 94896-8787",
+          "value": "(11) 94896-8787"          
+        },
+        "my_name": {
+          "type": "string",
+          "required": true,          
+          "example": "Smeagol",
+          "value": "Smeagol"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Documentação do Swagger",
+    "url": "http://swagger.io"
+  }
+}
