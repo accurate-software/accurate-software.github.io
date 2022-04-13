@@ -38,13 +38,13 @@ Exemplo do json de cadastro abaixo:
 
 > ### **`[GET]/api/Cadastro`** - Consulta de clientes
 
-Para que você consiga consultar os clientes criados criamos duas formas para você. Exemplo 1 e 2:
+Para que você consiga consultar os clientes criamos duas formas para você. Exemplo 1 e 2:
 
 1. *`/api/Cadastro`*
  - Basta execultar/enviar request e será exibido todos os clientes cadastrados.
 
 2. *`/api/Cadastro/{id}`*
- - Informe o `id` e será exibido o clientes cadastrados.
+ - Informe o `id` e será exibido o cliente cadastrado com base no `id` do parâmetro.
 
  > ### **`[PUT]/api/Cadastro/{id}`** - Atualização cadastro clientes
 
@@ -86,13 +86,13 @@ Exemplo abaixo de como pode ser feito o json:
 
 >### **`[GET]/api/Categoria`** - Consulta de clientes
 
-Para que você consiga consultar as Categoria criadas criamos duas formas para você. Exemplo 1 e 2:
+Para que você consiga consultar as Categoria criadas duas formas para você. Exemplo 1 e 2:
 
 1. *`/api/Categoria`*
  - Basta execultar/enviar request e será exibido todos as categoria cadastrados.
 
 2. *`/api/Categoria/{id}`*
- - Informe o `id` e será exibido o categoria cadastrados.
+ - Informe o `id` e será exibido a categoria cadastrado com base no `id` do parâmetro.
 
  >>>>>> ###       Schema - Historico
 O Schema Historico tem suas particularidades e funções diversas.
@@ -100,17 +100,19 @@ O Schema Historico tem suas particularidades e funções diversas.
 1. Visualizar informações do cliente cadastrado como: Dados de cadastro, Status do objeto/item perdido, data do cadastro e cordenadas de onde perdeu o objeto/item com base no local aproximado(cordenadas).
 
 >### **`1.[GET]/api/Historico`** - Consultar Historico
-Visualize todos os historicos cadastrados fazendo uso do > `[GET]/api/Historico` sem preencher os parâmetros, apenas enviar a requisição sem preenchimento.
+Visualize todos os historicos cadastrados fazendo uso do > `[GET]/api/Historico` sem preencher os parâmetros, apenas enviar a requisição `sem preenchimento`.
 
 >### **`2.[GET]/api/Historico`** - Consultar Historico
-Para visualizar todos os clientes cadastrados com filtro com base no raio em km e localização aproximada(latitude e logitude) você irá precisar utilizar os paramentros abaixo: 
+Para visualizar todos os clientes cadastrados com filtro, levando em consideração o raio em km e localização aproximada(latitude e logitude) você irá precisar utilizar os paramentros abaixo: 
 
 Parâmetros de request
 ```
 curl -X 'GET' \
   'https://localhost:7146/api/Historico?categoriaPayload.Nome=Vestuario1&Raio=10&Latitude=-23.5666084&Longitude=-46.762992' \
   -H 'accept: text/plain'
+
 ```
+- Parâmetros: `Categoria: `*Vestuario1* | `Raio: `*10** | `Latitude: `*-23.5666084* | `Longitude: `*-46.762992*
 
 
 > ### **`[GET]/api/Historico/{id}`** - Consultar Historico por fitro
@@ -123,6 +125,7 @@ curl -X 'GET' \
   'https://localhost:7146/api/Historico/{4}' \
   -H 'accept: text/plain'
 ```
+- Parâmetros: `{4}`
 
 > ### **`[PUT]/api/Historico/{id}`** - Atualização do Historico 
 
