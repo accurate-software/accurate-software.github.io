@@ -6,7 +6,7 @@ Seja bem-vindo a [Accurate Software](https://accurate.com.br).
 
 Temos diversas vagas para desenvolvedores: Frontend, Backend e Fullstack!
 
-> Para conhecer melhor os candidatos, preparamos um desafio técnico. Não se preocupe em cumprir todos os requisitos propostos no desafio, este teste visa avaliar a sua capacidade de resolução de problemas. Abaixo serão apresentados dois desafios direcionados aos perfis frontend e backend, caso o seu perfil for voltado para fullstack fique a vontade em nos enviar uma solução completa abordando tanto frontend quanto backend!
+> Para conhecer melhor os candidatos, preparamos um desafio técnico. Não se preocupe em cumprir todos os requisitos propostos no desafio, este teste visa avaliar a sua capacidade de resolução de problemas. Abaixo serão apresentados dois desafios direcionados aos perfis frontend e backend, caso o seu perfil for voltado para fullstack fique a vontade em nos enviar uma solução completa abordando tanto frontend quanto backend!!!
 
 ## Instruções
 
