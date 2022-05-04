@@ -1,48 +1,50 @@
-## Accurate Software
+# Accurate Backend Challenge 
 
-<img src="https://accurate.com.br/wp-content/uploads/2020/06/logo-accurate-300.svg" alt="drawing" width="200"/> 
+## API Rest, made with Node.js, Express framework, My Sql as database using Sequelize ORM.
 
-Seja bem-vindo a [Accurate Software](https://accurate.com.br).
+### C.R.U.D system (Create, Read, Update and Delete) with the four basic operations used in relational databases provided to system users.
 
-Temos diversas vagas para desenvolvedores: Frontend, Backend e Fullstack!
+<hr>
 
-> Para conhecer melhor os candidatos, preparamos um desafio técnico. Não se preocupe em cumprir todos os requisitos propostos no desafio, este teste visa avaliar a sua capacidade de resolução de problemas. Abaixo serão apresentados dois desafios direcionados aos perfis frontend e backend, caso o seu perfil for voltado para fullstack fique a vontade em nos enviar uma solução completa abordando tanto frontend quanto backend!!!
+## Resources Used in Development:
 
-## Instruções
+- Node.Js;
+- Express.Js
+- Sequelize ORM;
+- MySql database;
+- Nodemon tool
+- Postman (api tests)
 
-1. Para começar o desafio, realize um fork no repositório: https://github.com/accurate-software/accurate-software.github.io
+## Architecture
 
-2. O desafio deverá ser commitado no fork.
+- `server.js`: Server listener file
+- `app.js`: Database connection
+- `src/features`: Directory responsible to group specific domains and its files, such as routes, controllers, services etc
 
-3. Após a finalização do desafio, solicite um pull request do fork no nosso repositório ;)
+## How to run it ?
 
-### Desafio Frontend
+1. `git clone https://github.com/xxx`
+2. `cd /accurate-api-challenge`
+3. `npm i`
+4. Change ".env.example" to ".env"
+5. Insert in .env the env requisites
+6. You're ready to next steps
 
-O seu desafio é realizar um desenvolvimento de uma aplicação frontend que cumpra os requisitos:
+## Depencies to install:
 
-+ Consumo de API REST
-+ CRUD ou listagem de algum recurso da API
-+ Utilizar alguma API pública, podendo ser alguma do site: https://public-apis.xyz/
+ 1. npm install express 
+ 2. npm install sequelize 
+ 3. npm install mysql2
+ 4. npm install --save-dev nodemon
+ 5. npm install dotenv
 
-Vamos avaliar a sua capacidade como desenvolvedor frontend, observando os critérios:
+## Testing the Application in Postman:
 
-+ Uso semântico do HTML
-+ Estruturação do layout e tags CSS
-+ Layout acessível e responsivo
-+ Utilização de frameworks da atualizade, como: React, Vue, Angular ou algum outro de sua preferência.
-+ Lembre-se de documentar a solução com um README.MD :)
+If you want to test the API created in the project, first download the [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop).
+After downloading Postman, just follow the steps below to be able to test the API routes.
 
-### Desafio Backend
+## Pattern of the Created Routes:
 
-O seu desafio é realizar um desenvolvimento de uma API Rest para um site de achados e perfidos. Sua API deve conter as seguintes funcionalidades:
+Seeking to follow the API's pattern and design, below are the URI's of the routes to be developed, all the routes created and examples can be viewed at the link below:
+https://documenter.getpostman.com/view/20632737/UyrHft9i
 
-+ Cadastro de um "Achado"/"Perdido"
-+ Atualização de histórico de um "Achado"/"Perdido"
-+ Busca com opção de filtros, como por exemplo: Categoria
-+ Relatório de cruzamento de informações "Achados"/"Perdidos", dado um categoria e um raio.
-
-Fique a vontade para usar a linguagem e framework de sua preferência, como: Java, C# e Node! Porém se atente aos seguintes pontos:
-
-+ Tratamento de erros e exceções
-+ Clareza e clean code no desenvolvimento da solução
-+ Documentação da solução - README.MD :)

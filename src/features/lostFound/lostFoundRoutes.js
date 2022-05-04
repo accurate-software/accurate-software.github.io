@@ -1,26 +1,27 @@
 const LostFound = require('./lostFound.js');
 const { QueryTypes } = require('sequelize');
+const statusCodes = require('../../utils/statusCodes');
 
-module.exports = lostFoundRoutes = (app, sequelize) => {
+module.exports = achadosPerdidosRoutes = (app, sequelize) => {
   app.delete('/lostFound/:id', async (req, res) => {
     const { id } = req.params;
     await LostFound.destroy({
       where: {
         id: id
-      }
+      } 
     });
-    res.status(200).json({
+    res.status(statusCodes.OK).json({
       success: true,
-      message: 'Item deletado com sucesso!'
+      message: 'Item deleted successfully!'
     });
   });
 
   app.get('/lostFound', async (req, res) => {
     const response = await sequelize.query(
       `
-      SELECT 	AP.id, AP.name, AP.status, AP.date, C.name AS category
-      FROM LostFound AS AP
-      INNER JOIN Category AS C ON (C.id = AP.category);
+      SELECT 	AP.id, AP.name, AP.status, AP.date, C.name AS categories
+      FROM lost_founds AS AP
+      INNER JOIN categories AS C ON (C.id = AP.categorie);
       `,
       {
         nest: true,
@@ -29,7 +30,7 @@ module.exports = lostFoundRoutes = (app, sequelize) => {
       }
     );
 
-    res.status(200).json({
+    res.status(statusCodes.OK).json({
       success: true,
       response: response
     });
@@ -39,9 +40,9 @@ module.exports = lostFoundRoutes = (app, sequelize) => {
     const { id } = req.params;
     const response = await sequelize.query(
       `
-      SELECT 	AP.id, AP.name, AP.status, AP.date, C.name AS category
-      FROM LostFound AS AP
-      INNER JOIN Category AS C ON (C.id = AP.category)
+      SELECT 	AP.id, AP.name, AP.status, AP.date, C.name AS categories
+      FROM lost_founds AS AP
+      INNER JOIN categories AS C ON (C.id = AP.categorie)
       WHERE AP.id=${id};
       `,
       {
@@ -51,57 +52,90 @@ module.exports = lostFoundRoutes = (app, sequelize) => {
       }
     );
     if (response) {
-      res.status(200).json({
+      res.status(statusCodes.OK).json({
         success: true,
         response: response[0]
       });
     } else {
-      res.status(400).json({
+      res.status(statusCodes.BAD_REQUEST).json({
         success: false,
-        message: "Item dont exist"
+        message: "This item dont exist"
       });
     }
   });
 
   app.put('/lostFound/:id', async (req, res) => {
-    const { name, status, date, category } = req.body;
+    const { name, status, date, categorie } = req.body;
     const { id } = req.params;
     await LostFound.update({
       name: name,
       status: status,
       date: date,
-      category: category
+      categorie: categorie
     }, {
       where: {
         id: id
       }
     });
-    res.status(200).json({
+    res.status(statusCodes.OK).json({
       success: true,
-      message: 'Item updated with success!'
+      message: 'Item successfully updated!'
     });
 
   });
 
   app.post('/lostFound', async (req, res) => {
     try {
-      const { name, status, date, category } = req.body;
+      const { name, status, date, categorie } = req.body;
       await LostFound.create({
         name: name,
         status: status,
         date: date,
-        category: category
+        categorie: categorie
       });
-      res.status(200).json({
+      res.status(statusCodes.CREATED).json({
         success: true,
-        message: 'Item created with sucess!'
+        message: 'Item registered successfully!'
       });
     } catch (e) {
       console.log(`Error: ${e}`)
-      res.status(400).json({
+      res.status(statusCodes.BAD_REQUEST).json({
         success: false,
-        message: 'Could not create this Item!'
+        message: 'Unable to register this Item!'
       });
     }
   });
+
+  app.get('/lostFound/:categorie/:startdate/:enddate', async (req, res) => {
+    const { categorie } = req.params;
+    const { startdate } = req.params;
+    const { enddate } = req.params;
+
+    const response = await sequelize.query(
+      `
+      SELECT AP.id, AP.name, AP.status, AP.date, C.name AS categories
+      FROM lost_founds AS AP
+      INNER JOIN categories AS C ON (C.id = AP.categorie)
+      WHERE C.id= '${categorie}' AND date(AP.date) BETWEEN date('${startdate}') AND date('${enddate}');
+      `,
+      {
+        nest: true,
+        type: QueryTypes.SELECT, 
+        raw: true
+      }
+    );
+      if (response) {
+        res.status(statusCodes.OK).json({
+          success: true,
+          response: response
+        });
+      } else {
+        res.status(statusCodes.BAD_REQUEST).json({
+          success: false,
+          message: "This item dont exist!"
+        });
+      }
+  });
+
+
 }

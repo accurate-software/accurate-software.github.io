@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../bd.js')
-const Category = require('../category/category.js')
+const Categorie = require('../categorie/categorie.js')
 
-const LostFound = sequelize.define('LostFound', {
+const LostFound = sequelize.define('lost_founds', {
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -15,19 +15,18 @@ const LostFound = sequelize.define('LostFound', {
     type: DataTypes.DATEONLY,
     allowNull: false
   },
-  category: {
+  categorie: {
     type: DataTypes.INTEGER,
     references: {
-      model: Category,
+      model: Categorie,
       key: 'id',
-    }
+    } 
   }
 }, {
-  modelName: 'Category',
+  modelName: 'lost_founds',
   timestamps: false
 });
 
-LostFound.hasMany(Category, { foreignKey: 'category' })
 LostFound.sync();
 
 module.exports = LostFound;
