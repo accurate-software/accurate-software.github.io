@@ -30,7 +30,7 @@
 5. Insert in .env the env requisites
 6. You're ready to next steps
 
-## Depencies to install:
+## Dependencies to install:
 
  1. npm install express 
  2. npm install sequelize 
