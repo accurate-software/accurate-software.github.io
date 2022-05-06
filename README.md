@@ -48,3 +48,11 @@ After downloading Postman, just follow the steps below to be able to test the AP
 Seeking to follow the API's pattern and design, below are the URI's of the routes to be developed, all the routes created and examples can be viewed at the link below:
 https://documenter.getpostman.com/view/20632737/UyrHft9i
 
+<hr/>
+
+<h3> Made by Guilherme Martins - @guilhermemm-dev </h3>
+
+- LinkedIn: https://www.linkedin.com/in/guilhermemm-dev/
+- GitHub: https://github.com/guilhermemm-dev
+- Portfolio: https://guilhermemm-dev.github.io/portifolio/
+
