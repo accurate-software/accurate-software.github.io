@@ -4,10 +4,13 @@
 - Implementado com NodeJS e Sql Server
 - Tem a função de busca/listagem de achados perdidos e inclusão de um novo achado/perdido
 - Na busca, é possível filtrar por query string por categoria ou nome, os parametros são opcionais. Caso nao informado ele exibe todos sem filtro.
-- Contém um arquivo banco.sql com os códigos de criação das tabelas e alguns insert de exemplos de dado
 - Apresenta tratamento de excessão
-- Executar npm install para instalar as dependencias de pacote do nodejs. Nao foi incluido a pasta node_modules para ficar mais leve, pois a mesma é criada com a execução do comando npm install.
+
+## Como rodar
 - O código da aplicação está no arquivo index.js
+- Contém um arquivo banco.sql com os códigos de criação das tabelas e alguns insert de exemplos de dado, necessário rodar scripts e ajustar connection string do banco no topo do arquivo index.js
+- Executar npm install na pasta do projeto para instalar as dependencias de pacote do nodejs. Nao foi incluido a pasta node_modules para ficar mais leve, pois a mesma é criada com a execução do comando npm install.
+- Para rodar a aplicação, na pasta do projeto digitar "node index.js". O programa está configurado para rodar na porta 3000.
 
 ## Para consumo da api
 
