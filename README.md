@@ -1,48 +1,37 @@
-## Accurate Software
+# Teste backend - API Rest Achados/Perdidos
 
-<img src="https://accurate.com.br/wp-content/uploads/2020/06/logo-accurate-300.svg" alt="drawing" width="200"/> 
 
-Seja bem-vindo a [Accurate Software](https://accurate.com.br).
+- Implementado com NodeJS e Sql Server
+- Tem a função de busca/listagem de achados perdidos e inclusão de um novo achado/perdido
+- Na busca, é possível filtrar por query string por categoria ou nome, os parametros são opcionais. Caso nao informado ele exibe todos sem filtro.
+- Apresenta tratamento de excessão
 
-Temos diversas vagas para desenvolvedores: Frontend, Backend e Fullstack!
+## Como rodar
+- O código da aplicação está no arquivo index.js
+- Contém um arquivo banco.sql com os códigos de criação das tabelas e alguns insert de exemplos de dado, necessário rodar scripts e ajustar connection string do banco no topo do arquivo index.js
+- Executar npm install na pasta do projeto para instalar as dependencias de pacote do nodejs. Nao foi incluido a pasta node_modules para ficar mais leve, pois a mesma é criada com a execução do comando npm install.
+- Para rodar a aplicação, na pasta do projeto digitar "node index.js". O programa está configurado para rodar na porta 3000.
 
-> Para conhecer melhor os candidatos, preparamos um desafio técnico. Não se preocupe em cumprir todos os requisitos propostos no desafio, este teste visa avaliar a sua capacidade de resolução de problemas. Abaixo serão apresentados dois desafios direcionados aos perfis frontend e backend, caso o seu perfil for voltado para fullstack fique a vontade em nos enviar uma solução completa abordando tanto frontend quanto backend!
+## Para consumo da api
 
-## Instruções
 
-1. Para começar o desafio, realize um fork no repositório: https://github.com/accurate-software/accurate-software.github.io
+### Busca de achados perdidos:
 
-2. O desafio deverá ser commitado no fork.
+- Método: GET
+- URL sem filtros: http://localhost:3000/buscar
+- URL com filtros: http://localhost:3000/buscar?nome=azul&categoria=2
+- retorno: dados do achado/perdido
+- Observação: no filtro de categoria deve ser informado id categoria (1 documento, 2 celulares, 3 outros, 4 chave)
 
-3. Após a finalização do desafio, solicite um pull request do fork no nosso repositório ;)
 
-### Desafio Frontend
+### Inserção de um novo achado perdidos:
 
-O seu desafio é realizar um desenvolvimento de uma aplicação frontend que cumpra os requisitos:
-
-+ Consumo de API REST
-+ CRUD ou listagem de algum recurso da API
-+ Utilizar alguma API pública, podendo ser alguma do site: https://public-apis.xyz/
-
-Vamos avaliar a sua capacidade como desenvolvedor frontend, observando os critérios:
-
-+ Uso semântico do HTML
-+ Estruturação do layout e tags CSS
-+ Layout acessível e responsivo
-+ Utilização de frameworks da atualizade, como: React, Vue, Angular ou algum outro de sua preferência.
-+ Lembre-se de documentar a solução com um README.MD :)
-
-### Desafio Backend
-
-O seu desafio é realizar um desenvolvimento de uma API Rest para um site de achados e perfidos. Sua API deve conter as seguintes funcionalidades:
-
-+ Cadastro de um "Achado"/"Perdido"
-+ Atualização de histórico de um "Achado"/"Perdido"
-+ Busca com opção de filtros, como por exemplo: Categoria
-+ Relatório de cruzamento de informações "Achados"/"Perdidos", dado um categoria e um raio.
-
-Fique a vontade para usar a linguagem e framework de sua preferência, como: Java, C# e Node! Porém se atente aos seguintes pontos:
-
-+ Tratamento de erros e exceções
-+ Clareza e clean code no desenvolvimento da solução
-+ Documentação da solução - README.MD :)
+- Método: POST
+- URL: http://localhost:3000/cadastrarAchadoPerdido
+- Body exemplo:  {
+        "nome": "Celular Samsung Roxo  ",
+        "descricao": "Celular Samsung Roxo do modelo S20 ",
+        "categoria": 2,
+        "devolvido": 0
+}
+- Retorno: ID gerado do novo achado/perdido
