@@ -6,7 +6,8 @@
 - Na busca, é possível filtrar por query string por categoria ou nome, os parametros são opcionais. Caso nao informado ele exibe todos sem filtro.
 - Contém um arquivo banco.sql com os códigos de criação das tabelas e alguns insert de exemplos de dado
 - Apresenta tratamento de excessão
-- Executar npm install para instalar as dependencias de pacote do nodejs
+- Executar npm install para instalar as dependencias de pacote do nodejs. Nao foi incluido a pasta node_modules para ficar mais leve, pois a mesma é criada com a execução do comando npm install.
+- O código da aplicação está no arquivo index.js
 
 ## Para consumo da api
 
